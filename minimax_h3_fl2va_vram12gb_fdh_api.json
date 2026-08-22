@@ -1,0 +1,272 @@
+{
+  "1": {
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "拡散モデルを読み込む"
+    }
+  },
+  "8": {
+    "inputs": {
+      "shift_video": 12,
+      "shift_audio": 3,
+      "model": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3SigmaShift",
+    "_meta": {
+      "title": "ModelSamplingMiniMaxH3"
+    }
+  },
+  "10": {
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "CLIPを読み込む"
+    }
+  },
+  "11": {
+    "inputs": {
+      "image": "00001-3692347142_cropped.webp"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "画像を読み込む"
+    }
+  },
+  "13": {
+    "inputs": {
+      "noise_seed": 100779118640662
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "ランダムノイズ"
+    }
+  },
+  "14": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "Kサンプラー選択"
+    }
+  },
+  "15": {
+    "inputs": {
+      "scheduler": "simple",
+      "steps": 4,
+      "denoise": 1,
+      "model": [
+        "28",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "基本スケジューラー"
+    }
+  },
+  "16": {
+    "inputs": {
+      "model": [
+        "28",
+        0
+      ],
+      "conditioning": [
+        "29",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "基本ガイダー"
+    }
+  },
+  "17": {
+    "inputs": {
+      "noise": [
+        "13",
+        0
+      ],
+      "guider": [
+        "16",
+        0
+      ],
+      "sampler": [
+        "14",
+        0
+      ],
+      "sigmas": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "カスタムサンプラー（高度）"
+    }
+  },
+  "18": {
+    "inputs": {
+      "samples": [
+        "17",
+        0
+      ],
+      "vae": [
+        "22",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAEデコード"
+    }
+  },
+  "19": {
+    "inputs": {
+      "samples": [
+        "17",
+        0
+      ],
+      "vae": [
+        "23",
+        0
+      ]
+    },
+    "class_type": "VAEDecodeAudio",
+    "_meta": {
+      "title": "VAEデコード音声"
+    }
+  },
+  "20": {
+    "inputs": {
+      "fps": 24,
+      "bit_depth": 8,
+      "images": [
+        "18",
+        0
+      ],
+      "audio": [
+        "19",
+        0
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "動画を作成"
+    }
+  },
+  "21": {
+    "inputs": {
+      "filename_prefix": "MiniMax-H3/sayaka_station_evening_1088x1920_s2",
+      "format": "auto",
+      "codec": "auto",
+      "video": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "ビデオを保存"
+    }
+  },
+  "22": {
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "VAEを読み込む"
+    }
+  },
+  "23": {
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "VAEを読み込む"
+    }
+  },
+  "26": {
+    "inputs": {
+      "head_chunks": 4,
+      "model": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "MiniMaxLowVRAMAttention",
+    "_meta": {
+      "title": "MiniMax H3 Low VRAM Attention"
+    }
+  },
+  "28": {
+    "inputs": {
+      "chunks": 2,
+      "seq_threshold": 4096,
+      "model": [
+        "26",
+        0
+      ]
+    },
+    "class_type": "MiniMaxChunkFeedForward",
+    "_meta": {
+      "title": "MiniMax H3 Chunk FeedForward"
+    }
+  },
+  "29": {
+    "inputs": {
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description:\n\n[Shot 1] 2D anime-style animation. The shot begins exactly from <Picture 1>, preserving the same young anime-style woman, the same facial identity, hairstyle, blue dress, electric guitar, indoor music-room environment, window, amplifiers, and overall framing visible in <Picture 1>.\n\nShe stands naturally while holding and playing the electric guitar. Over the course of the 5-second shot, she performs a short, smooth pop-rock singing performance while lightly strumming the guitar. Her right hand strums in a steady rhythm, and her left hand holds the neck naturally as if playing simple chords. Her upper body sways slightly with the music, and her dress and loose hair strands move subtly. She looks toward the camera with a bright, confident expression and sings clearly in English. Her mouth movement should match the sung vocals naturally and continuously.\n\nThe camera remains mostly stable with only a very subtle push-in. Keep the composition close to the original image and keep her face and guitar clearly visible throughout the shot. Preserve the same indoor room environment from <Picture 1> without changing the location.\n\nUse a clean 2D anime illustration style with stable character rendering, clear facial features, and consistent guitar details. Avoid ghosting, double images, distorted fingers, broken guitar shapes, or unstable facial structure.\n\nThe final frame should still show her in the same room, smiling slightly while continuing the guitar performance.\n\noverall_soundscape:\nA clear female vocal singing in English, accompanied by light electric guitar strumming in a bright pop-rock style. Clean vocal recording, catchy rhythm, soft room ambience, and natural performance energy.\n\nnon_diegetic_music:\nAn original upbeat English pop-rock song led by female vocals and electric guitar. The singing should sound like a short original chorus. Example lyric theme: confidence, moving forward, shining brighter, and enjoying music.\n\nSuggested sung lyric:\n\"Shine tonight, we’re feeling alive,\nHold on tight, we can touch the sky,\nHear my heart beating in the light,\nSing it out, we’ll shine tonight.\"",
+      "width": 1088,
+      "height": 1920,
+      "length": 124,
+      "clip": [
+        "10",
+        0
+      ],
+      "vae": [
+        "22",
+        0
+      ],
+      "first_frame": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3ImageToVideo",
+    "_meta": {
+      "title": "MiniMax H3 Image to Video"
+    }
+  },
+  "32": {
+    "inputs": {
+      "lora_name": "minimax-h3\\minimax_h3_turbo_v4_step600_ema.safetensors",
+      "strength": 1,
+      "low_vram": true,
+      "model": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3TurboLoRA",
+    "_meta": {
+      "title": "MiniMax H3 Turbo LoRA"
+    }
+  }
+}
