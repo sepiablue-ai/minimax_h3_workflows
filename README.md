@@ -25,3 +25,10 @@ Generate video using multiple reference images (e.g. character sheet / angles) t
 
 - **`minimax_h3_ref2va_vram12gb_fdh.json`**: ComfyUI Web UI workflow
 - **`minimax_h3_ref2va_vram12gb_fdh_api.json`**: ComfyUI API format workflow
+
+### 3. Pose Control & ControlNet Workflows (Ref2VA + DWPose / Fun ControlNet)
+Drive character movement and choreography using pose estimators and Fun ControlNet Union.
+
+- **`minimax_h3_controlnet_aux_dwpose_UI.json`**: ComfyUI Web UI workflow with built-in `comfyui_controlnet_aux` DWPose estimator directly extracting pose from RGB video
+- **`phase2_ref2va_pose_control_448x800_api.json`**: ComfyUI API format workflow for pose-guided video generation (448x800 resolution)
+
