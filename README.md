@@ -1,6 +1,6 @@
 # MiniMax-H3 ComfyUI Workflows
 
-ComfyUI workflows for MiniMax-H3 (Ref2VA / FL2VA) generation at Full HD resolution, optimized for low VRAM environments (e.g., 12GB VRAM).
+ComfyUI workflows for MiniMax-H3 (Ref2VA / FL2VA / VideoRef / Pose Control) generation at Full HD resolution, optimized for low VRAM environments (e.g., 12GB VRAM).
 
 ## Features
 - **Optimized for Low VRAM (12GB)**:
@@ -26,7 +26,12 @@ Generate video using multiple reference images (e.g. character sheet / angles) t
 - **`minimax_h3_ref2va_vram12gb_fdh.json`**: ComfyUI Web UI workflow
 - **`minimax_h3_ref2va_vram12gb_fdh_api.json`**: ComfyUI API format workflow
 
-### 3. Pose Control & ControlNet Workflows (Ref2VA + DWPose / Fun ControlNet)
+### 3. VideoRef (Motion / Video Reference to Video with Audio)
+Generate video combining multiple reference images (for character identity and appearance) and a motion reference video (for dance/motion transfer and choreography timing) with audio.
+
+- **`minimax_h3_videoref_api.json`**: ComfyUI API format workflow
+
+### 4. Pose Control & ControlNet Workflows (Ref2VA + DWPose / Fun ControlNet)
 Drive character movement and choreography using pose estimators and Fun ControlNet Union.
 
 - **`minimax_h3_controlnet_aux_dwpose_UI.json`**: ComfyUI Web UI workflow with built-in `comfyui_controlnet_aux` DWPose estimator directly extracting pose from RGB video
