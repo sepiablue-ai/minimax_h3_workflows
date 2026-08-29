@@ -25,6 +25,7 @@ Generate video using multiple reference images (e.g. character sheet / angles) t
 
 - **`minimax_h3_ref2va_vram12gb_fdh.json`**: ComfyUI Web UI workflow
 - **`minimax_h3_ref2va_vram12gb_fdh_api.json`**: ComfyUI API format workflow
+- **`minimax_h3_ref2va_LBHupscaler.json`**: ComfyUI Web UI workflow with 3D Latent Upscaler (`minimax_h3_latent_upscaler_3d_fp16.safetensors` / LBH Upscaler) to upscale from 736x1280 to Full HD (1088x1920) while preserving audio
 
 ### 3. VideoRef (Motion / Video Reference to Video with Audio)
 Generate video combining multiple reference images (for character identity and appearance) and a motion reference video (for dance/motion transfer and choreography timing) with audio.
