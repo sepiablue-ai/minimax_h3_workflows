@@ -38,3 +38,16 @@ Drive character movement and choreography using pose estimators and Fun ControlN
 - **`minimax_h3_controlnet_aux_dwpose_UI.json`**: ComfyUI Web UI workflow with built-in `comfyui_controlnet_aux` DWPose estimator directly extracting pose from RGB video
 - **`phase2_ref2va_pose_control_448x800_api.json`**: ComfyUI API format workflow for pose-guided video generation (448x800 resolution)
 
+### 5. FastH3 VSA Sample (Unofficial Fast Generation)
+Unofficial sample workflow using FastH3 Visual Sparse Attention (VSA) for high-speed generation.
+
+- **`fasth3_vsa_sample.json`**: ComfyUI Web UI workflow
+  - **Environment**: Kijai ComfyUI VSA branch
+  - **Model**: FastH3 VSA INT8 ConvRot checkpoint
+  - **Attention Engine**: `SolAttnMiniMax`
+  - **Sparsity**: VSA keep 10% (90% sparsity)
+  - **Shift**: video/audio shift: 12 / 3
+  - **Sampler**: Euler
+  - **Schedule**: 4-step official sigma schedule
+
+
