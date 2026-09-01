@@ -72,3 +72,16 @@ Fully optimized workflow for FastH3 FHD video generation, achieving ~3m 55s tota
     - Peak VRAM: ~10.8 GB (sampling) / ~6.3 GB (VAE decode)
     - Shared Memory Spill: **0 MB** (flat ~276MB baseline)
     - Quality: Bit-exact to standard VAE (MAE: 0.0, PSNR: ∞)
+
+### 7. FastH3 720p to 2x All-in-One Upscale Workflow
+All-in-one high-speed generation and upscaling pipeline: generates 720p (720x1280) video with FastH3 4-step VSA at ultra-fast speeds and low VRAM footprint, decodes via FastVAE, and automatically applies 2x AI super-resolution (e.g. `RealESRGAN_x2plus.pth`) with synchronized audio muxing.
+
+- **`fasth3_720p_to_2x_upscale_allinone.json`**: ComfyUI Web UI workflow
+  - **Base Resolution & Upscaled Output**: 720x1280 (720p Portrait) $\rightarrow$ **1440x2560 (2.5K/2x Upscaled)** / 124 frames (5.17s @ 24fps)
+  - **Model**: FastH3 VSA INT8 ConvRot checkpoint (4-step distilled)
+  - **Attention Engine**: `SolAttnMiniMax` (VSA keep 5%)
+  - **VAE Engines**:
+    - Video: `minimax_h3_video_vae_int8_convrot.safetensors` + `MiniMax H3 Fast VAE Decode` (tile_batch_size: 2)
+    - Audio: `minimax_h3_audio_vae_fp32.safetensors`
+  - **Upscaler Node / Model**: `ImageUpscaleWithModel` + `RealESRGAN_x2plus.pth` (can be swapped for any 2x/4x model such as Compact / DAT / RealESRGAN)
+  - **Output**: Generates full video with synchronized audio saved directly to `FastH3_2x_Upscaled/`
