@@ -1,0 +1,201 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fastvideo_vsa_datafree_1300step_4step_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "SolAttnMiniMax",
+    "inputs": {
+      "model": [
+        "17",
+        0
+      ],
+      "selection": "VSA (FastVideo)",
+      "selection.vsa_keep_percent": 5.0,
+      "start_percent": 0.0,
+      "end_percent": 1.0,
+      "min_tokens": 0,
+      "sink_conditioning": "exact_kv_and_rows",
+      "verbose": true
+    }
+  },
+  "4": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ],
+      "prompt": "integrated_multimodal_description: [Shot 1] Anime-style 2D illustration with clean delicate linework, soft cel shading, bright gentle lighting, and a fresh airy spring atmosphere. In an open flower field under a vivid blue sky with large white clouds, a young woman with pale skin, short dark charcoal-black bobbed hair with soft bangs and a few loose strands, and large gray-violet eyes sits gracefully on the grass among small white flowers. She wears a soft pink sleeveless dress with a ribbon at the waist and a dark fitted jacket. She smiles gently toward the camera with a calm, slightly playful expression. A light breeze moves her hair and dress naturally. She slowly lifts one hand in front of her and makes a soft sweeping motion, as if guiding the air. In response, flower petals begin to rise and swirl around her hand. The motion grows more magical and dynamic as she continues moving her hand, sending more and more petals into the air. The petals spiral outward and drift across the scene in a flowing circular motion. The camera remains focused on her in a medium shot with a subtle gentle push-in, while the quantity of petals rapidly increases. By the climax of the shot, countless soft flower petals are dancing and swirling everywhere, filling the entire frame from foreground to background. The screen becomes densely covered with fluttering petals, creating a vivid immersive scene of petals flying all across the image. Maintain the same character identity, hairstyle, facial features, body proportions, outfit, and soft 2D anime illustration style throughout the entire shot.\n\noverall_soundscape: Soft outdoor spring ambience with a gentle breeze, faint rustling grass, and delicate fluttering sounds of many flower petals moving through the air.\n\nnon_diegetic_music: Light, dreamy, gentle piano and strings with a soft magical feeling, gradually becoming more uplifting as the petals fill the frame.",
+      "width": 720,
+      "height": 1280,
+      "length": 124
+    }
+  },
+  "8": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 777
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "conditioning": [
+        "7",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "0.9999166, 0.9728326, 0.9230769, 0.8, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "8",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "7",
+        1
+      ]
+    }
+  },
+  "13": {
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ],
+      "tile_batch_size": 2
+    },
+    "class_type": "MiniMaxH3FastVAEDecode",
+    "_meta": {
+      "title": "MiniMax H3 Fast VAE Decode (batch 2)"
+    }
+  },
+  "14": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB"
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "FastH3_720p/video_720p",
+      "format": "auto",
+      "codec": "auto"
+    }
+  },
+  "17": {
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "chunks": 2,
+      "seq_threshold": 4096
+    },
+    "class_type": "MiniMaxChunkFeedForward",
+    "_meta": {
+      "title": "MiniMax H3 Chunk FeedForward"
+    }
+  }
+}

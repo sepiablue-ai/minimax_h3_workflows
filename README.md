@@ -85,3 +85,22 @@ All-in-one high-speed generation and upscaling pipeline: generates 720p (720x128
     - Audio: `minimax_h3_audio_vae_fp32.safetensors`
   - **Upscaler Node / Model**: `ImageUpscaleWithModel` + `RealESRGAN_x2plus.pth` (can be swapped for any 2x/4x model such as Compact / DAT / RealESRGAN)
   - **Output**: Generates full video with synchronized audio saved directly to `FastH3_2x_Upscaled/`
+
+### 8. FastH3 720p Fast Generation (Optimized for External Vulkan Upscaler)
+Lightweight & ultra-fast generation workflow that outputs clean 720p (720x1280) video with audio, designed to be upscaled using standalone external Vulkan/ncnn CLI tools (`realesrgan-ncnn-vulkan`, `realcugan-ncnn-vulkan`) without PyTorch/ComfyUI VRAM overhead.
+
+- **`fasth3_720p_vsa5_chunk2_fastvae_extupscale.json`**: ComfyUI Web UI workflow
+  - **Resolution & Length**: 720x1280 (720p Portrait) / 124 frames (5.17s @ 24fps)
+  - **Model**: FastH3 VSA INT8 ConvRot checkpoint (4-step distilled)
+  - **Attention Engine**: `SolAttnMiniMax` (VSA keep 5%)
+  - **VRAM Spill Protection**: `MiniMax H3 Chunk FeedForward` (chunks: 2, seq_threshold: 4096)
+  - **VAE Engines**:
+    - Video: `minimax_h3_video_vae_int8_convrot.safetensors` + `MiniMax H3 Fast VAE Decode` (tile_batch_size: 2)
+    - Audio: `minimax_h3_audio_vae_fp32.safetensors`
+  - **Output**: `FastH3_720p/video_720p` (24fps sRGB MP4 with Audio)
+  - **External Upscaling (Recommended)**:
+    Upscale to 1440x2560 (2x) or 4K with minimal VRAM (~100-300MB) using dedicated video models (e.g. `realesr-animevideov3` or `Real-CUGAN`):
+    ```bash
+    # Example using Real-ESRGAN Vulkan CLI (2x anime video upscale):
+    ./realesrgan-ncnn-vulkan -i output/FastH3_720p/video_720p.mp4 -o output/FastH3_720p/video_720p_2x.mp4 -n realesr-animevideov3 -s 2
+    ```
