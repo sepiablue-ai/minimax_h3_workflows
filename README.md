@@ -50,4 +50,25 @@ Unofficial sample workflow using FastH3 Visual Sparse Attention (VSA) for high-s
   - **Sampler**: Euler
   - **Schedule**: 4-step official sigma schedule
 
+### 6. FastH3 FHD Optimal Workflow (12GB VRAM Optimized, Sub-4min)
+Fully optimized workflow for FastH3 FHD video generation, achieving ~3m 55s total runtime with zero Shared GPU Memory spill on 12GB GPUs.
 
+- **`fasth3_vsa5_chunk2_fastvae_fhd.json`**: ComfyUI Web UI workflow
+  - **Environment**: ComfyUI + FastVideo VSA + KJNodes + Mozer FastVAE fork
+  - **Resolution & Length**: 1080x1920 (FHD Portrait) / 124 frames (5.17s @ 24fps)
+  - **Model**: FastH3 VSA INT8 ConvRot checkpoint (4-step distilled)
+  - **Attention Engine**: `SolAttnMiniMax`
+  - **Sparsity**: VSA keep 5% (95% sparsity)
+  - **VRAM Spill Protection**: `MiniMax H3 Chunk FeedForward` (chunks: 2, seq_threshold: 4096)
+  - **Video VAE**: `minimax_h3_video_vae_int8_convrot.safetensors`
+  - **VAE Decode Engine**: `MiniMax H3 Fast VAE Decode` (Mozer fork, tile_batch_size: 2)
+  - **Audio VAE**: `minimax_h3_audio_vae_fp32.safetensors`
+  - **Sampler / Schedule**: Euler / 4-step official manual sigmas
+  - **Shift**: video/audio shift: 12 / 3
+  - **Performance (RTX 4070 12GB)**:
+    - Total Time: **~3m 55s – 3m 58s** (warm) / **~4m 12s** (cold start with model load)
+    - Sampling: ~176s (~40.9s/step)
+    - VAE Decode: ~51s – 55s (down from 106s in FP16)
+    - Peak VRAM: ~10.8 GB (sampling) / ~6.3 GB (VAE decode)
+    - Shared Memory Spill: **0 MB** (flat ~276MB baseline)
+    - Quality: Bit-exact to standard VAE (MAE: 0.0, PSNR: ∞)
