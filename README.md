@@ -104,3 +104,25 @@ Lightweight & ultra-fast generation workflow that outputs clean 720p (720x1280) 
     # Example using Real-ESRGAN Vulkan CLI (2x anime video upscale):
     ./realesrgan-ncnn-vulkan -i output/FastH3_720p/video_720p.mp4 -o output/FastH3_720p/video_720p_2x.mp4 -n realesr-animevideov3 -s 2
     ```
+
+### 9. MiniMax H3 1024x1792 Ultra-Fast Generation (PR #16072 top-k 10% Sweet Spot)
+Ultra-fast MATLOW Turbo workflow utilizing the official ComfyUI Block Sparse Attention node (PR #16072) with `top-k (SLA)` selection at 10% keep ratio. By targeting the 1024x1792 mathematical sweet spot for VAE tiling, it achieves the fastest total wall-clock generation time (~4m19s) with a sub-200s sampler time on RTX 4070 12GB.
+
+- **`pr16072_topk_1024x1792.api.json`**: ComfyUI workflow
+  - **Resolution & Length**: 1024x1792 (Optimal Portrait Sweet Spot) / 124 frames (5.17s @ 24fps)
+  - **Model**: `minimax_h3_fused_refdelta_r1024_turbo8_mystic07_int8_convrot.safetensors` (4-step MATLOW Turbo)
+  - **Attention Engine**: `BlockSparseAttention` [PR #16072] (`top-k (SLA)`, keep 10%, sink conditioning: `exact_kv_and_rows`)
+  - **VRAM Spill Protection**: `MiniMax H3 Chunk FeedForward` (chunks: 4, seq_threshold: 4096)
+  - **VAE Engines**:
+    - Video: `minimax_h3_video_vae_int8_convrot.safetensors` (Standard ComfyUI VAE Decode, ~39s via optimal tiling)
+    - Audio: `minimax_h3_audio_vae_fp32.safetensors`
+  - **Output**: `H3_1024x1792/video_1024x1792` (24fps sRGB MP4 with Audio)
+  - **Required CLI Flag**:
+    ComfyUI must be launched with `--disable-comfy-compiler` to prevent catastrophic CUDA graph breaks (~90s stall) at the final step:
+    ```bash
+    python main.py --windows-standalone-build --disable-auto-launch --disable-pinned-memory --use-sage-attention --disable-comfy-compiler
+    ```
+  - **Benchmark (RTX 4070 12GB)**:
+    - **Sampler Time**: **198.76s** (~3m18s, sub-200s milestone)
+    - **VAE Decode Time**: **39.17s** (12s faster than 1088x1920)
+    - **Total Wall-Clock**: **259.62s (~4m19s)** | Peak VRAM: 11.62 GB
