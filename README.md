@@ -2,6 +2,28 @@
 
 ComfyUI workflows for MiniMax-H3 (Ref2VA / FL2VA / VideoRef / Pose Control) generation at Full HD resolution, optimized for low VRAM environments (e.g., 12GB VRAM).
 
+## License / Redistribution（ライセンス・再配布）
+
+### 日本語
+
+このリポジトリで公開しているComfyUIワークフローは、[MITライセンス](LICENSE)のもとで、個人利用・改変・再配布・商用利用を含め、自由に利用していただいて構いません。
+
+再配布や改変版を公開する場合は、可能であれば元リポジトリへのリンクを記載していただけると嬉しいです。リンクの記載は任意ですが、MITライセンスの条件に従い、ワークフローのコピーまたは実質的な部分を再配布する際は、`LICENSE`に記載された著作権表示および許諾表示を含めてください。
+
+元リポジトリ / Original repository: [sepiablue-ai/minimax_h3_workflows](https://github.com/sepiablue-ai/minimax_h3_workflows)
+
+このリポジトリのワークフローファイルはMITライセンスで公開しています。ワークフローが参照するモデル、LoRA、カスタムノード、その他の第三者コンポーネントには、それぞれのライセンスが適用されます。これらの利用・再配布・商用利用については、各配布元のライセンスを確認してください。
+
+### English
+
+These ComfyUI workflows may be freely used, modified, redistributed, and used commercially under the [MIT License](LICENSE).
+
+When redistributing or publishing modified versions, attribution or a link to the original repository is appreciated. Linking is optional; however, when redistributing copies or substantial portions of the workflows, you must include the copyright notice and permission notice in `LICENSE`, as required by the MIT License.
+
+Original repository: [sepiablue-ai/minimax_h3_workflows](https://github.com/sepiablue-ai/minimax_h3_workflows)
+
+The workflow files in this repository are released under the MIT License. Please note that models, LoRAs, custom nodes, and other third-party components referenced by these workflows are subject to their respective licenses. Check each provider's license for terms governing use, redistribution, and commercial use of those components.
+
 ## Features
 - **Optimized for Low VRAM (12GB)**:
   - Pruned / quantized models (int8 unet, nvfp4 / awq CLIP, int8 / fp16 VAE)
