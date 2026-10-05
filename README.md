@@ -148,3 +148,13 @@ Ultra-fast MATLOW Turbo workflow utilizing the official ComfyUI Block Sparse Att
     - **Sampler Time**: **198.76s** (~3m18s, sub-200s milestone)
     - **VAE Decode Time**: **39.17s** (12s faster than 1088x1920)
     - **Total Wall-Clock**: **259.62s (~4m19s)** | Peak VRAM: 11.62 GB
+
+### 10. MiniMax H3 544x960 to 1088x1920 X2 VAE Workflows
+High-speed workflows generating at 544x960 base resolution and decoding directly to 1088x1920 Full HD via X2 VAE (`H3X2StreamSave`), supporting both SLA and Veda sparse attention.
+
+- **`fl2va_turbo8_veda90_x2.json`**: FL2VA INT8 + Turbo 8step + Veda 90% + X2 VAE
+- **`fused4_sla5_x2.json`**: MATLOW Fused Turbo 4-step + SLA 5% keep ratio + X2 VAE
+- **`fused4_veda90_x2.json`**: MATLOW Fused Turbo 4-step + Veda 90% keep ratio + X2 VAE
+  - **Pipeline**: 544x960 generation $\rightarrow$ X2 VAE $\rightarrow$ 1088x1920 output (124 frames, 24 fps)
+  - **Prerequisite**: Run `04_prepare_x2_int8.json` once prior to generation for X2 INT8 decoder preparation.
+

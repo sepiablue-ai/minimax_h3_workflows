@@ -1,0 +1,912 @@
+{
+  "last_node_id": 921,
+  "last_link_id": 19,
+  "nodes": [
+    {
+      "id": 119,
+      "type": "VAELoader",
+      "pos": [
+        520,
+        270
+      ],
+      "size": [
+        390,
+        95
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            5
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_video_vae_int8_convrot.safetensors"
+      ],
+      "title": "Video VAE"
+    },
+    {
+      "id": 120,
+      "type": "VAELoader",
+      "pos": [
+        520,
+        1040
+      ],
+      "size": [
+        390,
+        95
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            16
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_audio_vae_fp32.safetensors"
+      ],
+      "title": "Audio VAE"
+    },
+    {
+      "id": 128,
+      "type": "CLIPLoader",
+      "pos": [
+        520,
+        80
+      ],
+      "size": [
+        390,
+        145
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "minimax",
+        "default"
+      ],
+      "title": "Text Encoder"
+    },
+    {
+      "id": 127,
+      "type": "UNETLoader",
+      "pos": [
+        40,
+        80
+      ],
+      "size": [
+        420,
+        120
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "minimax_h3_fused_refdelta_r1024_turbo8_mystic07_int8_convrot.safetensors",
+        "default"
+      ],
+      "title": "MATLOW Fused Turbo INT8 ConvRot"
+    },
+    {
+      "id": 140,
+      "type": "H3X2ChunkFeedForward",
+      "pos": [
+        40,
+        460
+      ],
+      "size": [
+        420,
+        100
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3X2ChunkFeedForward"
+      },
+      "widgets_values": [
+        8,
+        4096
+      ],
+      "title": "H3 Chunk FeedForward (8 chunks)"
+    },
+    {
+      "id": 900,
+      "type": "VedaSparseAttention",
+      "pos": [
+        40,
+        620
+      ],
+      "size": [
+        420,
+        300
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "title": "Veda Sparse Attention (90%)",
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 2
+        },
+        {
+          "localized_name": "predictor",
+          "name": "predictor",
+          "type": "COMBO",
+          "widget": {
+            "name": "predictor"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VedaSparseAttention",
+        "cnr_id": "veda-sparse-attention",
+        "ver": "0.2.0",
+        "models": [
+          {
+            "name": "minimax_h3_t2va_veda_8nfe_600step_preview_fp8.safetensors",
+            "url": "https://huggingface.co/Veda-Sparse/Minimax-H3-T2VA-Veda-8NFE-600Step-Preview/resolve/9a1fd3a41b4a754a7886e64e82edbddf599fd1bd/minimax_h3_t2va_veda_8nfe_600step_preview_fp8.safetensors",
+            "directory": "veda"
+          }
+        ]
+      },
+      "widgets_values": [
+        "minimax_h3_t2va_veda_8nfe_600step_preview_fp8.safetensors",
+        "90%",
+        "90%",
+        "",
+        "",
+        true
+      ]
+    },
+    {
+      "id": 142,
+      "type": "MiniMaxH3SigmaShift",
+      "pos": [
+        40,
+        980
+      ],
+      "size": [
+        420,
+        120
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            7,
+            8
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3SigmaShift"
+      },
+      "widgets_values": [
+        12.0,
+        3.0
+      ],
+      "title": "Sigma Shift 12/3"
+    },
+    {
+      "id": 901,
+      "type": "LoadImage",
+      "pos": [
+        520,
+        430
+      ],
+      "size": [
+        390,
+        490
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            6
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "01_input_544x960.png"
+      ],
+      "title": "First Frame"
+    },
+    {
+      "id": 131,
+      "type": "MiniMaxH3ImageToVideo",
+      "pos": [
+        980,
+        80
+      ],
+      "size": [
+        430,
+        550
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 4
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 5
+        },
+        {
+          "name": "first_frame",
+          "type": "IMAGE",
+          "link": 6
+        },
+        {
+          "name": "last_frame",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            9
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            14
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3ImageToVideo"
+      },
+      "widgets_values": [
+        "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Clean 2D anime illustration. Begin with the exact young woman, hairstyle, white shirt, dark tie, pleated skirt, tights, seated pose, classroom window, and daylight shown in <Picture 1>. In one continuous shot she lowers her legs from the desk, plants her feet, and stands up. She takes a few steps toward the camera while maintaining her identity, outfit, and the classroom setting. As she reaches a closer framing, she looks directly into the lens, smiles, and makes a small finger-heart with her thumb and index finger beside her face. The young woman (S1), in a clear, gentle Japanese voice, says: <d>[Japanese] 君が好き</d> Her mouth moves in sync with the exact line, and she holds the finger-heart briefly at the end.\n\noverall_soundscape: Light classroom ambience continues under the soft sounds of her feet landing and footsteps approaching the camera. Her clothes rustle gently as she stands and raises her hand.\n\nnon_diegetic_music: N/A",
+        544,
+        960,
+        124
+      ],
+      "title": "MiniMax H3 Image to Video"
+    },
+    {
+      "id": 129,
+      "type": "RandomNoise",
+      "pos": [
+        980,
+        690
+      ],
+      "size": [
+        390,
+        120
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            10
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        43,
+        "fixed"
+      ],
+      "title": "Seed 43"
+    },
+    {
+      "id": 135,
+      "type": "KSamplerSelect",
+      "pos": [
+        980,
+        860
+      ],
+      "size": [
+        390,
+        100
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            12
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "res_multistep"
+      ],
+      "title": "res_multistep"
+    },
+    {
+      "id": 124,
+      "type": "BasicScheduler",
+      "pos": [
+        980,
+        1010
+      ],
+      "size": [
+        390,
+        145
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            13
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "simple",
+        4,
+        1.0
+      ],
+      "title": "simple / 4 steps"
+    },
+    {
+      "id": 126,
+      "type": "BasicGuider",
+      "pos": [
+        1480,
+        80
+      ],
+      "size": [
+        390,
+        120
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 8
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            11
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      },
+      "widgets_values": [],
+      "title": "BasicGuider"
+    },
+    {
+      "id": 125,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        1480,
+        265
+      ],
+      "size": [
+        390,
+        230
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 10
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 11
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 12
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 13
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            15,
+            17
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": [],
+      "title": "Sampler"
+    },
+    {
+      "id": 121,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        1480,
+        550
+      ],
+      "size": [
+        390,
+        100
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 15
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            19
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecodeAudio"
+      },
+      "widgets_values": [],
+      "title": "Audio Decode"
+    },
+    {
+      "id": 92,
+      "type": "H3X2StreamSave",
+      "pos": [
+        1930,
+        80
+      ],
+      "size": [
+        430,
+        420
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 17
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 18
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 19
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "H3X2StreamSave"
+      },
+      "widgets_values": [
+        "Veda_note/Fused4_Veda90_X2",
+        24.0,
+        0,
+        18,
+        true
+      ],
+      "title": "X2 Decode + Stream Save / X2出力"
+    },
+    {
+      "id": 920,
+      "type": "VAELoader",
+      "pos": [
+        1480,
+        680
+      ],
+      "size": [
+        390,
+        95
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            18
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "h3_x2_stream\\MiniMax-H3-X2-Detail-v1-decoder-int8-convrot.safetensors"
+      ],
+      "title": "X2 Detail VAE (decoder INT8)"
+    },
+    {
+      "id": 921,
+      "type": "MarkdownNote",
+      "pos": [
+        1930,
+        560
+      ],
+      "size": [
+        430,
+        390
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "title": "Usage / 使い方",
+      "widgets_values": [
+        "## Fused4_Veda90_X2 / 融合4step＋Veda 90%＋X2\n\n画像 / Image: 01_input_544x960.png\n\n544×960 generation → X2 VAE → 1088×1920 output; 124 frames, 24 fps, seed 43.\n\nモデル名は保存先に合わせてプルダウンで選んでください。\nSelect the model files in the dropdowns for your installation.\n\nVeda uses the model output after the LoRA. Use either SLA or Veda, not both.\n\nX2 INT8 decoder preparation: run 04_prepare_x2_int8.json once before generation."
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      127,
+      0,
+      140,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      140,
+      0,
+      900,
+      0,
+      "MODEL"
+    ],
+    [
+      3,
+      900,
+      0,
+      142,
+      0,
+      "MODEL"
+    ],
+    [
+      4,
+      128,
+      0,
+      131,
+      0,
+      "CLIP"
+    ],
+    [
+      5,
+      119,
+      0,
+      131,
+      1,
+      "VAE"
+    ],
+    [
+      6,
+      901,
+      0,
+      131,
+      2,
+      "IMAGE"
+    ],
+    [
+      7,
+      142,
+      0,
+      124,
+      0,
+      "MODEL"
+    ],
+    [
+      8,
+      142,
+      0,
+      126,
+      0,
+      "MODEL"
+    ],
+    [
+      9,
+      131,
+      0,
+      126,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      10,
+      129,
+      0,
+      125,
+      0,
+      "NOISE"
+    ],
+    [
+      11,
+      126,
+      0,
+      125,
+      1,
+      "GUIDER"
+    ],
+    [
+      12,
+      135,
+      0,
+      125,
+      2,
+      "SAMPLER"
+    ],
+    [
+      13,
+      124,
+      0,
+      125,
+      3,
+      "SIGMAS"
+    ],
+    [
+      14,
+      131,
+      1,
+      125,
+      4,
+      "LATENT"
+    ],
+    [
+      15,
+      125,
+      0,
+      121,
+      0,
+      "LATENT"
+    ],
+    [
+      16,
+      120,
+      0,
+      121,
+      1,
+      "VAE"
+    ],
+    [
+      17,
+      125,
+      0,
+      92,
+      0,
+      "LATENT"
+    ],
+    [
+      18,
+      920,
+      0,
+      92,
+      1,
+      "VAE"
+    ],
+    [
+      19,
+      121,
+      0,
+      92,
+      2,
+      "AUDIO"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.48,
+      "offset": [
+        100,
+        60
+      ]
+    },
+    "workflowRendererVersion": "LG"
+  },
+  "version": 0.4
+}
