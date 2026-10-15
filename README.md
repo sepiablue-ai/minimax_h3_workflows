@@ -1,28 +1,22 @@
 # MiniMax-H3 ComfyUI Workflows
 
-ComfyUI workflows for MiniMax-H3 (Ref2VA / FL2VA / VideoRef / Pose Control) generation at Full HD resolution, optimized for low VRAM environments (e.g., 12GB VRAM).
+**Ready-to-load ComfyUI workflows for MiniMax H3 (Ref2VA / FL2VA / VideoRef / Pose Control) on a 12GB GPU. The fastest one makes a 5-second 1088×1920 video with audio in about 1 minute on an RTX 4070 12GB.**
 
-## License / Redistribution（ライセンス・再配布）
+RTX 4070 12GB・VRAM 12GBで動くMiniMax H3のComfyUIワークフロー集です。最速の構成では、1088×1920・音声付きの5秒動画を約1分で生成します。
 
-### 日本語
+> Author: Kamimoto (かみもと) | Quick results on **[X (@sep_is_heim)](https://x.com/sep_is_heim)**, write-ups (Japanese) on **[note](https://note.com/sepiablue)** ([article index](https://note.com/sepiablue/n/n8e612c619a3e)).
 
-このリポジトリで公開しているComfyUIワークフローは、[MITライセンス](LICENSE)のもとで、個人利用・改変・再配布・商用利用を含め、自由に利用していただいて構いません。
+## Fastest picks (RTX 4070 12GB)
 
-再配布や改変版を公開する場合は、可能であれば元リポジトリへのリンクを記載していただけると嬉しいです。リンクの記載は任意ですが、MITライセンスの条件に従い、ワークフローのコピーまたは実質的な部分を再配布する際は、`LICENSE`に記載された著作権表示および許諾表示を含めてください。
+| Workflow | Output (124 frames, 24 fps, audio) | Generation time |
+|---|---|---:|
+| **[`fused4_sla5_x2.json`](fused4_sla5_x2.json)** — FL2VA, 4 steps, SLA 5%, X2 VAE | 1088×1920 | **62.6 s / 58.7 s** |
+| [`fused4_veda90_x2.json`](fused4_veda90_x2.json) — FL2VA, 4 steps, Veda 90%, X2 VAE | 1088×1920 | 81.5 s / 70.2 s |
+| [`fl2va_turbo8_veda90_x2.json`](fl2va_turbo8_veda90_x2.json) — FL2VA base model, 8 steps, Veda 90%, X2 VAE | 1088×1920 | 134.1 s / 133.5 s |
+| [`fasth3_vsa5_chunk2_fastvae_fhd.json`](fasth3_vsa5_chunk2_fastvae_fhd.json) — FastH3 VSA 5% | 1080×1920 | about 3 min 55 s |
+| [`pr16072_topk_1024x1792.api.json`](pr16072_topk_1024x1792.api.json) — SLA top-k 10% | 1024×1792 | 259.6 s |
 
-元リポジトリ / Original repository: [sepiablue-ai/minimax_h3_workflows](https://github.com/sepiablue-ai/minimax_h3_workflows)
-
-このリポジトリのワークフローファイルはMITライセンスで公開しています。ワークフローが参照するモデル、LoRA、カスタムノード、その他の第三者コンポーネントには、それぞれのライセンスが適用されます。これらの利用・再配布・商用利用については、各配布元のライセンスを確認してください。
-
-### English
-
-These ComfyUI workflows may be freely used, modified, redistributed, and used commercially under the [MIT License](LICENSE).
-
-When redistributing or publishing modified versions, attribution or a link to the original repository is appreciated. Linking is optional; however, when redistributing copies or substantial portions of the workflows, you must include the copyright notice and permission notice in `LICENSE`, as required by the MIT License.
-
-Original repository: [sepiablue-ai/minimax_h3_workflows](https://github.com/sepiablue-ai/minimax_h3_workflows)
-
-The workflow files in this repository are released under the MIT License. Please note that models, LoRAs, custom nodes, and other third-party components referenced by these workflows are subject to their respective licenses. Check each provider's license for terms governing use, redistribution, and commercial use of those components.
+The first three rows use the same settings as FL2VA [022](https://sayakabenchmark.pages.dev/benchmarks/fl2va/022-matlow-fused4-sla5-x2vae-int8-stream/workflow.json), [023](https://sayakabenchmark.pages.dev/benchmarks/fl2va/023-matlow-fused4-veda90-x2vae-int8-stream/workflow.json) and [024](https://sayakabenchmark.pages.dev/benchmarks/fl2va/024-fl2va-int8-turbo8-veda90-x2vae-int8-stream/workflow.json) on [Sayaka Benchmark](https://sayakabenchmark.pages.dev/) (entry numbers on the site; case01 / case02, one run each). The last two rows are the measurements described in their sections below. Rows were measured on different days and setups, so treat them as a guide rather than a strict ranking. The X2 VAE workflows need [ComfyUI-H3-X2-Stream](https://github.com/sepiablue-ai/ComfyUI-H3-X2-Stream).
 
 ## Features
 - **Optimized for Low VRAM (12GB)**:
@@ -128,7 +122,7 @@ Lightweight & ultra-fast generation workflow that outputs clean 720p (720x1280) 
     ```
 
 ### 9. MiniMax H3 1024x1792 Ultra-Fast Generation (PR #16072 top-k 10% Sweet Spot)
-Ultra-fast MATLOW Turbo workflow utilizing the official ComfyUI Block Sparse Attention node (PR #16072) with `top-k (SLA)` selection at 10% keep ratio. By targeting the 1024x1792 mathematical sweet spot for VAE tiling, it achieves the fastest total wall-clock generation time (~4m19s) with a sub-200s sampler time on RTX 4070 12GB.
+Ultra-fast MATLOW Turbo workflow utilizing the official ComfyUI Block Sparse Attention node (PR #16072) with `top-k (SLA)` selection at 10% keep ratio. By targeting the 1024x1792 mathematical sweet spot for VAE tiling, it achieved about 4m19s total with a sub-200s sampler time on RTX 4070 12GB (the X2 VAE workflows in section 10 are faster today).
 
 - **`pr16072_topk_1024x1792.api.json`**: ComfyUI workflow
   - **Resolution & Length**: 1024x1792 (Optimal Portrait Sweet Spot) / 124 frames (5.17s @ 24fps)
@@ -156,5 +150,44 @@ High-speed workflows generating at 544x960 base resolution and decoding directly
 - **`fused4_sla5_x2.json`**: MATLOW Fused Turbo 4-step + SLA 5% keep ratio + X2 VAE
 - **`fused4_veda90_x2.json`**: MATLOW Fused Turbo 4-step + Veda 90% keep ratio + X2 VAE
   - **Pipeline**: 544x960 generation $\rightarrow$ X2 VAE $\rightarrow$ 1088x1920 output (124 frames, 24 fps)
-  - **Prerequisite**: Run `04_prepare_x2_int8.json` once prior to generation for X2 INT8 decoder preparation.
+  - **Prerequisite**: Install [ComfyUI-H3-X2-Stream](https://github.com/sepiablue-ai/ComfyUI-H3-X2-Stream) and run its [`00_prepare_int8.json`](https://github.com/sepiablue-ai/ComfyUI-H3-X2-Stream/blob/main/examples/00_prepare_int8.json) once to prepare the INT8 X2 decoder.
+  - **Measured (RTX 4070 12GB, Sayaka Benchmark FL2VA 022 / 023 / 024)**: 62.6 / 81.5 / 134.1 s (case01).
 
+---
+
+## Author and related repositories
+
+I'm Kamimoto (かみもと). I measure and publish MiniMax H3 and ComfyUI speed-ups and VRAM reductions on an RTX 4070 12 GB.
+
+- X: [@sep_is_heim](https://x.com/sep_is_heim) — quick results with step counts, seconds and speed-ups
+- note: [かみもと｜ローカルAI生成](https://note.com/sepiablue) — setup guides and measured write-ups in Japanese ([article index](https://note.com/sepiablue/n/n8e612c619a3e))
+- [Sayaka Benchmark](https://sayakabenchmark.pages.dev/) — speed and quality comparison of H3 workflows
+
+| Repository | What it does |
+|---|---|
+| [ComfyUI-H3-X2-Stream](https://github.com/sepiablue-ai/ComfyUI-H3-X2-Stream) | INT8 X2 VAE and asynchronous NVENC saving; 5 s 1088×1920 video with audio in about 60 s |
+| [ComfyUI-H3-LBH-X2-Stream](https://github.com/sepiablue-ai/ComfyUI-H3-LBH-X2-Stream) | 3 low-resolution steps + 1 high-resolution step; about 25% faster for 14 s video |
+| [ComfyUI-H3-AudioFirst-X2-Stream](https://github.com/sepiablue-ai/ComfyUI-H3-AudioFirst-X2-Stream) | Audio-first two-pass generation that reduces the metallic voice |
+| [ComfyUI-MiniMax-H3-W4A4-VSA](https://github.com/sepiablue-ai/ComfyUI-MiniMax-H3-W4A4-VSA) | Ref2VA acceleration with FC1 W4A4 and Streaming VSA |
+
+## License / Redistribution（ライセンス・再配布）
+
+### 日本語
+
+このリポジトリで公開しているComfyUIワークフローは、[MITライセンス](LICENSE)のもとで、個人利用・改変・再配布・商用利用を含め、自由に利用していただいて構いません。
+
+再配布や改変版を公開する場合は、可能であれば元リポジトリへのリンクを記載していただけると嬉しいです。リンクの記載は任意ですが、MITライセンスの条件に従い、ワークフローのコピーまたは実質的な部分を再配布する際は、`LICENSE`に記載された著作権表示および許諾表示を含めてください。
+
+元リポジトリ / Original repository: [sepiablue-ai/minimax_h3_workflows](https://github.com/sepiablue-ai/minimax_h3_workflows)
+
+このリポジトリのワークフローファイルはMITライセンスで公開しています。ワークフローが参照するモデル、LoRA、カスタムノード、その他の第三者コンポーネントには、それぞれのライセンスが適用されます。これらの利用・再配布・商用利用については、各配布元のライセンスを確認してください。
+
+### English
+
+These ComfyUI workflows may be freely used, modified, redistributed, and used commercially under the [MIT License](LICENSE).
+
+When redistributing or publishing modified versions, attribution or a link to the original repository is appreciated. Linking is optional; however, when redistributing copies or substantial portions of the workflows, you must include the copyright notice and permission notice in `LICENSE`, as required by the MIT License.
+
+Original repository: [sepiablue-ai/minimax_h3_workflows](https://github.com/sepiablue-ai/minimax_h3_workflows)
+
+The workflow files in this repository are released under the MIT License. Please note that models, LoRAs, custom nodes, and other third-party components referenced by these workflows are subject to their respective licenses. Check each provider's license for terms governing use, redistribution, and commercial use of those components.
