@@ -153,6 +153,39 @@ High-speed workflows generating at 544x960 base resolution and decoding directly
   - **Prerequisite**: Install [ComfyUI-H3-X2-Stream](https://github.com/sepiablue-ai/ComfyUI-H3-X2-Stream) and run its [`00_prepare_int8.json`](https://github.com/sepiablue-ai/ComfyUI-H3-X2-Stream/blob/main/examples/00_prepare_int8.json) once to prepare the INT8 X2 decoder.
   - **Measured (RTX 4070 12GB, Sayaka Benchmark FL2VA 022 / 023 / 024)**: 62.6 / 81.5 / 134.1 s (case01).
 
+### 11. MiniMax-H3-Image Line Art → Colored-Pencil Coloring Video (FL2VA, 10 s)
+Load one color illustration and run. MiniMax-H3-Image turns it into a black-and-white line drawing and a colored version of that same line art, then MiniMax-H3 FL2VA uses them as the first and last frames to make a 10-second video of the drawing being colored in with colored pencils.
+
+カラーイラストを1枚入れて実行するだけで、MiniMax-H3-Imageで白黒線画とカラー線画を作り、それを開始・終了フレームにしてMiniMax-H3 FL2VAで「色鉛筆で塗っていく10秒動画」を作ります。
+
+- **`h3image_lineart_to_color_fl2va_10s.json`**: ComfyUI Web UI workflow
+  - **Custom nodes**: none (ComfyUI core nodes only; tested on ComfyUI 0.45.0 with comfy_kitchen 0.2.41). The sparse attention node is the core `Model Sparse Attention` (`BlockSparseAttention`, marked experimental).
+  - **Prompts**: fixed, image-independent prompts — swap the input image and run. No prompt rewriting or post-processing nodes.
+  - **Pipeline**:
+    1. Input is scaled to about 4 MP and to a multiple of 32 (center crop of a few pixels), as in the official MiniMax-H3-Image edit template
+    2. MiniMax-H3-Image (6 steps, CFG 1, Euler / simple): black-and-white line art, then colored line art from that line art + the input as color reference
+    3. Both images are scaled with `ImageScaleToTotalPixels` as in the official MiniMax-H3 i2v template, to the 768p pixel budget (0.98 MP = 768×1344) with each side rounded to 32 (no crop; e.g. 768×1344 for 9:16, 1152×864 for 4:3)
+    4. MiniMax-H3 FL2VA int8 + lightx2v Turbo 4-step 768p LoRA, shift 6 / 3, with core `Model Sparse Attention` (SLA, keep 10% = 90% sparse, start 0.2, other settings default): 243 frames (24 fps, about 10.1 s) with audio. Bypass that node to run dense attention.
+  - **Models** (all from the official [Comfy-Org/MiniMax-H3-Image](https://huggingface.co/Comfy-Org/MiniMax-H3-Image) / [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) repos):
+
+    | Folder | File |
+    |---|---|
+    | `diffusion_models` | `minimax_h3_image_pruned_w4a8.safetensors`, `minimax_h3_fl2va_pruned_int8_convrot.safetensors` |
+    | `loras/minimax-h3` | `minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors` |
+    | `text_encoders` | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` (shared by image and video) |
+    | `vae` | `minimax_h3_image_vae_fp16.safetensors`, `minimax_h3_video_vae_fp16.safetensors`, `minimax_h3_audio_vae_fp32.safetensors` |
+
+  - **Measured (RTX 4070 12GB, 243 frames, one run each, whole workflow from line art to saved video)**:
+
+    | Input → video size | 90% sparse (this workflow) | Dense (node bypassed) |
+    |---|---:|---:|
+    | 2:3 portrait → 832×1248 | 603.9 s | 1040.7 s |
+    | 9:16 portrait → 768×1344 | 608.0 s | 1022.1 s |
+    | 4:3 landscape → 1152×864 | 580.5 s | 962.7 s |
+
+    The four video sampling steps take about 4 min with 90% sparse vs about 13 min dense (2:3 input: 239 s vs 787 s). The rest is line art (two images, about 1 min of sampling), text encoding with the 32B encoder, model swapping and VAE decoding. The dense 2:3 run used an earlier wording of the video prompt.
+  - **Known limitation**: because the prompts name no colors, some areas can be colored in a different color mid-video (e.g. hair painted blue) before settling into the final colors in the last second.
+
 ---
 
 ## Author and related repositories
