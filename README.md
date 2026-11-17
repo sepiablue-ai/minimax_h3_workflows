@@ -186,6 +186,31 @@ Load one color illustration and run. MiniMax-H3-Image turns it into a black-and-
     The four video sampling steps take about 4 min with 90% sparse vs about 13 min dense (2:3 input: 239 s vs 787 s). The rest is line art (two images, about 1 min of sampling), text encoding with the 32B encoder, model swapping and VAE decoding. The dense 2:3 run used an earlier wording of the video prompt.
   - **Known limitation**: because the prompts name no colors, some areas can be colored in a different color mid-video (e.g. hair painted blue) before settling into the final colors in the last second.
 
+### 12. MiniMax-H3-Image Morning → Noon → Evening → Night Time-Lapse Video (FL2VA)
+Load one landscape photo (portrait or landscape) and optionally set the target duration in seconds (default `6.0`). MiniMax-H3-Image generates four time-of-day keyframes (morning, noon, evening, night) while locking the camera and composition, then MiniMax-H3 FL2VA generates three transition clips (`morning → noon`, `noon → evening`, `evening → night`) and concatenates them into a seamless time-lapse video with audio.
+
+風景写真を1枚（縦長・横長どちらも対応）入れて実行するだけで、MiniMax-H3-Imageが同じ構図のまま朝・昼・夕方・夜の4枚のキーフレームを生成し、MiniMax-H3 FL2VAで3区間の変化動画（朝→昼・昼→夕方・夕方→夜）を生成して1本の音声付きタイムラプス動画へ自動結合します（目標合計秒数のデフォルトは `6.0` 秒）。
+
+- **`h3image_timelapse_fl2va_6s.json`**: ComfyUI Web UI workflow
+  - **Custom nodes**: none (ComfyUI core nodes only; validated on ComfyUI 0.45.0 with `comfy_kitchen` 0.2.41, including `BlockSparseAttention`, `ComfyMathExpression`, `StringFormat`, and `ConcatenateVideo`).
+  - **Prompts**: fixed, image-independent lighting/sky/atmosphere prompts that avoid hardcoded scene objects so natural landscapes do not hallucinate buildings or streetlights.
+  - **Pipeline**:
+    1. Input image is scaled to ~4 MP and trimmed to a multiple of 32 (`ResizeImageMaskNode` `scale total pixels` → `scale to multiple: 32`) while preserving aspect ratio.
+    2. MiniMax-H3-Image (6 steps, CFG 1.0, Euler / simple) generates 4 keyframes (`morning`, `noon`, `evening`, `night`) and saves the 4-frame batch as `H3_Timelapse/keyframes_4phases`.
+    3. All 4 keyframes are scaled to the 768p pixel budget (~1 MP, multiple of 32) and matched to the same dimensions.
+    4. Target total duration is divided equally across the 3 FL2VA segments (`morning → noon`, `noon → evening`, `evening → night`), snapped to the nearest `17k+5` frame count at 24 fps (`6.0 s` default → `56` frames / `2.33 s` per segment), generated with MiniMax-H3 FL2VA int8 + Turbo 4-step 768p LoRA, shift `6.0 / 3.0`, and `Model Sparse Attention` (`BlockSparseAttention`, SLA keep 10% = 90% sparse, start 0.2), then joined with `ConcatenateVideo` (`168` frames / `7.00 s` total at default `6.0 s`) and saved to `H3_Timelapse/timelapse_full`.
+  - **Models** (all from the official [Comfy-Org/MiniMax-H3-Image](https://huggingface.co/Comfy-Org/MiniMax-H3-Image) / [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) repos):
+
+    | Folder | File |
+    |---|---|
+    | `diffusion_models` | `minimax_h3_image_pruned_w4a8.safetensors`, `minimax_h3_fl2va_pruned_int8_convrot.safetensors` |
+    | `loras/minimax-h3` | `minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors` |
+    | `text_encoders` | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` (shared by image and video) |
+    | `vae` | `minimax_h3_image_vae_fp16.safetensors`, `minimax_h3_video_vae_fp16.safetensors`, `minimax_h3_audio_vae_fp32.safetensors` |
+
+  - **Measured (RTX 4070 12GB, 90% sparse, equivalent API graph execution)**:
+    - 16:9 landscape (`1672×941` → `1344×768`, 168 frames / 7.00 s total): **502.05 s** elapsed (peak VRAM `11,760` MiB)
+
 ---
 
 ## Author and related repositories
