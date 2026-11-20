@@ -211,6 +211,38 @@ Load one landscape photo (portrait or landscape) and optionally set the target d
   - **Measured (RTX 4070 12GB, 90% sparse, equivalent API graph execution)**:
     - 16:9 landscape (`1672×941` → `1344×768`, 168 frames / 7.00 s total): **502.05 s** elapsed (peak VRAM `11,760` MiB)
 
+
+### 13. One-Button Outfit-Change Dance Video (MiniMax-H3-Image + FL2VA)
+
+Load one character image and enter two short English outfit descriptions. MiniMax-H3-Image creates an intermediate image for outfit A and a final image for outfit B. MiniMax-H3 FL2VA generates one continuous 226-frame dance video with music, using the original image as the start, the outfit-A pose as a guide at 4.5 seconds, and the outfit-B image as the end. Outfit changes are requested at about 3 and 6 seconds; actual transition times can shift.
+
+人物画像1枚と衣装A/Bの短い英文を入力すると、MiniMax-H3-ImageがAの中間画像とBの終点画像を生成します。MiniMax-H3 FL2VAは、元画像を始点、Aのポーズを4.5秒位置のガイド、Bの画像を終点として、226フレームのダンス映像と音楽を1回の連続生成で作ります。着替えの指示は約3秒・6秒ですが、実際の切替時刻はずれる場合があります。
+
+- **[`tiktok_outfit_dance.json`](tiktok_outfit_dance.json)**: ComfyUI Web UI workflow
+  - **Custom nodes**: none (36 execution nodes from ComfyUI core / `comfy_extras`; validated on ComfyUI 0.45.0 with frontend 1.58.5).
+  - **Inputs & output**: one character image and two short English outfit fields; fixed seed 42; MP4 saved in `output/TikTokMV/` with the `anchored` filename prefix.
+  - **Resolution & length**: Input is resized to about 0.62 MP with its aspect ratio preserved, then adjusted with a small center crop to a multiple of 32. Output dimensions follow the input aspect ratio; the video is 226 frames at 24 fps (about 9.42 s).
+  - **Pipeline**:
+    1. MiniMax-H3-Image edits the source into outfit-A and outfit-B images, each with a 6-step KSampler.
+    2. MiniMax-H3 FL2VA INT8 with the 4-step Turbo LoRA, SigmaShift 6 / 3, and Euler / simple generates the video once. The original image is the start frame, the outfit-A image guides frame 108 (4.5 s), and the outfit-B image is the end frame.
+  - **Models** (official [Comfy-Org/MiniMax-H3-Image](https://huggingface.co/Comfy-Org/MiniMax-H3-Image), [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3), and [lightx2v/Minimax-h3-Turbo](https://huggingface.co/lightx2v/Minimax-h3-Turbo) repositories):
+
+    | Folder | File |
+    |---|---|
+    | `diffusion_models` | [`minimax_h3_image_pruned_w4a8.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/diffusion_models/minimax_h3_image_pruned_w4a8.safetensors) |
+    | `vae` | [`minimax_h3_image_vae_fp16.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/vae/minimax_h3_image_vae_fp16.safetensors) |
+    | `diffusion_models` | [`minimax_h3_fl2va_pruned_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) |
+    | `loras/minimax-h3` | [`minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors`](https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/main/minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors) |
+    | `text_encoders` | [`qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) |
+    | `vae` | [`minimax_h3_video_vae_fp16.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors) |
+    | `vae` | [`minimax_h3_audio_vae_fp32.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors) |
+
+  - **Storage & VRAM**: Seven model files use about 58.15 GB of disk space. Validated with one 12 GB GPU (RTX 4070 / RTX 3060).
+  - **Example runs** (one run per input; executed concurrently on separate GPUs, so timings are illustrative rather than a speed comparison):
+    - Photo input, 608×1056, RTX 4070 12 GB: **453.28 s**.
+    - Anime input, 640×960, RTX 3060 12 GB: **787.95 s**.
+  - **Known limitations**: Outfit boundaries and timing can vary by generation. In the tested anime output, a small hair accessory and cloud details changed; these two inputs do not establish a guarantee of exact identity or background preservation.
+
 ---
 
 ## Author and related repositories
