@@ -281,6 +281,48 @@ Load one photo of a street or path, set the length in seconds, and pick a gaze p
     - RTX 3060 12 GB, 10 s: **887–896 s** (eight runs, sidewalk scene), peak 11,387–11,475 MiB.
   - **Known limitations**: fine leaves and hedges can flicker slightly while the view moves. The gaze patterns were checked on one sidewalk image with one seed; the swing amplitude depends on the input image. Generated signboard text is not legible.
 
+### 15. Overhead Cooking Short from One Dish Photo and Five Step Notes (MiniMax-H3-Image + LLM + FL2VA)
+
+Load one photo of a finished dish and write five short English step notes. MiniMax-H3-Image turns the photo into an overhead plated shot on a white table, an LLM (Qwen3.5-9B) expands the notes into five shot descriptions, and MiniMax H3 generates one vertical cooking video with cooking sounds: one shot per step joined by cuts, ending on the plated dish. Everything runs in one pass of the workflow.
+
+料理の完成写真を1枚と、メモ書き程度の英語の工程を5行入れて実行すると、白い机を真上の固定カメラで撮ったような縦長の料理動画（約12秒・料理の音付き）を作ります。MiniMax-H3-Imageが完成写真から真上の盛り付け画像を作り、LLM（Qwen3.5-9B）が工程メモから5ショット分の文を書き、MiniMax H3が工程ごとに1ショットずつカットでつないで、最後は盛り付けで終わる動画を1回の生成で作ります。
+
+- **[`h3_cooking_short.json`](h3_cooking_short.json)**: ComfyUI Web UI workflow
+  - **Custom nodes**: none (50 execution nodes from ComfyUI core / `comfy_extras`, including `TextGenerateV2`, `StringFormat`, `RegexReplace`, `ComfyMathExpression`, `MiniMaxH3AddGuide`, and `BlockSparseAttention`; validated on ComfyUI 0.45.0 with frontend 1.58.5). Node and group titles are in Japanese and English.
+  - **Inputs** (group ①): the finished-dish photo (any orientation, size, or camera angle), five step notes in English (all five are required; one step per line, e.g. `slice an onion`), the length in seconds (default 12), and the seed (fixed `261121` by default). The default image name is `omurice.png`; put your own photo in `ComfyUI/input/`. MP4 is saved as `output/H3_Cooking/cooking_short_*.mp4` and the plated image as `cooking_short_final_*.png`.
+  - **Pipeline**:
+    1. MiniMax-H3-Image (1440×2560, 6 steps, CFG 1, Euler / simple) uses the photo as a reference and draws the plated dish from directly above on a white table. The photo is passed as is; the node resizes it internally.
+    2. `TextGenerateV2` with Qwen3.5-9B (thinking on, greedy decoding) reads the photo and the notes and writes `[Shot 1]`–`[Shot 5]`. The system prompt is dish-independent: each shot is written from five slots — the vessel and what it holds at the start, the left hand that steadies it, the one tool in the right hand, one continuous motion, and how the food looks at the end — as positive, visible statements. Stovetop cooking is shown in its pot or pan on the table, and oven steps as the moment just before or after. The LLM output and the full video prompt are shown in preview nodes.
+    3. MiniMax H3 FL2VA INT8 with the 4-step Turbo LoRA (768p), SigmaShift 6 / 3, Euler / simple, and `BlockSparseAttention` (SLA keep 10%, start 0.2) generates 736×1312 video with audio once. `[Shot 6]` is a still life of the plated dish; the plated image (scaled to 736×1312 with a center crop of about 2 px in total) is used as the last frame and also as a guide at the start of Shot 6, which keeps hands out of the final shot. Cut times are set by dividing the length into six equal parts.
+    4. The length is converted to 24 fps frames on the `17k+5` grid inside the model's trained range of 124–362 frames (12 s → 294 frames = 12.25 s).
+  - **Models**:
+
+    | Folder | File |
+    |---|---|
+    | `diffusion_models` | [`minimax_h3_image_pruned_w4a8.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/diffusion_models/minimax_h3_image_pruned_w4a8.safetensors) |
+    | `vae` | [`minimax_h3_image_vae_fp16.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/vae/minimax_h3_image_vae_fp16.safetensors) |
+    | `diffusion_models` | [`minimax_h3_fl2va_pruned_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) |
+    | `loras/minimax-h3` | [`minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/loras/minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors) |
+    | `text_encoders` | [`qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) (shared by image and video) |
+    | `text_encoders` | [`qwen3.5_9b_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/text_encoders/qwen3.5_9b_int8_convrot.safetensors) (LLM, loaded with `CLIPLoader` type `moss_image`) |
+    | `vae` | [`minimax_h3_video_vae_fp16.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors) |
+    | `vae` | [`minimax_h3_audio_vae_fp32.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors) |
+
+  - **Storage & VRAM**: the eight model files use about 67.9 GB of disk space. Validated on one RTX 4070 12 GB.
+    - If you already use the MiniMax H3 video workflows in this repository (FL2VA model, Turbo LoRA, `qwen3vl_32b` text encoder, video and audio VAEs, about 44.4 GB), you only need the H3-Image model (12.55 GB), the H3-Image VAE (1.17 GB), and the LLM (9.75 GB): about **23.5 GB** more.
+    - If you also use the MiniMax-H3-Image workflows (sections 11–13), only the LLM is new: about **9.7 GB** more.
+    - 既にこのリポジトリのH3動画ワークフローを使っている場合の追加は約23.5 GB（H3-Image本体・H3-Image VAE・LLM）、H3-Imageのワークフロー（11〜13節）も使っている場合はLLMの約9.7 GBだけです。
+  - **Measured** (RTX 4070 12 GB, 12 s = 294 frames, 736×1312, seed 261121, one run per dish; time from job submission to saved video, including model and LLM loading; peak VRAM is the whole GPU from `nvidia-smi`): **623–680 s** per video (seven dishes: omelette rice, spaghetti, pancakes, oyakodon, tonjiru, macaroni gratin, karaage), peak 11,493–11,866 MiB. The input photos were generated images with mixed orientations, angles, and tables. Running from the Web UI's Run button with the defaults took about 618 s.
+  - **Example step notes** (oyakodon): `slice an onion` / `cut a chicken thigh into bite-size pieces` / `beat two eggs` / `simmer the chicken and onion in dashi and soy sauce in a small pan` / `pour the beaten eggs over the chicken and let them set`
+  - **Known limitations**:
+    - Items from an earlier shot can carry over into a later one, because the whole video is generated at once (e.g. the cutting board left under a soup pot, garlic-like bits in the pasta water).
+    - Counts are not kept reliably: three pancakes in the notes came out as one, and fried chicken pieces multiplied on the rack. Deep-fried batter can look as if it melts.
+    - Food can jump between states mid-shot (a whole chicken thigh suddenly already cut, rice switching to chicken only).
+    - The LLM wording follows the notes literally and sometimes oddly (lettuce cut with a knife on a plate after "tear"). A one-line change to its system prompt can change all five shots, so check several dishes after editing it.
+    - The table can turn into a marble pattern, and the plated shot gets a fork even for Japanese dishes.
+    - Write the notes in English. Japanese input tended to be drawn as on-screen text or labels in earlier versions.
+    - Audio was not listened to in these runs.
+
 ---
 
 ## Author and related repositories

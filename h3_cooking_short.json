@@ -1,0 +1,4084 @@
+{
+ "id": "da3701eb-e847-4df7-99fd-b604265cd744",
+ "revision": 0,
+ "last_node_id": 147,
+ "last_link_id": 69,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "LoadImage",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    480,
+    520
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "画像",
+     "name": "image",
+     "type": "COMBO",
+     "widget": {
+      "name": "image"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "アップロードするファイルを選択",
+     "name": "upload",
+     "type": "IMAGEUPLOAD",
+     "widget": {
+      "name": "upload"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "画像",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "links": [
+      64,
+      69
+     ]
+    },
+    {
+     "localized_name": "マスク",
+     "name": "MASK",
+     "type": "MASK",
+     "links": null
+    }
+   ],
+   "title": "① 完成写真（向き・サイズ自由） / Finished dish photo (any size)",
+   "properties": {
+    "Node name for S&R": "LoadImage"
+   },
+   "widgets_values": [
+    "omurice.png",
+    "image"
+   ],
+   "widgets_values_named": {
+    "image": "omurice.png",
+    "upload": "image"
+   }
+  },
+  {
+   "id": 2,
+   "type": "PrimitiveStringMultiline",
+   "pos": [
+    0,
+    570
+   ],
+   "size": [
+    480,
+    90
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      53
+     ]
+    }
+   ],
+   "title": "② 工程1 / Step 1",
+   "properties": {
+    "Node name for S&R": "PrimitiveStringMultiline"
+   },
+   "widgets_values": [
+    "dice an onion"
+   ],
+   "widgets_values_named": {
+    "value": "dice an onion"
+   }
+  },
+  {
+   "id": 3,
+   "type": "PrimitiveStringMultiline",
+   "pos": [
+    0,
+    710
+   ],
+   "size": [
+    480,
+    90
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      54
+     ]
+    }
+   ],
+   "title": "③ 工程2 / Step 2",
+   "properties": {
+    "Node name for S&R": "PrimitiveStringMultiline"
+   },
+   "widgets_values": [
+    "cut a chicken thigh into small pieces"
+   ],
+   "widgets_values_named": {
+    "value": "cut a chicken thigh into small pieces"
+   }
+  },
+  {
+   "id": 4,
+   "type": "PrimitiveStringMultiline",
+   "pos": [
+    0,
+    850
+   ],
+   "size": [
+    480,
+    90
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      55
+     ]
+    }
+   ],
+   "title": "④ 工程3 / Step 3",
+   "properties": {
+    "Node name for S&R": "PrimitiveStringMultiline"
+   },
+   "widgets_values": [
+    "beat two eggs in a bowl"
+   ],
+   "widgets_values_named": {
+    "value": "beat two eggs in a bowl"
+   }
+  },
+  {
+   "id": 5,
+   "type": "PrimitiveStringMultiline",
+   "pos": [
+    0,
+    990
+   ],
+   "size": [
+    480,
+    90
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      56
+     ]
+    }
+   ],
+   "title": "⑤ 工程4 / Step 4",
+   "properties": {
+    "Node name for S&R": "PrimitiveStringMultiline"
+   },
+   "widgets_values": [
+    "stir-fry chicken, onion and rice with ketchup in a frying pan"
+   ],
+   "widgets_values_named": {
+    "value": "stir-fry chicken, onion and rice with ketchup in a frying pan"
+   }
+  },
+  {
+   "id": 6,
+   "type": "PrimitiveStringMultiline",
+   "pos": [
+    0,
+    1130
+   ],
+   "size": [
+    480,
+    90
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      57
+     ]
+    }
+   ],
+   "title": "⑥ 工程5 / Step 5",
+   "properties": {
+    "Node name for S&R": "PrimitiveStringMultiline"
+   },
+   "widgets_values": [
+    "cook the beaten eggs in a frying pan into a soft omelette"
+   ],
+   "widgets_values_named": {
+    "value": "cook the beaten eggs in a frying pan into a soft omelette"
+   }
+  },
+  {
+   "id": 7,
+   "type": "PrimitiveFloat",
+   "pos": [
+    0,
+    1270
+   ],
+   "size": [
+    480,
+    58
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "FLOAT",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      1
+     ]
+    }
+   ],
+   "title": "⑦ 動画の長さ（秒・5〜15） / Length (sec, 5-15)",
+   "properties": {
+    "Node name for S&R": "PrimitiveFloat"
+   },
+   "widgets_values": [
+    12
+   ],
+   "widgets_values_named": {
+    "value": 12
+   }
+  },
+  {
+   "id": 8,
+   "type": "PrimitiveInt",
+   "pos": [
+    0,
+    1378
+   ],
+   "size": [
+    480,
+    82
+   ],
+   "flags": {},
+   "order": 7,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "INT",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      16,
+      33
+     ]
+    }
+   ],
+   "title": "⑧ シード / Seed",
+   "properties": {
+    "Node name for S&R": "PrimitiveInt"
+   },
+   "widgets_values": [
+    261121,
+    "fixed"
+   ],
+   "widgets_values_named": {
+    "value": 261121,
+    "control_after_generate": "fixed"
+   }
+  },
+  {
+   "id": 9,
+   "type": "ComfyMathExpression",
+   "pos": [
+    540,
+    1620
+   ],
+   "size": [
+    400,
+    128
+   ],
+   "flags": {},
+   "order": 18,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 1
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": null
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      2,
+      30
+     ]
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "全体のフレーム数 / Total frames (17k+5, 124-362)",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "min(362, max(124, round((a * 24.0 - 5.0) / 17.0) * 17 + 5))"
+   ],
+   "widgets_values_named": {
+    "expression": "min(362, max(124, round((a * 24.0 - 5.0) / 17.0) * 17 + 5))"
+   }
+  },
+  {
+   "id": 10,
+   "type": "UNETLoader",
+   "pos": [
+    540,
+    0
+   ],
+   "size": [
+    400,
+    82
+   ],
+   "flags": {},
+   "order": 8,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "unet_name",
+     "name": "unet_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "unet_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "重みdtype",
+     "name": "weight_dtype",
+     "type": "COMBO",
+     "widget": {
+      "name": "weight_dtype"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "モデル",
+     "name": "MODEL",
+     "type": "MODEL",
+     "links": [
+      12
+     ]
+    }
+   ],
+   "title": "H3-Image モデル / H3-Image model",
+   "properties": {
+    "Node name for S&R": "UNETLoader"
+   },
+   "widgets_values": [
+    "minimax_h3_image_pruned_w4a8.safetensors",
+    "default"
+   ],
+   "widgets_values_named": {
+    "unet_name": "minimax_h3_image_pruned_w4a8.safetensors",
+    "weight_dtype": "default"
+   }
+  },
+  {
+   "id": 11,
+   "type": "CLIPLoader",
+   "pos": [
+    540,
+    132
+   ],
+   "size": [
+    400,
+    106
+   ],
+   "flags": {},
+   "order": 9,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "clip名",
+     "name": "clip_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "clip_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "タイプ",
+     "name": "type",
+     "type": "COMBO",
+     "widget": {
+      "name": "type"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "デバイス",
+     "name": "device",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "device"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "CLIP",
+     "name": "CLIP",
+     "type": "CLIP",
+     "links": [
+      9,
+      27
+     ]
+    }
+   ],
+   "title": "テキストエンコーダー / Text encoder",
+   "properties": {
+    "Node name for S&R": "CLIPLoader"
+   },
+   "widgets_values": [
+    "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+    "minimax",
+    "default"
+   ],
+   "widgets_values_named": {
+    "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+    "type": "minimax",
+    "device": "default"
+   }
+  },
+  {
+   "id": 12,
+   "type": "VAELoader",
+   "pos": [
+    540,
+    288
+   ],
+   "size": [
+    400,
+    58
+   ],
+   "flags": {},
+   "order": 10,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "vae_name",
+     "name": "vae_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "vae_name"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "VAE",
+     "name": "VAE",
+     "type": "VAE",
+     "links": [
+      10,
+      18
+     ]
+    }
+   ],
+   "title": "H3-Image VAE",
+   "properties": {
+    "Node name for S&R": "VAELoader"
+   },
+   "widgets_values": [
+    "minimax_h3_image_vae_fp16.safetensors"
+   ],
+   "widgets_values_named": {
+    "vae_name": "minimax_h3_image_vae_fp16.safetensors"
+   }
+  },
+  {
+   "id": 13,
+   "type": "ComfyMathExpression",
+   "pos": [
+    540,
+    1798
+   ],
+   "size": [
+    400,
+    128
+   ],
+   "flags": {},
+   "order": 22,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 2
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      24
+     ]
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": null
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "全体の秒数 / Total seconds",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "a / 24.0"
+   ],
+   "widgets_values_named": {
+    "expression": "a / 24.0"
+   }
+  },
+  {
+   "id": 14,
+   "type": "ComfyMathExpression",
+   "pos": [
+    540,
+    1976
+   ],
+   "size": [
+    400,
+    128
+   ],
+   "flags": {},
+   "order": 25,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 3
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      58
+     ]
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": null
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "Shot 2 の開始秒 / Shot 2 start (s)",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "a * 1 / 6"
+   ],
+   "widgets_values_named": {
+    "expression": "a * 1 / 6"
+   }
+  },
+  {
+   "id": 15,
+   "type": "ComfyMathExpression",
+   "pos": [
+    540,
+    2154
+   ],
+   "size": [
+    400,
+    128
+   ],
+   "flags": {},
+   "order": 26,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 4
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      59
+     ]
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": null
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "Shot 3 の開始秒 / Shot 3 start (s)",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "a * 2 / 6"
+   ],
+   "widgets_values_named": {
+    "expression": "a * 2 / 6"
+   }
+  },
+  {
+   "id": 16,
+   "type": "ComfyMathExpression",
+   "pos": [
+    540,
+    2332
+   ],
+   "size": [
+    400,
+    128
+   ],
+   "flags": {},
+   "order": 27,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 5
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      60
+     ]
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": null
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "Shot 4 の開始秒 / Shot 4 start (s)",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "a * 3 / 6"
+   ],
+   "widgets_values_named": {
+    "expression": "a * 3 / 6"
+   }
+  },
+  {
+   "id": 17,
+   "type": "ComfyMathExpression",
+   "pos": [
+    540,
+    2510
+   ],
+   "size": [
+    400,
+    128
+   ],
+   "flags": {},
+   "order": 28,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 6
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      61
+     ]
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": null
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "Shot 5 の開始秒 / Shot 5 start (s)",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "a * 4 / 6"
+   ],
+   "widgets_values_named": {
+    "expression": "a * 4 / 6"
+   }
+  },
+  {
+   "id": 18,
+   "type": "ComfyMathExpression",
+   "pos": [
+    540,
+    2688
+   ],
+   "size": [
+    400,
+    128
+   ],
+   "flags": {},
+   "order": 29,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 7
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      8,
+      25
+     ]
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": null
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "Shot 6 の開始秒 / Shot 6 start (s)",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "a * 5 / 6"
+   ],
+   "widgets_values_named": {
+    "expression": "a * 5 / 6"
+   }
+  },
+  {
+   "id": 19,
+   "type": "ComfyMathExpression",
+   "pos": [
+    540,
+    2866
+   ],
+   "size": [
+    400,
+    128
+   ],
+   "flags": {},
+   "order": 33,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 8
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": null
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      52
+     ]
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "Shot 6 の開始フレーム（+2） / Shot 6 start frame (+2)",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "round(a * 24.0) + 2"
+   ],
+   "widgets_values_named": {
+    "expression": "round(a * 24.0) + 2"
+   }
+  },
+  {
+   "id": 71,
+   "type": "MiniMaxH3ImageConditioning",
+   "pos": [
+    980,
+    0
+   ],
+   "size": [
+    400,
+    196
+   ],
+   "flags": {},
+   "order": 20,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "clip",
+     "name": "clip",
+     "type": "CLIP",
+     "link": 9
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "shape": 7,
+     "type": "VAE",
+     "link": 10
+    },
+    {
+     "localized_name": "image_0",
+     "name": "images.image_0",
+     "shape": 7,
+     "type": "IMAGE",
+     "link": 69
+    },
+    {
+     "localized_name": "image_1",
+     "name": "images.image_1",
+     "shape": 7,
+     "type": "IMAGE",
+     "link": null
+    },
+    {
+     "localized_name": "prompt",
+     "name": "prompt",
+     "type": "STRING",
+     "widget": {
+      "name": "prompt"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "width",
+     "name": "width",
+     "type": "INT",
+     "widget": {
+      "name": "width"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "height",
+     "name": "height",
+     "type": "INT",
+     "widget": {
+      "name": "height"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "positive",
+     "name": "positive",
+     "type": "CONDITIONING",
+     "links": [
+      11,
+      13
+     ]
+    },
+    {
+     "localized_name": "潜在",
+     "name": "LATENT",
+     "type": "LATENT",
+     "links": [
+      15
+     ]
+    }
+   ],
+   "title": "盛り付け画像（完成写真を参照） / Plated image (refers to photo)",
+   "properties": {
+    "Node name for S&R": "MiniMaxH3ImageConditioning"
+   },
+   "widgets_values": [
+    "The finished food in <Picture 1>, including its food, toppings, garnish, and serving dish, is <Subject 1>. The target image shows <Subject 1> as the final plated shot of a cooking video. <Subject 1> is partially preserved; the food, its arrangement, toppings, garnish, and the serving dish remain while the viewpoint changes to an exact 90-degree top-down view and the original table, background, and surrounding props are replaced. Seen from straight above, only the top surfaces of the food and the rim of the serving dish are visible, with no side walls or layers of the food in view. <Subject 1> is centered horizontally slightly below the middle of the frame and spans about two-thirds of the frame width, with a single simple fork or spoon resting on the white tabletop beside it. No other foods, bowls, tools, or props appear on the table besides those described. The scene is photorealistic overhead food photography for a vertical short cooking video, captured by a camera fixed directly above the table and looking straight down. A clean matte white tabletop fills the entire frame edge to edge, with no table edges, walls, floor, or background visible. Soft, bright, even daylight comes from the upper left and casts short, gentle shadows. Every object lies completely inside the frame with a clear white margin around it. There are no hands, no people, no text, no labels, no logos, and no watermark.",
+    1440,
+    2560
+   ],
+   "widgets_values_named": {
+    "prompt": "The finished food in <Picture 1>, including its food, toppings, garnish, and serving dish, is <Subject 1>. The target image shows <Subject 1> as the final plated shot of a cooking video. <Subject 1> is partially preserved; the food, its arrangement, toppings, garnish, and the serving dish remain while the viewpoint changes to an exact 90-degree top-down view and the original table, background, and surrounding props are replaced. Seen from straight above, only the top surfaces of the food and the rim of the serving dish are visible, with no side walls or layers of the food in view. <Subject 1> is centered horizontally slightly below the middle of the frame and spans about two-thirds of the frame width, with a single simple fork or spoon resting on the white tabletop beside it. No other foods, bowls, tools, or props appear on the table besides those described. The scene is photorealistic overhead food photography for a vertical short cooking video, captured by a camera fixed directly above the table and looking straight down. A clean matte white tabletop fills the entire frame edge to edge, with no table edges, walls, floor, or background visible. Soft, bright, even daylight comes from the upper left and casts short, gentle shadows. Every object lies completely inside the frame with a clear white margin around it. There are no hands, no people, no text, no labels, no logos, and no watermark.",
+    "width": 1440,
+    "height": 2560
+   }
+  },
+  {
+   "id": 72,
+   "type": "ConditioningZeroOut",
+   "pos": [
+    980,
+    246
+   ],
+   "size": [
+    400,
+    26
+   ],
+   "flags": {},
+   "order": 23,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "コンディショニング",
+     "name": "conditioning",
+     "type": "CONDITIONING",
+     "link": 11
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "条件付け",
+     "name": "CONDITIONING",
+     "type": "CONDITIONING",
+     "links": [
+      14
+     ]
+    }
+   ],
+   "title": "ネガティブ（空） / Negative (empty)",
+   "properties": {
+    "Node name for S&R": "ConditioningZeroOut"
+   }
+  },
+  {
+   "id": 73,
+   "type": "KSampler",
+   "pos": [
+    1420,
+    0
+   ],
+   "size": [
+    360,
+    262
+   ],
+   "flags": {},
+   "order": 30,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "モデル",
+     "name": "model",
+     "type": "MODEL",
+     "link": 12
+    },
+    {
+     "localized_name": "ポジティブ",
+     "name": "positive",
+     "type": "CONDITIONING",
+     "link": 13
+    },
+    {
+     "localized_name": "ネガティブ",
+     "name": "negative",
+     "type": "CONDITIONING",
+     "link": 14
+    },
+    {
+     "localized_name": "潜在画像",
+     "name": "latent_image",
+     "type": "LATENT",
+     "link": 15
+    },
+    {
+     "localized_name": "シード",
+     "name": "seed",
+     "type": "INT",
+     "widget": {
+      "name": "seed"
+     },
+     "link": 16
+    },
+    {
+     "localized_name": "ステップ",
+     "name": "steps",
+     "type": "INT",
+     "widget": {
+      "name": "steps"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "cfg",
+     "name": "cfg",
+     "type": "FLOAT",
+     "widget": {
+      "name": "cfg"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "サンプラー名",
+     "name": "sampler_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "sampler_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "スケジューラ",
+     "name": "scheduler",
+     "type": "COMBO",
+     "widget": {
+      "name": "scheduler"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "ノイズ除去",
+     "name": "denoise",
+     "type": "FLOAT",
+     "widget": {
+      "name": "denoise"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "潜在",
+     "name": "LATENT",
+     "type": "LATENT",
+     "links": [
+      17
+     ]
+    }
+   ],
+   "title": "盛り付け画像 生成 / Generate plated image",
+   "properties": {
+    "Node name for S&R": "KSampler"
+   },
+   "widgets_values": [
+    0,
+    "randomize",
+    6,
+    1,
+    "euler",
+    "simple",
+    1
+   ],
+   "widgets_values_named": {
+    "seed": 0,
+    "control_after_generate": "randomize",
+    "steps": 6,
+    "cfg": 1,
+    "sampler_name": "euler",
+    "scheduler": "simple",
+    "denoise": 1
+   }
+  },
+  {
+   "id": 74,
+   "type": "VAEDecode",
+   "pos": [
+    1860,
+    0
+   ],
+   "size": [
+    360,
+    46
+   ],
+   "flags": {},
+   "order": 34,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "サンプル",
+     "name": "samples",
+     "type": "LATENT",
+     "link": 17
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "type": "VAE",
+     "link": 18
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "画像",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "links": [
+      19,
+      20
+     ]
+    }
+   ],
+   "title": "盛り付け画像 デコード / Decode plated image",
+   "properties": {
+    "Node name for S&R": "VAEDecode"
+   }
+  },
+  {
+   "id": 75,
+   "type": "ResizeImageMaskNode",
+   "pos": [
+    1860,
+    96
+   ],
+   "size": [
+    360,
+    154
+   ],
+   "flags": {},
+   "order": 37,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "input",
+     "name": "input",
+     "type": "IMAGE,MASK",
+     "link": 19
+    },
+    {
+     "localized_name": "resize_type",
+     "name": "resize_type",
+     "type": "COMFY_DYNAMICCOMBO_V3",
+     "widget": {
+      "name": "resize_type"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "幅",
+     "name": "resize_type.width",
+     "type": "INT",
+     "widget": {
+      "name": "resize_type.width"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "高さ",
+     "name": "resize_type.height",
+     "type": "INT",
+     "widget": {
+      "name": "resize_type.height"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "切り抜き",
+     "name": "resize_type.crop",
+     "type": "COMBO",
+     "widget": {
+      "name": "resize_type.crop"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "scale_method",
+     "name": "scale_method",
+     "type": "COMBO",
+     "widget": {
+      "name": "scale_method"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "resized",
+     "name": "resized",
+     "type": "IMAGE",
+     "links": [
+      31,
+      51
+     ]
+    }
+   ],
+   "title": "動画用に縮小 / Resize for video",
+   "properties": {
+    "Node name for S&R": "ResizeImageMaskNode"
+   },
+   "widgets_values": [
+    "scale dimensions",
+    736,
+    1312,
+    "center",
+    "area"
+   ],
+   "widgets_values_named": {
+    "resize_type": "scale dimensions",
+    "resize_type.width": 736,
+    "resize_type.height": 1312,
+    "resize_type.crop": "center",
+    "scale_method": "area"
+   }
+  },
+  {
+   "id": 76,
+   "type": "SaveImage",
+   "pos": [
+    2300,
+    0
+   ],
+   "size": [
+    420,
+    820
+   ],
+   "flags": {},
+   "order": 38,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "画像",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 20
+    },
+    {
+     "localized_name": "ファイル名_プレフィックス",
+     "name": "filename_prefix",
+     "type": "STRING",
+     "widget": {
+      "name": "filename_prefix"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "links": null
+    }
+   ],
+   "title": "盛り付け画像 保存 / Save plated image",
+   "properties": {},
+   "widgets_values": [
+    "H3_Cooking/cooking_short_final"
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "H3_Cooking/cooking_short_final"
+   }
+  },
+  {
+   "id": 100,
+   "type": "UNETLoader",
+   "pos": [
+    980,
+    1620
+   ],
+   "size": [
+    400,
+    82
+   ],
+   "flags": {},
+   "order": 11,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "unet_name",
+     "name": "unet_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "unet_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "重みdtype",
+     "name": "weight_dtype",
+     "type": "COMBO",
+     "widget": {
+      "name": "weight_dtype"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "モデル",
+     "name": "MODEL",
+     "type": "MODEL",
+     "links": [
+      21
+     ]
+    }
+   ],
+   "title": "H3 FL2VA モデル / H3 FL2VA model",
+   "properties": {
+    "Node name for S&R": "UNETLoader"
+   },
+   "widgets_values": [
+    "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+    "default"
+   ],
+   "widgets_values_named": {
+    "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+    "weight_dtype": "default"
+   }
+  },
+  {
+   "id": 101,
+   "type": "LoraLoaderModelOnly",
+   "pos": [
+    980,
+    1752
+   ],
+   "size": [
+    400,
+    82
+   ],
+   "flags": {},
+   "order": 21,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "モデル",
+     "name": "model",
+     "type": "MODEL",
+     "link": 21
+    },
+    {
+     "localized_name": "lora_name",
+     "name": "lora_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "lora_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "モデルの強度",
+     "name": "strength_model",
+     "type": "FLOAT",
+     "widget": {
+      "name": "strength_model"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "モデル",
+     "name": "MODEL",
+     "type": "MODEL",
+     "links": [
+      22
+     ]
+    }
+   ],
+   "title": "Turbo 4step LoRA",
+   "properties": {
+    "Node name for S&R": "LoraLoaderModelOnly"
+   },
+   "widgets_values": [
+    "minimax-h3\\minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors",
+    1
+   ],
+   "widgets_values_named": {
+    "lora_name": "minimax-h3\\minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors",
+    "strength_model": 1
+   }
+  },
+  {
+   "id": 102,
+   "type": "MiniMaxH3SigmaShift",
+   "pos": [
+    980,
+    1884
+   ],
+   "size": [
+    400,
+    82
+   ],
+   "flags": {},
+   "order": 24,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "model",
+     "name": "model",
+     "type": "MODEL",
+     "link": 22
+    },
+    {
+     "localized_name": "ビデオシフト",
+     "name": "shift_video",
+     "type": "FLOAT",
+     "widget": {
+      "name": "shift_video"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "オーディオシフト",
+     "name": "shift_audio",
+     "type": "FLOAT",
+     "widget": {
+      "name": "shift_audio"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "モデル",
+     "name": "MODEL",
+     "type": "MODEL",
+     "links": [
+      23
+     ]
+    }
+   ],
+   "title": "Sigma Shift",
+   "properties": {
+    "Node name for S&R": "MiniMaxH3SigmaShift"
+   },
+   "widgets_values": [
+    6,
+    3
+   ],
+   "widgets_values_named": {
+    "shift_video": 6,
+    "shift_audio": 3
+   }
+  },
+  {
+   "id": 103,
+   "type": "BlockSparseAttention",
+   "pos": [
+    980,
+    2016
+   ],
+   "size": [
+    400,
+    250
+   ],
+   "flags": {},
+   "order": 31,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "model",
+     "name": "model",
+     "type": "MODEL",
+     "link": 23
+    },
+    {
+     "localized_name": "selection",
+     "name": "selection",
+     "type": "COMFY_DYNAMICCOMBO_V3",
+     "widget": {
+      "name": "selection"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "keep_percent",
+     "name": "selection.keep_percent",
+     "type": "FLOAT",
+     "widget": {
+      "name": "selection.keep_percent"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "start_percent",
+     "name": "start_percent",
+     "type": "FLOAT",
+     "widget": {
+      "name": "start_percent"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "end_percent",
+     "name": "end_percent",
+     "type": "FLOAT",
+     "widget": {
+      "name": "end_percent"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "dense_blocks",
+     "name": "dense_blocks",
+     "type": "STRING",
+     "widget": {
+      "name": "dense_blocks"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "min_tokens",
+     "name": "min_tokens",
+     "type": "INT",
+     "widget": {
+      "name": "min_tokens"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "extra_tokens",
+     "name": "extra_tokens",
+     "type": "INT",
+     "widget": {
+      "name": "extra_tokens"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "sink_conditioning",
+     "name": "sink_conditioning",
+     "type": "COMBO",
+     "widget": {
+      "name": "sink_conditioning"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "verbose",
+     "name": "verbose",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "verbose"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "model",
+     "name": "model",
+     "type": "MODEL",
+     "links": [
+      32,
+      34
+     ]
+    }
+   ],
+   "title": "スパースアテンション（SLA） / Sparse attention (SLA)",
+   "properties": {
+    "Node name for S&R": "BlockSparseAttention"
+   },
+   "widgets_values": [
+    "sla",
+    10,
+    0.2,
+    1,
+    "",
+    12288,
+    256,
+    "exact_kv_and_rows",
+    false
+   ],
+   "widgets_values_named": {
+    "selection": "sla",
+    "selection.keep_percent": 10,
+    "start_percent": 0.2,
+    "end_percent": 1,
+    "dense_blocks": "",
+    "min_tokens": 12288,
+    "extra_tokens": 256,
+    "sink_conditioning": "exact_kv_and_rows",
+    "verbose": false
+   }
+  },
+  {
+   "id": 104,
+   "type": "VAELoader",
+   "pos": [
+    980,
+    2316
+   ],
+   "size": [
+    400,
+    58
+   ],
+   "flags": {},
+   "order": 12,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "vae_name",
+     "name": "vae_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "vae_name"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "VAE",
+     "name": "VAE",
+     "type": "VAE",
+     "links": [
+      28,
+      42,
+      49
+     ]
+    }
+   ],
+   "title": "動画 VAE / Video VAE",
+   "properties": {
+    "Node name for S&R": "VAELoader"
+   },
+   "widgets_values": [
+    "minimax_h3_video_vae_fp16.safetensors"
+   ],
+   "widgets_values_named": {
+    "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+   }
+  },
+  {
+   "id": 105,
+   "type": "VAELoader",
+   "pos": [
+    980,
+    2424
+   ],
+   "size": [
+    400,
+    58
+   ],
+   "flags": {},
+   "order": 13,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "vae_name",
+     "name": "vae_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "vae_name"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "VAE",
+     "name": "VAE",
+     "type": "VAE",
+     "links": [
+      44
+     ]
+    }
+   ],
+   "title": "音声 VAE / Audio VAE",
+   "properties": {
+    "Node name for S&R": "VAELoader"
+   },
+   "widgets_values": [
+    "minimax_h3_audio_vae_fp32.safetensors"
+   ],
+   "widgets_values_named": {
+    "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+   }
+  },
+  {
+   "id": 120,
+   "type": "StringFormat",
+   "pos": [
+    1420,
+    1620
+   ],
+   "size": [
+    400,
+    400
+   ],
+   "flags": {},
+   "order": 41,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "shape": 7,
+     "type": "*",
+     "link": 24
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "*",
+     "link": 25
+    },
+    {
+     "localized_name": "c",
+     "name": "values.c",
+     "shape": 7,
+     "type": "*",
+     "link": 26
+    },
+    {
+     "localized_name": "d",
+     "name": "values.d",
+     "shape": 7,
+     "type": "*",
+     "link": null
+    },
+    {
+     "localized_name": "f_string",
+     "name": "f_string",
+     "type": "STRING",
+     "widget": {
+      "name": "f_string"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      29,
+      67
+     ]
+    }
+   ],
+   "title": "動画プロンプト（Shot 1〜6） / Video prompt (Shots 1-6)",
+   "properties": {
+    "Node name for S&R": "StringFormat"
+   },
+   "widgets_values": [
+    "How the reference pictures align with the target video — <Picture 1> (from [Shot 6]) aligns with the {a:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: {c} [Shot 6] At 00:{b:06.3f}, the shot cuts to a calm still-life of the finished, plated dish on the white table beside a fork, with gentle steam rising from it. The view settles into the plated dish, cutlery, and composition established by <Picture 1> at the end of the shot.\n\noverall_soundscape: A quiet kitchen where each shot carries the natural sound of its own cooking action.\n\nnon_diegetic_music: N/A"
+   ],
+   "widgets_values_named": {
+    "f_string": "How the reference pictures align with the target video — <Picture 1> (from [Shot 6]) aligns with the {a:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: {c} [Shot 6] At 00:{b:06.3f}, the shot cuts to a calm still-life of the finished, plated dish on the white table beside a fork, with gentle steam rising from it. The view settles into the plated dish, cutlery, and composition established by <Picture 1> at the end of the shot.\n\noverall_soundscape: A quiet kitchen where each shot carries the natural sound of its own cooking action.\n\nnon_diegetic_music: N/A"
+   }
+  },
+  {
+   "id": 121,
+   "type": "MiniMaxH3ImageToVideo",
+   "pos": [
+    1420,
+    2420
+   ],
+   "size": [
+    400,
+    220
+   ],
+   "flags": {},
+   "order": 42,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "clip",
+     "name": "clip",
+     "type": "CLIP",
+     "link": 27
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "type": "VAE",
+     "link": 28
+    },
+    {
+     "localized_name": "最初のフレーム",
+     "name": "first_frame",
+     "shape": 7,
+     "type": "IMAGE",
+     "link": null
+    },
+    {
+     "localized_name": "最後のフレーム",
+     "name": "last_frame",
+     "shape": 7,
+     "type": "IMAGE",
+     "link": 31
+    },
+    {
+     "localized_name": "プロンプト",
+     "name": "prompt",
+     "type": "STRING",
+     "widget": {
+      "name": "prompt"
+     },
+     "link": 29
+    },
+    {
+     "localized_name": "幅",
+     "name": "width",
+     "type": "INT",
+     "widget": {
+      "name": "width"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "高さ",
+     "name": "height",
+     "type": "INT",
+     "widget": {
+      "name": "height"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "長さ",
+     "name": "length",
+     "type": "INT",
+     "widget": {
+      "name": "length"
+     },
+     "link": 30
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "ポジティブ",
+     "name": "positive",
+     "type": "CONDITIONING",
+     "links": [
+      48
+     ]
+    },
+    {
+     "localized_name": "潜在",
+     "name": "LATENT",
+     "type": "LATENT",
+     "links": [
+      40,
+      50
+     ]
+    }
+   ],
+   "title": "動画（最後 = 盛り付け画像） / Video (last = plated)",
+   "properties": {
+    "Node name for S&R": "MiniMaxH3ImageToVideo"
+   },
+   "widgets_values": [
+    "",
+    736,
+    1312,
+    124
+   ],
+   "widgets_values_named": {
+    "prompt": "",
+    "width": 736,
+    "height": 1312,
+    "length": 124
+   }
+  },
+  {
+   "id": 122,
+   "type": "BasicScheduler",
+   "pos": [
+    1860,
+    1620
+   ],
+   "size": [
+    360,
+    106
+   ],
+   "flags": {},
+   "order": 35,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "モデル",
+     "name": "model",
+     "type": "MODEL",
+     "link": 32
+    },
+    {
+     "localized_name": "スケジューラ",
+     "name": "scheduler",
+     "type": "COMBO",
+     "widget": {
+      "name": "scheduler"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "ステップ",
+     "name": "steps",
+     "type": "INT",
+     "widget": {
+      "name": "steps"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "ノイズ除去",
+     "name": "denoise",
+     "type": "FLOAT",
+     "widget": {
+      "name": "denoise"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "シグマ",
+     "name": "SIGMAS",
+     "type": "SIGMAS",
+     "links": [
+      39
+     ]
+    }
+   ],
+   "title": "スケジューラー（4step） / Scheduler (4 steps)",
+   "properties": {
+    "Node name for S&R": "BasicScheduler"
+   },
+   "widgets_values": [
+    "simple",
+    4,
+    1
+   ],
+   "widgets_values_named": {
+    "scheduler": "simple",
+    "steps": 4,
+    "denoise": 1
+   }
+  },
+  {
+   "id": 123,
+   "type": "KSamplerSelect",
+   "pos": [
+    1860,
+    1776
+   ],
+   "size": [
+    360,
+    58
+   ],
+   "flags": {},
+   "order": 14,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "サンプラー名",
+     "name": "sampler_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "sampler_name"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "サンプラー",
+     "name": "SAMPLER",
+     "type": "SAMPLER",
+     "links": [
+      38
+     ]
+    }
+   ],
+   "title": "サンプラー / Sampler",
+   "properties": {
+    "Node name for S&R": "KSamplerSelect"
+   },
+   "widgets_values": [
+    "euler"
+   ],
+   "widgets_values_named": {
+    "sampler_name": "euler"
+   }
+  },
+  {
+   "id": 124,
+   "type": "RandomNoise",
+   "pos": [
+    1860,
+    1884
+   ],
+   "size": [
+    360,
+    82
+   ],
+   "flags": {},
+   "order": 19,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "ノイズシード",
+     "name": "noise_seed",
+     "type": "INT",
+     "widget": {
+      "name": "noise_seed"
+     },
+     "link": 33
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "ノイズ",
+     "name": "NOISE",
+     "type": "NOISE",
+     "links": [
+      36
+     ]
+    }
+   ],
+   "title": "ノイズ（シード） / Noise (seed)",
+   "properties": {
+    "Node name for S&R": "RandomNoise"
+   },
+   "widgets_values": [
+    0,
+    "randomize"
+   ],
+   "widgets_values_named": {
+    "noise_seed": 0,
+    "control_after_generate": "randomize"
+   }
+  },
+  {
+   "id": 125,
+   "type": "BasicGuider",
+   "pos": [
+    1860,
+    2016
+   ],
+   "size": [
+    360,
+    46
+   ],
+   "flags": {},
+   "order": 45,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "モデル",
+     "name": "model",
+     "type": "MODEL",
+     "link": 34
+    },
+    {
+     "localized_name": "コンディショニング",
+     "name": "conditioning",
+     "type": "CONDITIONING",
+     "link": 35
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "ガイダー",
+     "name": "GUIDER",
+     "type": "GUIDER",
+     "links": [
+      37
+     ]
+    }
+   ],
+   "title": "ガイダー / Guider",
+   "properties": {
+    "Node name for S&R": "BasicGuider"
+   }
+  },
+  {
+   "id": 126,
+   "type": "SamplerCustomAdvanced",
+   "pos": [
+    1860,
+    2112
+   ],
+   "size": [
+    360,
+    106
+   ],
+   "flags": {},
+   "order": 46,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "ノイズ",
+     "name": "noise",
+     "type": "NOISE",
+     "link": 36
+    },
+    {
+     "localized_name": "ガイダー",
+     "name": "guider",
+     "type": "GUIDER",
+     "link": 37
+    },
+    {
+     "localized_name": "サンプラー",
+     "name": "sampler",
+     "type": "SAMPLER",
+     "link": 38
+    },
+    {
+     "localized_name": "シグマ",
+     "name": "sigmas",
+     "type": "SIGMAS",
+     "link": 39
+    },
+    {
+     "localized_name": "潜在イメージ",
+     "name": "latent_image",
+     "type": "LATENT",
+     "link": 40
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "出力",
+     "name": "output",
+     "type": "LATENT",
+     "links": [
+      41,
+      43
+     ]
+    },
+    {
+     "localized_name": "ノイズ除去出力",
+     "name": "denoised_output",
+     "type": "LATENT",
+     "links": null
+    }
+   ],
+   "title": "動画 生成 / Generate video",
+   "properties": {
+    "Node name for S&R": "SamplerCustomAdvanced"
+   }
+  },
+  {
+   "id": 127,
+   "type": "VAEDecode",
+   "pos": [
+    1860,
+    2268
+   ],
+   "size": [
+    360,
+    46
+   ],
+   "flags": {},
+   "order": 47,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "サンプル",
+     "name": "samples",
+     "type": "LATENT",
+     "link": 41
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "type": "VAE",
+     "link": 42
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "画像",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "links": [
+      45
+     ]
+    }
+   ],
+   "title": "映像デコード / Decode video",
+   "properties": {
+    "Node name for S&R": "VAEDecode"
+   }
+  },
+  {
+   "id": 128,
+   "type": "VAEDecodeAudio",
+   "pos": [
+    1860,
+    2364
+   ],
+   "size": [
+    360,
+    46
+   ],
+   "flags": {},
+   "order": 48,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "サンプル",
+     "name": "samples",
+     "type": "LATENT",
+     "link": 43
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "type": "VAE",
+     "link": 44
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "オーディオ",
+     "name": "AUDIO",
+     "type": "AUDIO",
+     "links": [
+      46
+     ]
+    }
+   ],
+   "title": "音声デコード / Decode audio",
+   "properties": {
+    "Node name for S&R": "VAEDecodeAudio"
+   }
+  },
+  {
+   "id": 129,
+   "type": "CreateVideo",
+   "pos": [
+    1860,
+    2460
+   ],
+   "size": [
+    360,
+    174
+   ],
+   "flags": {},
+   "order": 49,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "画像",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 45
+    },
+    {
+     "localized_name": "オーディオ",
+     "name": "audio",
+     "shape": 7,
+     "type": "AUDIO",
+     "link": 46
+    },
+    {
+     "localized_name": "fps",
+     "name": "fps",
+     "type": "FLOAT",
+     "widget": {
+      "name": "fps"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "bit_depth",
+     "name": "bit_depth",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "bit_depth"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "color_space",
+     "name": "color_space",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "color_space"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "クロマサブサンプリング",
+     "name": "chroma_subsampling",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "chroma_subsampling"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "codec",
+     "name": "codec",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "codec"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "ビデオ",
+     "name": "VIDEO",
+     "type": "VIDEO",
+     "links": [
+      47
+     ]
+    }
+   ],
+   "title": "動画化 / Create video",
+   "properties": {
+    "Node name for S&R": "CreateVideo"
+   },
+   "widgets_values": [
+    24,
+    "auto",
+    "sRGB",
+    "auto",
+    "none"
+   ],
+   "widgets_values_named": {
+    "fps": 24,
+    "bit_depth": "auto",
+    "color_space": "sRGB",
+    "chroma_subsampling": "auto",
+    "codec": "none"
+   }
+  },
+  {
+   "id": 130,
+   "type": "SaveVideo",
+   "pos": [
+    2300,
+    900
+   ],
+   "size": [
+    480,
+    900
+   ],
+   "flags": {},
+   "order": 50,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "ビデオ",
+     "name": "video",
+     "type": "VIDEO",
+     "link": 47
+    },
+    {
+     "localized_name": "ファイル名プレフィックス",
+     "name": "filename_prefix",
+     "type": "STRING",
+     "widget": {
+      "name": "filename_prefix"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "フォーマット",
+     "name": "format",
+     "type": "COMFY_DYNAMICCOMBO_V3",
+     "widget": {
+      "name": "format"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "コーデック",
+     "name": "format.codec",
+     "type": "COMFY_DYNAMICCOMBO_V3",
+     "widget": {
+      "name": "format.codec"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "コーデック",
+     "name": "codec",
+     "shape": 7,
+     "type": "COMFY_DYNAMICCOMBO_V3",
+     "widget": {
+      "name": "codec"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "video",
+     "name": "video",
+     "type": "VIDEO",
+     "links": null
+    }
+   ],
+   "title": "完成動画 / Final video",
+   "properties": {},
+   "widgets_values": [
+    "H3_Cooking/cooking_short",
+    "mp4",
+    "auto",
+    "auto"
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "H3_Cooking/cooking_short",
+    "format": "mp4",
+    "format.codec": "auto",
+    "codec": "auto"
+   }
+  },
+  {
+   "id": 131,
+   "type": "MiniMaxH3AddGuide",
+   "pos": [
+    1420,
+    2690
+   ],
+   "size": [
+    400,
+    158
+   ],
+   "flags": {},
+   "order": 44,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "positive",
+     "name": "positive",
+     "type": "CONDITIONING",
+     "link": 48
+    },
+    {
+     "localized_name": "latent",
+     "name": "latent",
+     "type": "LATENT",
+     "link": 50
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "shape": 7,
+     "type": "VAE",
+     "link": 49
+    },
+    {
+     "localized_name": "audio_vae",
+     "name": "audio_vae",
+     "shape": 7,
+     "type": "VAE",
+     "link": null
+    },
+    {
+     "localized_name": "image",
+     "name": "image",
+     "shape": 7,
+     "type": "IMAGE",
+     "link": 51
+    },
+    {
+     "localized_name": "audio",
+     "name": "audio",
+     "shape": 7,
+     "type": "AUDIO",
+     "link": null
+    },
+    {
+     "localized_name": "frame_idx",
+     "name": "frame_idx",
+     "type": "INT",
+     "widget": {
+      "name": "frame_idx"
+     },
+     "link": 52
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "positive",
+     "name": "positive",
+     "type": "CONDITIONING",
+     "links": [
+      35
+     ]
+    }
+   ],
+   "title": "Shot 6 の開始にも固定 / Pin at Shot 6 start",
+   "properties": {
+    "Node name for S&R": "MiniMaxH3AddGuide"
+   },
+   "widgets_values": [
+    0
+   ],
+   "widgets_values_named": {
+    "frame_idx": 0
+   }
+  },
+  {
+   "id": 140,
+   "type": "StringFormat",
+   "pos": [
+    540,
+    700
+   ],
+   "size": [
+    400,
+    200
+   ],
+   "flags": {},
+   "order": 17,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "shape": 7,
+     "type": "*",
+     "link": 53
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "*",
+     "link": 54
+    },
+    {
+     "localized_name": "c",
+     "name": "values.c",
+     "shape": 7,
+     "type": "*",
+     "link": 55
+    },
+    {
+     "localized_name": "d",
+     "name": "values.d",
+     "shape": 7,
+     "type": "*",
+     "link": 56
+    },
+    {
+     "localized_name": "e",
+     "name": "values.e",
+     "shape": 7,
+     "type": "*",
+     "link": 57
+    },
+    {
+     "localized_name": "f",
+     "name": "values.f",
+     "shape": 7,
+     "type": "*",
+     "link": null
+    },
+    {
+     "localized_name": "f_string",
+     "name": "f_string",
+     "type": "STRING",
+     "widget": {
+      "name": "f_string"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      63
+     ]
+    }
+   ],
+   "title": "LLM への依頼（工程メモ5行） / LLM request (5 step notes)",
+   "properties": {
+    "Node name for S&R": "StringFormat"
+   },
+   "widgets_values": [
+    "Cooking steps:\n1. {a}\n2. {b}\n3. {c}\n4. {d}\n5. {e}"
+   ],
+   "widgets_values_named": {
+    "f_string": "Cooking steps:\n1. {a}\n2. {b}\n3. {c}\n4. {d}\n5. {e}"
+   }
+  },
+  {
+   "id": 141,
+   "type": "StringFormat",
+   "pos": [
+    540,
+    950
+   ],
+   "size": [
+    400,
+    400
+   ],
+   "flags": {},
+   "order": 32,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "shape": 7,
+     "type": "*",
+     "link": 58
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "*",
+     "link": 59
+    },
+    {
+     "localized_name": "c",
+     "name": "values.c",
+     "shape": 7,
+     "type": "*",
+     "link": 60
+    },
+    {
+     "localized_name": "d",
+     "name": "values.d",
+     "shape": 7,
+     "type": "*",
+     "link": 61
+    },
+    {
+     "localized_name": "e",
+     "name": "values.e",
+     "shape": 7,
+     "type": "*",
+     "link": null
+    },
+    {
+     "localized_name": "f_string",
+     "name": "f_string",
+     "type": "STRING",
+     "widget": {
+      "name": "f_string"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      65
+     ]
+    }
+   ],
+   "title": "LLM への指示文（ショットの型） / LLM system prompt (shot template)",
+   "properties": {
+    "Node name for S&R": "StringFormat"
+   },
+   "widgets_values": [
+    "You turn a home cook's short recipe notes into shot descriptions for an AI video model. The video is an overhead cooking video: a static camera directly above a clean white table, and one cook whose two hands work in the frame. Each shot lasts about two seconds, so it shows one simple, continuous motion that a viewer recognizes at a glance as that step.\nThe user gives a photo of the finished dish and five step notes. Use the photo and your own cooking knowledge to decide how a real cook carries out each step.\nEvery shot is a moment on the table. Stovetop cooking, such as boiling, frying, simmering, or making a sauce, happens right on the table in its pot or pan, while the food cooks. For a step that happens inside an appliance or over time, such as baking in an oven or resting, show the moment on the table that belongs to it, such as the dish just before it goes in or just after it comes out. Hot vessels and hot food are handled through a handle, a utensil, or a thick cloth.\nPlan every shot with these five slots:\n- Vessel: the one container or work surface in the center of the table, and exactly what it holds at the start of the shot.\n- Supporting hand (left): what the left hand holds to keep the work steady: the vessel, its handle, or the food being cut.\n- Working hand (right): the one tool the right hand uses for the motion, or the bare right hand when a cook naturally does this motion by hand with food that is not hot.\n- Motion: the single continuous motion the working hand makes.\n- End: how the food looks at the end of the shot.\nThen write each shot as two or three plain sentences built from the slots, in this order: the vessel and what it holds; \"The cook's left hand steadies [supporting item] while the right hand [uses its tool] to [motion].\"; the look at the end. Write only what is visible, as positive statements.\nOutput exactly five lines and nothing else:\n[Shot 1] Live-action overhead cooking video, filmed by a static camera locked directly above a clean matte white table, with soft, bright, even daylight from the upper left. On the white table, ...\n[Shot 2] At 00:{a:06.3f}, the shot cuts to a new close-up on the white table: ...\n[Shot 3] At 00:{b:06.3f}, the shot cuts to a new close-up on the white table: ...\n[Shot 4] At 00:{c:06.3f}, the shot cuts to a new close-up on the white table: ...\n[Shot 5] At 00:{d:06.3f}, the shot cuts to a new close-up on the white table: ..."
+   ],
+   "widgets_values_named": {
+    "f_string": "You turn a home cook's short recipe notes into shot descriptions for an AI video model. The video is an overhead cooking video: a static camera directly above a clean white table, and one cook whose two hands work in the frame. Each shot lasts about two seconds, so it shows one simple, continuous motion that a viewer recognizes at a glance as that step.\nThe user gives a photo of the finished dish and five step notes. Use the photo and your own cooking knowledge to decide how a real cook carries out each step.\nEvery shot is a moment on the table. Stovetop cooking, such as boiling, frying, simmering, or making a sauce, happens right on the table in its pot or pan, while the food cooks. For a step that happens inside an appliance or over time, such as baking in an oven or resting, show the moment on the table that belongs to it, such as the dish just before it goes in or just after it comes out. Hot vessels and hot food are handled through a handle, a utensil, or a thick cloth.\nPlan every shot with these five slots:\n- Vessel: the one container or work surface in the center of the table, and exactly what it holds at the start of the shot.\n- Supporting hand (left): what the left hand holds to keep the work steady: the vessel, its handle, or the food being cut.\n- Working hand (right): the one tool the right hand uses for the motion, or the bare right hand when a cook naturally does this motion by hand with food that is not hot.\n- Motion: the single continuous motion the working hand makes.\n- End: how the food looks at the end of the shot.\nThen write each shot as two or three plain sentences built from the slots, in this order: the vessel and what it holds; \"The cook's left hand steadies [supporting item] while the right hand [uses its tool] to [motion].\"; the look at the end. Write only what is visible, as positive statements.\nOutput exactly five lines and nothing else:\n[Shot 1] Live-action overhead cooking video, filmed by a static camera locked directly above a clean matte white table, with soft, bright, even daylight from the upper left. On the white table, ...\n[Shot 2] At 00:{a:06.3f}, the shot cuts to a new close-up on the white table: ...\n[Shot 3] At 00:{b:06.3f}, the shot cuts to a new close-up on the white table: ...\n[Shot 4] At 00:{c:06.3f}, the shot cuts to a new close-up on the white table: ...\n[Shot 5] At 00:{d:06.3f}, the shot cuts to a new close-up on the white table: ..."
+   }
+  },
+  {
+   "id": 142,
+   "type": "CLIPLoader",
+   "pos": [
+    980,
+    700
+   ],
+   "size": [
+    400,
+    106
+   ],
+   "flags": {},
+   "order": 15,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "clip名",
+     "name": "clip_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "clip_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "タイプ",
+     "name": "type",
+     "type": "COMBO",
+     "widget": {
+      "name": "type"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "デバイス",
+     "name": "device",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "device"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "CLIP",
+     "name": "CLIP",
+     "type": "CLIP",
+     "links": [
+      62
+     ]
+    }
+   ],
+   "title": "LLM（Qwen3.5-9B）",
+   "properties": {
+    "Node name for S&R": "CLIPLoader"
+   },
+   "widgets_values": [
+    "qwen3.5_9b_int8_convrot.safetensors",
+    "moss_image",
+    "default"
+   ],
+   "widgets_values_named": {
+    "clip_name": "qwen3.5_9b_int8_convrot.safetensors",
+    "type": "moss_image",
+    "device": "default"
+   }
+  },
+  {
+   "id": 143,
+   "type": "TextGenerateV2",
+   "pos": [
+    980,
+    856
+   ],
+   "size": [
+    400,
+    308
+   ],
+   "flags": {},
+   "order": 36,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "clip",
+     "name": "clip",
+     "type": "CLIP",
+     "link": 62
+    },
+    {
+     "localized_name": "image1",
+     "name": "images.image1",
+     "shape": 7,
+     "type": "IMAGE",
+     "link": 64
+    },
+    {
+     "localized_name": "image2",
+     "name": "images.image2",
+     "shape": 7,
+     "type": "IMAGE",
+     "link": null
+    },
+    {
+     "localized_name": "video1",
+     "name": "videos.video1",
+     "shape": 7,
+     "type": "IMAGE",
+     "link": null
+    },
+    {
+     "localized_name": "audio1",
+     "name": "audios.audio1",
+     "shape": 7,
+     "type": "AUDIO",
+     "link": null
+    },
+    {
+     "localized_name": "system_prompt",
+     "name": "system_prompt",
+     "shape": 7,
+     "type": "STRING",
+     "link": 65
+    },
+    {
+     "localized_name": "prompt",
+     "name": "prompt",
+     "type": "STRING",
+     "widget": {
+      "name": "prompt"
+     },
+     "link": 63
+    },
+    {
+     "localized_name": "max_length",
+     "name": "max_length",
+     "type": "INT",
+     "widget": {
+      "name": "max_length"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "Sampling Mode",
+     "name": "sampling_mode",
+     "type": "COMFY_DYNAMICCOMBO_V3",
+     "widget": {
+      "name": "sampling_mode"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "thinking",
+     "name": "thinking",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "thinking"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "use_default_template",
+     "name": "use_default_template",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "use_default_template"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "mtp",
+     "name": "mtp",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "mtp"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "generated_text",
+     "name": "generated_text",
+     "type": "STRING",
+     "links": [
+      66,
+      68
+     ]
+    },
+    {
+     "localized_name": "thinking",
+     "name": "thinking",
+     "type": "STRING",
+     "links": null
+    }
+   ],
+   "title": "LLM がショット文を書く / LLM writes shot text",
+   "properties": {
+    "Node name for S&R": "TextGenerateV2"
+   },
+   "widgets_values": [
+    "",
+    8192,
+    "off",
+    true,
+    true,
+    "auto"
+   ],
+   "widgets_values_named": {
+    "prompt": "",
+    "max_length": 8192,
+    "sampling_mode": "off",
+    "thinking": true,
+    "use_default_template": true,
+    "mtp": "auto"
+   }
+  },
+  {
+   "id": 144,
+   "type": "PreviewAny",
+   "pos": [
+    1420,
+    1042
+   ],
+   "size": [
+    400,
+    400
+   ],
+   "flags": {},
+   "order": 39,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "ソース",
+     "name": "source",
+     "type": "*",
+     "link": 66
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": null
+    }
+   ],
+   "title": "LLM の出力（確認用） / LLM output (preview)",
+   "properties": {
+    "Node name for S&R": "PreviewAny"
+   },
+   "widgets_values": [],
+   "widgets_values_named": {}
+  },
+  {
+   "id": 145,
+   "type": "PreviewAny",
+   "pos": [
+    1420,
+    2070
+   ],
+   "size": [
+    400,
+    300
+   ],
+   "flags": {},
+   "order": 43,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "ソース",
+     "name": "source",
+     "type": "*",
+     "link": 67
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": null
+    }
+   ],
+   "title": "動画プロンプト（確認用） / Video prompt (preview)",
+   "properties": {
+    "Node name for S&R": "PreviewAny"
+   },
+   "widgets_values": [],
+   "widgets_values_named": {}
+  },
+  {
+   "id": 146,
+   "type": "RegexReplace",
+   "pos": [
+    1420,
+    700
+   ],
+   "size": [
+    400,
+    292
+   ],
+   "flags": {},
+   "order": 40,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "文字列",
+     "name": "string",
+     "type": "STRING",
+     "widget": {
+      "name": "string"
+     },
+     "link": 68
+    },
+    {
+     "localized_name": "正規表現パターン",
+     "name": "regex_pattern",
+     "type": "STRING",
+     "widget": {
+      "name": "regex_pattern"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "置換",
+     "name": "replace",
+     "type": "STRING",
+     "widget": {
+      "name": "replace"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "大文字小文字を区別しない",
+     "name": "case_insensitive",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "case_insensitive"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "複数行",
+     "name": "multiline",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "multiline"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "ドット全一致",
+     "name": "dotall",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "dotall"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "回数",
+     "name": "count",
+     "shape": 7,
+     "type": "INT",
+     "widget": {
+      "name": "count"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      26
+     ]
+    }
+   ],
+   "title": "改行を空白に / Newlines to spaces",
+   "properties": {
+    "Node name for S&R": "RegexReplace"
+   },
+   "widgets_values": [
+    "",
+    "\\s*\\n\\s*",
+    " ",
+    true,
+    false,
+    false,
+    0
+   ],
+   "widgets_values_named": {
+    "string": "",
+    "regex_pattern": "\\s*\\n\\s*",
+    "replace": " ",
+    "case_insensitive": true,
+    "multiline": false,
+    "dotall": false,
+    "count": 0
+   }
+  },
+  {
+   "id": 147,
+   "type": "MarkdownNote",
+   "pos": [
+    -520,
+    0
+   ],
+   "size": [
+    480,
+    1500
+   ],
+   "flags": {},
+   "order": 16,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "title": "使い方 / How to use",
+   "properties": {},
+   "widgets_values": [
+    "## 完成写真1枚からクッキングショート動画\n\n料理の完成写真と、メモ書き程度の英語の工程5行から、白い机を真上の固定カメラで撮ったような縦長の料理動画（約12秒・料理の音付き）を作ります。工程ごとに1ショットずつカットでつながり、最後は完成写真をもとにした盛り付けで終わります。\n\n### 使い方\n1. 「① 完成写真」に料理の写真を入れます。向き・サイズ・撮った角度は自由です。写真は料理と器の参考に使い、机・背景・構図は真上からの縦長に作り直します。\n2. 「② 工程1」〜「⑥ 工程5」に、工程を1行ずつ**英語のメモ**で書きます（オムライスの例が入っています）。5行すべてに書いてください。\n   - 例：`dice an onion` / `beat two eggs in a bowl` / `stir-fry chicken, onion and rice with ketchup in a frying pan`\n   - 1行に1つの工程を、短いメモで書けば大丈夫です。ショットの細かい文は LLM が書きます。\n   - 日本語で書くと、文字が画面に描かれてしまうことがあります。\n3. 「実行する」を押すと、右下の「完成動画」に表示され、`output/H3_Cooking/` に保存されます。RTX 4070（12 GB）で1本 約11分です。\n\n### 中身\n- H3-Image が完成写真を参照して、白い机を真上から撮った盛り付け画像を作ります（1440×2560）。\n- LLM（Qwen3.5-9B）が完成写真と工程メモを見て、[Shot 1]〜[Shot 5] の文を書きます。各ショットは「器とその中身／左手が支える物／右手が使う道具1つ／続いた1つの動き／終わりの見た目」の型です。書いた文は「LLM の出力（確認用）」で見られます。\n- H3 の動画モデルが1回の生成で、[Shot 1]〜[Shot 5] の手元の動作と、[Shot 6] の盛り付けを描きます。盛り付け画像を [Shot 6] の始まりと動画の最後のフレームの両方に固定します（736×1312）。\n- 音は料理の音だけで、BGMはありません。\n\n### 設定\n- ⑦ 動画の長さ：初期値12秒（294フレーム）。H3が学習した長さ（124〜362フレーム、約5〜15秒）の中に収めます。6ショットで等分します。\n- ⑧ シード：変えると動画と盛り付け画像が別の仕上がりになります。LLM の文はシードでは変わりません（貪欲デコード）。\n"
+   ],
+   "widgets_values_named": {
+    "text": "## 完成写真1枚からクッキングショート動画\n\n料理の完成写真と、メモ書き程度の英語の工程5行から、白い机を真上の固定カメラで撮ったような縦長の料理動画（約12秒・料理の音付き）を作ります。工程ごとに1ショットずつカットでつながり、最後は完成写真をもとにした盛り付けで終わります。\n\n### 使い方\n1. 「① 完成写真」に料理の写真を入れます。向き・サイズ・撮った角度は自由です。写真は料理と器の参考に使い、机・背景・構図は真上からの縦長に作り直します。\n2. 「② 工程1」〜「⑥ 工程5」に、工程を1行ずつ**英語のメモ**で書きます（オムライスの例が入っています）。5行すべてに書いてください。\n   - 例：`dice an onion` / `beat two eggs in a bowl` / `stir-fry chicken, onion and rice with ketchup in a frying pan`\n   - 1行に1つの工程を、短いメモで書けば大丈夫です。ショットの細かい文は LLM が書きます。\n   - 日本語で書くと、文字が画面に描かれてしまうことがあります。\n3. 「実行する」を押すと、右下の「完成動画」に表示され、`output/H3_Cooking/` に保存されます。RTX 4070（12 GB）で1本 約11分です。\n\n### 中身\n- H3-Image が完成写真を参照して、白い机を真上から撮った盛り付け画像を作ります（1440×2560）。\n- LLM（Qwen3.5-9B）が完成写真と工程メモを見て、[Shot 1]〜[Shot 5] の文を書きます。各ショットは「器とその中身／左手が支える物／右手が使う道具1つ／続いた1つの動き／終わりの見た目」の型です。書いた文は「LLM の出力（確認用）」で見られます。\n- H3 の動画モデルが1回の生成で、[Shot 1]〜[Shot 5] の手元の動作と、[Shot 6] の盛り付けを描きます。盛り付け画像を [Shot 6] の始まりと動画の最後のフレームの両方に固定します（736×1312）。\n- 音は料理の音だけで、BGMはありません。\n\n### 設定\n- ⑦ 動画の長さ：初期値12秒（294フレーム）。H3が学習した長さ（124〜362フレーム、約5〜15秒）の中に収めます。6ショットで等分します。\n- ⑧ シード：変えると動画と盛り付け画像が別の仕上がりになります。LLM の文はシードでは変わりません（貪欲デコード）。\n"
+   },
+   "color": "#432",
+   "bgcolor": "#653"
+  }
+ ],
+ "links": [
+  [
+   1,
+   7,
+   0,
+   9,
+   0,
+   "FLOAT"
+  ],
+  [
+   2,
+   9,
+   1,
+   13,
+   0,
+   "INT"
+  ],
+  [
+   3,
+   13,
+   0,
+   14,
+   0,
+   "FLOAT"
+  ],
+  [
+   4,
+   13,
+   0,
+   15,
+   0,
+   "FLOAT"
+  ],
+  [
+   5,
+   13,
+   0,
+   16,
+   0,
+   "FLOAT"
+  ],
+  [
+   6,
+   13,
+   0,
+   17,
+   0,
+   "FLOAT"
+  ],
+  [
+   7,
+   13,
+   0,
+   18,
+   0,
+   "FLOAT"
+  ],
+  [
+   8,
+   18,
+   0,
+   19,
+   0,
+   "FLOAT"
+  ],
+  [
+   11,
+   71,
+   0,
+   72,
+   0,
+   "CONDITIONING"
+  ],
+  [
+   12,
+   10,
+   0,
+   73,
+   0,
+   "MODEL"
+  ],
+  [
+   13,
+   71,
+   0,
+   73,
+   1,
+   "CONDITIONING"
+  ],
+  [
+   14,
+   72,
+   0,
+   73,
+   2,
+   "CONDITIONING"
+  ],
+  [
+   15,
+   71,
+   1,
+   73,
+   3,
+   "LATENT"
+  ],
+  [
+   16,
+   8,
+   0,
+   73,
+   4,
+   "INT"
+  ],
+  [
+   17,
+   73,
+   0,
+   74,
+   0,
+   "LATENT"
+  ],
+  [
+   18,
+   12,
+   0,
+   74,
+   1,
+   "VAE"
+  ],
+  [
+   19,
+   74,
+   0,
+   75,
+   0,
+   "IMAGE"
+  ],
+  [
+   20,
+   74,
+   0,
+   76,
+   0,
+   "IMAGE"
+  ],
+  [
+   21,
+   100,
+   0,
+   101,
+   0,
+   "MODEL"
+  ],
+  [
+   22,
+   101,
+   0,
+   102,
+   0,
+   "MODEL"
+  ],
+  [
+   23,
+   102,
+   0,
+   103,
+   0,
+   "MODEL"
+  ],
+  [
+   24,
+   13,
+   0,
+   120,
+   0,
+   "FLOAT"
+  ],
+  [
+   25,
+   18,
+   0,
+   120,
+   1,
+   "FLOAT"
+  ],
+  [
+   26,
+   146,
+   0,
+   120,
+   2,
+   "STRING"
+  ],
+  [
+   27,
+   11,
+   0,
+   121,
+   0,
+   "CLIP"
+  ],
+  [
+   28,
+   104,
+   0,
+   121,
+   1,
+   "VAE"
+  ],
+  [
+   29,
+   120,
+   0,
+   121,
+   4,
+   "STRING"
+  ],
+  [
+   30,
+   9,
+   1,
+   121,
+   7,
+   "INT"
+  ],
+  [
+   31,
+   75,
+   0,
+   121,
+   3,
+   "IMAGE"
+  ],
+  [
+   32,
+   103,
+   0,
+   122,
+   0,
+   "MODEL"
+  ],
+  [
+   33,
+   8,
+   0,
+   124,
+   0,
+   "INT"
+  ],
+  [
+   34,
+   103,
+   0,
+   125,
+   0,
+   "MODEL"
+  ],
+  [
+   35,
+   131,
+   0,
+   125,
+   1,
+   "CONDITIONING"
+  ],
+  [
+   36,
+   124,
+   0,
+   126,
+   0,
+   "NOISE"
+  ],
+  [
+   37,
+   125,
+   0,
+   126,
+   1,
+   "GUIDER"
+  ],
+  [
+   38,
+   123,
+   0,
+   126,
+   2,
+   "SAMPLER"
+  ],
+  [
+   39,
+   122,
+   0,
+   126,
+   3,
+   "SIGMAS"
+  ],
+  [
+   40,
+   121,
+   1,
+   126,
+   4,
+   "LATENT"
+  ],
+  [
+   41,
+   126,
+   0,
+   127,
+   0,
+   "LATENT"
+  ],
+  [
+   42,
+   104,
+   0,
+   127,
+   1,
+   "VAE"
+  ],
+  [
+   43,
+   126,
+   0,
+   128,
+   0,
+   "LATENT"
+  ],
+  [
+   44,
+   105,
+   0,
+   128,
+   1,
+   "VAE"
+  ],
+  [
+   45,
+   127,
+   0,
+   129,
+   0,
+   "IMAGE"
+  ],
+  [
+   46,
+   128,
+   0,
+   129,
+   1,
+   "AUDIO"
+  ],
+  [
+   47,
+   129,
+   0,
+   130,
+   0,
+   "VIDEO"
+  ],
+  [
+   48,
+   121,
+   0,
+   131,
+   0,
+   "CONDITIONING"
+  ],
+  [
+   49,
+   104,
+   0,
+   131,
+   2,
+   "VAE"
+  ],
+  [
+   50,
+   121,
+   1,
+   131,
+   1,
+   "LATENT"
+  ],
+  [
+   51,
+   75,
+   0,
+   131,
+   4,
+   "IMAGE"
+  ],
+  [
+   52,
+   19,
+   1,
+   131,
+   6,
+   "INT"
+  ],
+  [
+   53,
+   2,
+   0,
+   140,
+   0,
+   "STRING"
+  ],
+  [
+   54,
+   3,
+   0,
+   140,
+   1,
+   "STRING"
+  ],
+  [
+   55,
+   4,
+   0,
+   140,
+   2,
+   "STRING"
+  ],
+  [
+   56,
+   5,
+   0,
+   140,
+   3,
+   "STRING"
+  ],
+  [
+   57,
+   6,
+   0,
+   140,
+   4,
+   "STRING"
+  ],
+  [
+   58,
+   14,
+   0,
+   141,
+   0,
+   "FLOAT"
+  ],
+  [
+   59,
+   15,
+   0,
+   141,
+   1,
+   "FLOAT"
+  ],
+  [
+   60,
+   16,
+   0,
+   141,
+   2,
+   "FLOAT"
+  ],
+  [
+   61,
+   17,
+   0,
+   141,
+   3,
+   "FLOAT"
+  ],
+  [
+   62,
+   142,
+   0,
+   143,
+   0,
+   "CLIP"
+  ],
+  [
+   64,
+   1,
+   0,
+   143,
+   1,
+   "IMAGE"
+  ],
+  [
+   63,
+   140,
+   0,
+   143,
+   6,
+   "STRING"
+  ],
+  [
+   65,
+   141,
+   0,
+   143,
+   5,
+   "STRING"
+  ],
+  [
+   66,
+   143,
+   0,
+   144,
+   0,
+   "STRING"
+  ],
+  [
+   67,
+   120,
+   0,
+   145,
+   0,
+   "STRING"
+  ],
+  [
+   68,
+   143,
+   0,
+   146,
+   0,
+   "STRING"
+  ],
+  [
+   9,
+   11,
+   0,
+   71,
+   0,
+   "CLIP"
+  ],
+  [
+   10,
+   12,
+   0,
+   71,
+   1,
+   "VAE"
+  ],
+  [
+   69,
+   1,
+   0,
+   71,
+   2,
+   "IMAGE"
+  ]
+ ],
+ "groups": [
+  {
+   "id": "#3f789e",
+   "title": "① 入力（ここだけ変える） / Inputs (edit only here)",
+   "bounding": [
+    -20,
+    -70,
+    520,
+    1550
+   ],
+   "color": "#3f789e",
+   "flags": {}
+  },
+  {
+   "id": "#8A8",
+   "title": "② 盛り付け画像（H3-Image） / Plated image (H3-Image)",
+   "bounding": [
+    520,
+    -70,
+    1720,
+    436
+   ],
+   "color": "#3f789e",
+   "flags": {}
+  },
+  {
+   "id": "#3f8f8f",
+   "title": "③ ショット文（LLM が工程メモから書く） / Shot text (LLM writes from step notes)",
+   "bounding": [
+    520,
+    630,
+    1320,
+    832
+   ],
+   "color": "#3f789e",
+   "flags": {}
+  },
+  {
+   "id": "#b58b2a",
+   "title": "④ 動画（H3・1回の生成で工程をカットでつなぐ） / Video (H3, one pass with a cut per step)",
+   "bounding": [
+    520,
+    1550,
+    1720,
+    1464
+   ],
+   "color": "#3f789e",
+   "flags": {}
+  },
+  {
+   "id": "#a1309b",
+   "title": "⑤ 出力 / Output",
+   "bounding": [
+    2280,
+    -70,
+    520,
+    1890
+   ],
+   "color": "#3f789e",
+   "flags": {}
+  }
+ ],
+ "config": {},
+ "extra": {
+  "ds": {
+   "scale": 0.9,
+   "offset": [
+    416,
+    110
+   ]
+  }
+ },
+ "version": 0.4
+}
