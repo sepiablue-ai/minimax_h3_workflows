@@ -245,6 +245,42 @@ Load one character image, enter two short English outfit descriptions, and set t
     - Current version, 5 s (124 frames), RTX 4070 12 GB: 640×960 took **222.1 s**; 832×1216 (1.0 MP) took **346.2 s**.
   - **Known limitations**: Outfit boundaries and timing can vary by generation (in the 10 s runs the outfit-B change landed 0.3–0.55 s late in three of five videos). Some combinations end with a near-still last ~0.75 s, and raised hands can leave the frame. An earlier mid pose that turned the body to look back over the shoulder produced a third arm during the turn in a 5 s run, so it was replaced with a front-facing pose (hands clasped at the chest); with the same seed and settings the extra arm did not appear (one run). Small details such as hair accessories, clouds, and logos can change; these runs do not establish a guarantee of exact identity or background preservation.
 
+### 14. First-Person City Walk from One Image (MiniMax H3 I2VA, gaze selectable)
+
+Load one photo of a street or path, set the length in seconds, and pick a gaze pattern. MiniMax H3 uses the photo as the first frame and generates a first-person (POV) walk with footsteps and ambient sound as one continuous shot. The prompt makes the camera the subject so the walker does not appear on screen.
+
+道や通路が写った写真を1枚入れ、秒数と「視線の動き」を選んで実行すると、MiniMax H3がその写真を開始フレームに使い、歩行者目線（POV）の街歩き映像と足音・環境音を一続きのショットとして生成します。歩く人が画面に映らないよう、プロンプトはカメラを主語にして書いています。
+
+- **[`h3_pov_walk_i2va.json`](h3_pov_walk_i2va.json)**: ComfyUI Web UI workflow
+  - **Custom nodes**: none (ComfyUI core / `comfy_extras` nodes only, including `MiniMaxH3ImageToVideo`, `BlockSparseAttention`, `ComfyMathExpression`, `CustomCombo`, `JsonExtractString`, and `StringReplace`; validated on ComfyUI 0.45.0 with frontend 1.58.5).
+  - **Inputs** (top-left group): image, length in seconds (5–15, default 10), gaze pattern, seed (fixed `26111801` by default; change the number for a different result), and the long side in px (default 1344). MP4 is saved in `output/H3_Walk/`.
+  - **Gaze patterns**: the selected English sentence is inserted at `【視線の動き】` in the prompt shown in the top-right group.
+
+    | Choice | Motion |
+    |---|---|
+    | 右を見てから前へ（標準） / right, then forward (default) | Looks at the right-hand scenery after a few steps, then returns to the path ahead. Same prompt as the earlier fixed version. |
+    | 左を見てから前へ / left, then forward | Looks at the left-hand scenery, then returns to the path ahead. |
+    | 前だけを見て歩く / forward only | Keeps facing the path ahead without panning. |
+
+    To rename or add a choice, use the same name as a key in the JSON table in the "視線の動きの英文" node; a missing key leaves the gaze sentence empty. Two-sided patterns (right then left, left then right) were tried with two different wordings, but the camera only looked to one side and returned to the path, so they are not included.
+  - **Resolution & length**: width and height follow the input aspect ratio and the long side, each rounded to a multiple of 32; the image is center-cropped slightly to that ratio and downscaled with `area` (no padding; the bundled 1672×941 sample becomes 1344×768). The length is converted to 24 fps frames, H3 generates up to the `17k+5` grid (10 s → 243 frames), and the video and audio are trimmed back to the set length (10 s → 240 frames / 10.0 s).
+  - **Pipeline**: MiniMax H3 FL2VA INT8 (used as I2VA from the start frame) with the 4-step Turbo LoRA (768p), Euler / simple, SigmaShift 6 / 3, and `BlockSparseAttention` (SLA keep 10%, start 0.2).
+  - **Models** (official [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) repository):
+
+    | Folder | File |
+    |---|---|
+    | `diffusion_models` | [`minimax_h3_fl2va_pruned_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) |
+    | `loras/minimax-h3` | [`minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/loras/minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors) |
+    | `text_encoders` | [`qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) |
+    | `vae` | [`minimax_h3_video_vae_fp16.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors) |
+    | `vae` | [`minimax_h3_audio_vae_fp32.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors) |
+
+  - **Measured** (1344×768, 24 fps; peak VRAM is the whole GPU from `nvidia-smi`):
+    - RTX 4070 12 GB, 5 s (124 frames): about **204–207 s** per video (three scenes, one run each).
+    - RTX 4070 12 GB, 10 s: **459–478 s** (four runs, three scenes), peak 11,504–11,569 MiB.
+    - RTX 3060 12 GB, 10 s: **887–896 s** (eight runs, sidewalk scene), peak 11,387–11,475 MiB.
+  - **Known limitations**: fine leaves and hedges can flicker slightly while the view moves. The gaze patterns were checked on one sidewalk image with one seed; the swing amplitude depends on the input image. Generated signboard text is not legible.
+
 ---
 
 ## Author and related repositories
