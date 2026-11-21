@@ -214,17 +214,18 @@ Load one landscape photo (portrait or landscape) and optionally set the target d
 
 ### 13. One-Button Outfit-Change Dance Video (MiniMax-H3-Image + FL2VA)
 
-Load one character image and enter two short English outfit descriptions. MiniMax-H3-Image creates an intermediate image for outfit A and a final image for outfit B. MiniMax-H3 FL2VA generates one continuous 226-frame dance video with music, using the original image as the start, the outfit-A pose as a guide at 4.5 seconds, and the outfit-B image as the end. Outfit changes are requested at about 3 and 6 seconds; actual transition times can shift.
+Load one character image, enter two short English outfit descriptions, and set the video length. MiniMax-H3-Image creates an intermediate image for outfit A and a final image for outfit B. MiniMax-H3 FL2VA then generates one continuous dance video with music, using the original image as the start, the outfit-A pose as a mid-video guide, and the outfit-B image as the end. A random seed picks the choreography, the mid pose, and the final pose from five variants each (125 combinations), so each run dances differently. Outfit changes are requested at about 1/3 and 2/3 of the video; actual transition times can shift.
 
-人物画像1枚と衣装A/Bの短い英文を入力すると、MiniMax-H3-ImageがAの中間画像とBの終点画像を生成します。MiniMax-H3 FL2VAは、元画像を始点、Aのポーズを4.5秒位置のガイド、Bの画像を終点として、226フレームのダンス映像と音楽を1回の連続生成で作ります。着替えの指示は約3秒・6秒ですが、実際の切替時刻はずれる場合があります。
+人物画像1枚と衣装A/Bの短い英文、動画の長さ（秒）を入力すると、MiniMax-H3-ImageがAの中間画像とBの終点画像を生成し、MiniMax-H3 FL2VAが元画像を始点、Aのポーズを途中のガイド、Bの画像を終点として、ダンス映像と音楽を1回の連続生成で作ります。シード（初期設定は毎回ランダム）から、振付・中間ポーズ・終点ポーズが各5種類の中から選ばれます（125通り）。着替えの指示は全体の約1/3と2/3の時刻ですが、実際の切替時刻はずれる場合があります。
 
 - **[`tiktok_outfit_dance.json`](tiktok_outfit_dance.json)**: ComfyUI Web UI workflow
-  - **Custom nodes**: none (36 execution nodes from ComfyUI core / `comfy_extras`; validated on ComfyUI 0.45.0 with frontend 1.58.5).
-  - **Inputs & output**: one character image and two short English outfit fields; fixed seed 42; MP4 saved in `output/TikTokMV/` with the `anchored` filename prefix.
-  - **Resolution & length**: Input is resized to about 0.62 MP with its aspect ratio preserved, then adjusted with a small center crop to a multiple of 32. Output dimensions follow the input aspect ratio; the video is 226 frames at 24 fps (about 9.42 s).
+  - **Custom nodes**: none (58 execution nodes from ComfyUI core / `comfy_extras`, including `ComfyMathExpression`, `StringFormat`, `RegexReplace`, and `PreviewAny`; validated on ComfyUI 0.45.0 with frontend 1.58.5).
+  - **Inputs & output**: one character image, two short English outfit fields, the video length in seconds (default 5.0), and one seed with `randomize` (default) or `fixed`. The chosen combination and seed are shown in the "選ばれた振付" node after each run; set the seed to `fixed` with that value to reproduce a result. MP4 is saved in `output/TikTokMV/` with the `anchored` filename prefix.
+  - **Resolution & length**: Input is resized to about 0.62 MP with its aspect ratio preserved, then adjusted with a small center crop to a multiple of 32. Output dimensions follow the input aspect ratio. The length is converted to 24 fps frames and rounded up to the model's 17k+5 grid (5 s → 124 frames = 5.17 s, 10 s → 243 frames = 10.13 s). The model's trained range is about 124–362 frames.
+  - **Choreography**: the five choreography texts, five mid poses, and five final poses are editable in the "⑨ 振付リスト" group (keep the `<<1>>`–`<<5>>` headings). The choreography texts describe the motion without fixing the mid and final poses, so any combination can be used.
   - **Pipeline**:
     1. MiniMax-H3-Image edits the source into outfit-A and outfit-B images, each with a 6-step KSampler.
-    2. MiniMax-H3 FL2VA INT8 with the 4-step Turbo LoRA, SigmaShift 6 / 3, and Euler / simple generates the video once. The original image is the start frame, the outfit-A image guides frame 108 (4.5 s), and the outfit-B image is the end frame.
+    2. MiniMax-H3 FL2VA INT8 with the 4-step Turbo LoRA, SigmaShift 6 / 3, and Euler / simple generates the video once. The original image is the start frame, the outfit-A image guides the frame at 48% of the video, and the outfit-B image is the end frame. Outfit-change times in the prompt are set to 32% and 64% of the video.
   - **Models** (official [Comfy-Org/MiniMax-H3-Image](https://huggingface.co/Comfy-Org/MiniMax-H3-Image), [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3), and [lightx2v/Minimax-h3-Turbo](https://huggingface.co/lightx2v/Minimax-h3-Turbo) repositories):
 
     | Folder | File |
@@ -238,10 +239,10 @@ Load one character image and enter two short English outfit descriptions. MiniMa
     | `vae` | [`minimax_h3_audio_vae_fp32.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors) |
 
   - **Storage & VRAM**: Seven model files use about 58.15 GB of disk space. Validated with one 12 GB GPU (RTX 4070 / RTX 3060).
-  - **Example runs** (one run per input; executed concurrently on separate GPUs, so timings are illustrative rather than a speed comparison):
-    - Photo input, 608×1056, RTX 4070 12 GB: **453.28 s**.
-    - Anime input, 640×960, RTX 3060 12 GB: **787.95 s**.
-  - **Known limitations**: Outfit boundaries and timing can vary by generation. In the tested anime output, a small hair accessory and cloud details changed; these two inputs do not establish a guarantee of exact identity or background preservation.
+  - **Example runs**:
+    - Earlier fixed-choreography version, 226 frames (one run per input; executed concurrently on separate GPUs, so timings are illustrative rather than a speed comparison): photo input, 608×1056, RTX 4070 12 GB: **453.28 s**; anime input, 640×960, RTX 3060 12 GB: **787.95 s**.
+    - Current version, 10 s (243 frames), anime input, 640×960, RTX 4070 12 GB: five seeds covering all 15 variants once each took **448.6–457.9 s** per video. All kept the blue sky and art style, and the five dances were clearly different.
+  - **Known limitations**: Outfit boundaries and timing can vary by generation (in the 10 s runs the outfit-B change landed 0.3–0.55 s late in three of five videos). Some combinations end with a near-still last ~0.75 s, raised hands can leave the frame, and one mid pose (turning to look back over the shoulder) was only partly followed. Small details such as hair accessories, clouds, and logos can change; these runs do not establish a guarantee of exact identity or background preservation. The 5 s default was not separately benchmarked.
 
 ---
 

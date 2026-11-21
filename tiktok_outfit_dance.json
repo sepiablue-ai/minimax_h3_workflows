@@ -1,19 +1,19 @@
 {
  "id": "c1eaead8-abfe-4fac-ac9b-410cc7be41cd",
  "revision": 0,
- "last_node_id": 100,
- "last_link_id": 61,
+ "last_node_id": 122,
+ "last_link_id": 95,
  "nodes": [
   {
    "id": 1,
    "type": "LoadImage",
    "pos": [
-    0,
+    720,
     0
    ],
    "size": [
-    310,
-    362
+    330,
+    520
    ],
    "flags": {},
    "order": 0,
@@ -65,18 +65,20 @@
    "widgets_values_named": {
     "image": "tiktokmv/00079-1059934133.webp",
     "upload": "image"
-   }
+   },
+   "color": "#232",
+   "bgcolor": "#353"
   },
   {
    "id": 2,
    "type": "PrimitiveStringMultiline",
    "pos": [
-    340,
+    1090,
     0
    ],
    "size": [
-    330,
-    140
+    380,
+    170
    ],
    "flags": {},
    "order": 1,
@@ -103,7 +105,7 @@
      ]
     }
    ],
-   "title": "衣装 A（約3秒）",
+   "title": "衣装 A（全体の約1/3から）",
    "properties": {
     "Node name for S&R": "PrimitiveStringMultiline"
    },
@@ -112,18 +114,20 @@
    ],
    "widgets_values_named": {
     "value": "a royal-blue track jacket over a white top, with black bottoms where visible"
-   }
+   },
+   "color": "#232",
+   "bgcolor": "#353"
   },
   {
    "id": 3,
    "type": "PrimitiveStringMultiline",
    "pos": [
-    340,
-    175
+    1090,
+    230
    ],
    "size": [
-    330,
-    140
+    380,
+    170
    ],
    "flags": {},
    "order": 2,
@@ -150,7 +154,7 @@
      ]
     }
    ],
-   "title": "衣装 B（約6秒）",
+   "title": "衣装 B（全体の約2/3から）",
    "properties": {
     "Node name for S&R": "PrimitiveStringMultiline"
    },
@@ -159,17 +163,19 @@
    ],
    "widgets_values_named": {
     "value": "a cream bomber jacket over a dark teal top, with charcoal bottoms where visible"
-   }
+   },
+   "color": "#232",
+   "bgcolor": "#353"
   },
   {
    "id": 5,
    "type": "ResizeImageMaskNode",
    "pos": [
-    0,
-    680
+    920,
+    760
    ],
    "size": [
-    285,
+    300,
     140
    ],
    "flags": {},
@@ -239,11 +245,11 @@
    "id": 6,
    "type": "ResizeImageMaskNode",
    "pos": [
-    0,
-    860
+    920,
+    960
    ],
    "size": [
-    285,
+    300,
     130
    ],
    "flags": {},
@@ -316,11 +322,11 @@
    "id": 7,
    "type": "GetImageSize",
    "pos": [
-    0,
-    1030
+    920,
+    1150
    ],
    "size": [
-    250,
+    300,
     90
    ],
    "flags": {},
@@ -371,12 +377,12 @@
    "id": 11,
    "type": "StringFormat",
    "pos": [
-    1120,
-    720
+    2830,
+    760
    ],
    "size": [
-    510,
-    370
+    540,
+    480
    ],
    "flags": {},
    "order": 13,
@@ -401,6 +407,27 @@
      "name": "values.c",
      "shape": 7,
      "type": "*",
+     "link": 66
+    },
+    {
+     "localized_name": "d",
+     "name": "values.d",
+     "shape": 7,
+     "type": "*",
+     "link": 69
+    },
+    {
+     "localized_name": "e",
+     "name": "values.e",
+     "shape": 7,
+     "type": "*",
+     "link": 70
+    },
+    {
+     "localized_name": "f",
+     "name": "values.f",
+     "shape": 7,
+     "type": "*",
      "link": null
     },
     {
@@ -410,7 +437,7 @@
      "widget": {
       "name": "f_string"
      },
-     "link": null
+     "link": 82
     }
    ],
    "outputs": [
@@ -423,26 +450,26 @@
      ]
     }
    ],
-   "title": "連続するダンスの指示",
+   "title": "動画プロンプトを組み立てる",
    "properties": {
     "Node name for S&R": "StringFormat"
    },
    "widgets_values": [
-    "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the 9.38-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer releases the opening pose, brings the arms down and shifts weight to one side, carrying the shoulders and forearms into an outward sweep. At 3.00 seconds the clothes change to {a} as the forearms continue their arc at the same speed. The dancer reverses direction into two sharp syncopated accents, then rolls the shoulders toward the camera as the elbows open. The shoulder roll brings the dancer into a brief accent with both elbows bent and palms forward near the shoulders. At 6.00 seconds the outfit becomes {b} on that accent, with the head, shoulders, elbows and palms in the same positions across the change. The palms then sweep outward together into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose."
+    "（⑨の振付リストから自動で入ります）"
    ],
    "widgets_values_named": {
-    "f_string": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the 9.38-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer releases the opening pose, brings the arms down and shifts weight to one side, carrying the shoulders and forearms into an outward sweep. At 3.00 seconds the clothes change to {a} as the forearms continue their arc at the same speed. The dancer reverses direction into two sharp syncopated accents, then rolls the shoulders toward the camera as the elbows open. The shoulder roll brings the dancer into a brief accent with both elbows bent and palms forward near the shoulders. At 6.00 seconds the outfit becomes {b} on that accent, with the head, shoulders, elbows and palms in the same positions across the change. The palms then sweep outward together into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose."
+    "f_string": "（⑨の振付リストから自動で入ります）"
    }
   },
   {
    "id": 20,
    "type": "UNETLoader",
    "pos": [
-    350,
-    1600
+    440,
+    760
    ],
    "size": [
-    360,
+    400,
     95
    ],
    "flags": {},
@@ -502,8 +529,8 @@
    "id": 21,
    "type": "LoraLoaderModelOnly",
    "pos": [
-    350,
-    1735
+    440,
+    915
    ],
    "size": [
     400,
@@ -572,11 +599,11 @@
    "id": 22,
    "type": "MiniMaxH3SigmaShift",
    "pos": [
-    350,
-    1880
+    440,
+    1075
    ],
    "size": [
-    360,
+    400,
     100
    ],
    "flags": {},
@@ -637,10 +664,10 @@
    "type": "CLIPLoader",
    "pos": [
     0,
-    1190
+    760
    ],
    "size": [
-    380,
+    400,
     110
    ],
    "flags": {},
@@ -714,11 +741,11 @@
    "id": 25,
    "type": "VAELoader",
    "pos": [
-    770,
-    1190
+    440,
+    1235
    ],
    "size": [
-    300,
+    400,
     100
    ],
    "flags": {},
@@ -769,11 +796,11 @@
    "id": 26,
    "type": "VAELoader",
    "pos": [
-    770,
-    1325
+    440,
+    1395
    ],
    "size": [
-    300,
+    400,
     100
    ],
    "flags": {},
@@ -822,12 +849,12 @@
    "id": 30,
    "type": "MiniMaxH3ImageToVideo",
    "pos": [
-    1670,
-    720
+    3410,
+    760
    ],
    "size": [
-    395,
-    245
+    400,
+    250
    ],
    "flags": {},
    "order": 28,
@@ -893,7 +920,7 @@
      "widget": {
       "name": "length"
      },
-     "link": null
+     "link": 63
     }
    ],
    "outputs": [
@@ -936,12 +963,12 @@
    "id": 31,
    "type": "BasicScheduler",
    "pos": [
-    1670,
-    1020
+    3850,
+    1040
    ],
    "size": [
     280,
-    106
+    110
    ],
    "flags": {},
    "order": 19,
@@ -1010,11 +1037,11 @@
    "id": 32,
    "type": "KSamplerSelect",
    "pos": [
-    1970,
-    1020
+    3850,
+    910
    ],
    "size": [
-    240,
+    270,
     70
    ],
    "flags": {},
@@ -1056,12 +1083,12 @@
    "id": 33,
    "type": "RandomNoise",
    "pos": [
-    1670,
-    1170
+    3850,
+    760
    ],
    "size": [
-    260,
-    85
+    270,
+    90
    ],
    "flags": {},
    "order": 8,
@@ -1074,7 +1101,7 @@
      "widget": {
       "name": "noise_seed"
      },
-     "link": null
+     "link": 76
     }
    ],
    "outputs": [
@@ -1104,11 +1131,11 @@
    "id": 34,
    "type": "BasicGuider",
    "pos": [
-    1970,
-    1150
+    3850,
+    1210
    ],
    "size": [
-    250,
+    270,
     70
    ],
    "flags": {},
@@ -1147,11 +1174,11 @@
    "id": 35,
    "type": "SamplerCustomAdvanced",
    "pos": [
-    2460,
-    720
+    4160,
+    760
    ],
    "size": [
-    310,
+    320,
     130
    ],
    "flags": {},
@@ -1215,11 +1242,11 @@
    "id": 36,
    "type": "VAEDecode",
    "pos": [
-    2840,
-    710
+    4560,
+    760
    ],
    "size": [
-    250,
+    260,
     75
    ],
    "flags": {},
@@ -1258,11 +1285,11 @@
    "id": 37,
    "type": "VAEDecodeAudio",
    "pos": [
-    2840,
-    815
+    4560,
+    895
    ],
    "size": [
-    250,
+    260,
     75
    ],
    "flags": {},
@@ -1301,12 +1328,12 @@
    "id": 38,
    "type": "CreateVideo",
    "pos": [
-    2840,
-    925
+    4560,
+    1030
    ],
    "size": [
-    280,
-    180
+    290,
+    190
    ],
    "flags": {},
    "order": 34,
@@ -1408,12 +1435,12 @@
    "id": 39,
    "type": "SaveVideo",
    "pos": [
-    715,
+    1510,
     0
    ],
    "size": [
-    370,
-    410
+    420,
+    520
    ],
    "flags": {},
    "order": 35,
@@ -1484,14 +1511,16 @@
     "format": "mp4",
     "format.codec": "auto",
     "codec": "auto"
-   }
+   },
+   "color": "#223",
+   "bgcolor": "#335"
   },
   {
    "id": 50,
    "type": "UNETLoader",
    "pos": [
-    350,
-    680
+    0,
+    930
    ],
    "size": [
     400,
@@ -1555,11 +1584,11 @@
    "id": 51,
    "type": "VAELoader",
    "pos": [
-    350,
-    815
+    0,
+    1085
    ],
    "size": [
-    360,
+    400,
     85
    ],
    "flags": {},
@@ -1611,12 +1640,12 @@
    "id": 52,
    "type": "StringFormat",
    "pos": [
-    350,
-    940
+    1300,
+    1240
    ],
    "size": [
-    390,
-    200
+    440,
+    300
    ],
    "flags": {},
    "order": 14,
@@ -1643,7 +1672,7 @@
      "widget": {
       "name": "f_string"
      },
-     "link": null
+     "link": 90
     }
    ],
    "outputs": [
@@ -1656,26 +1685,26 @@
      ]
     }
    ],
-   "title": "最後の衣装とポーズの指示",
+   "title": "終点画像のプロンプトを組み立てる",
    "properties": {
     "Node name for S&R": "StringFormat"
    },
    "widgets_values": [
-    "The visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose turns the chest toward the camera, chin raised, and opens both forearms outward with elbows bent and open hands spread away from the face within the visible crop. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>."
+    "（⑨の振付リストから自動で入ります）"
    ],
    "widgets_values_named": {
-    "f_string": "The visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose turns the chest toward the camera, chin raised, and opens both forearms outward with elbows bent and open hands spread away from the face within the visible crop. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>."
+    "f_string": "（⑨の振付リストから自動で入ります）"
    }
   },
   {
    "id": 53,
    "type": "MiniMaxH3ImageConditioning",
    "pos": [
-    790,
-    680
+    1780,
+    1240
    ],
    "size": [
-    280,
+    330,
     200
    ],
    "flags": {},
@@ -1775,12 +1804,12 @@
    "id": 54,
    "type": "ConditioningZeroOut",
    "pos": [
-    790,
-    920
+    1780,
+    1500
    ],
    "size": [
-    280,
-    50
+    330,
+    60
    ],
    "flags": {},
    "order": 22,
@@ -1812,12 +1841,12 @@
    "id": 55,
    "type": "KSampler",
    "pos": [
-    1120,
-    1160
+    2150,
+    1240
    ],
    "size": [
-    305,
-    275
+    320,
+    280
    ],
    "flags": {},
    "order": 24,
@@ -1854,7 +1883,7 @@
      "widget": {
       "name": "seed"
      },
-     "link": null
+     "link": 77
     },
     {
      "localized_name": "ステップ",
@@ -1939,11 +1968,11 @@
    "id": 56,
    "type": "VAEDecode",
    "pos": [
-    1470,
-    1160
+    2510,
+    1240
    ],
    "size": [
-    165.9,
+    240,
     60
    ],
    "flags": {},
@@ -1982,12 +2011,12 @@
    "id": 60,
    "type": "StringFormat",
    "pos": [
-    790,
-    1600
+    1300,
+    760
    ],
    "size": [
-    390,
-    200
+    440,
+    300
    ],
    "flags": {},
    "order": 12,
@@ -2014,7 +2043,7 @@
      "widget": {
       "name": "f_string"
      },
-     "link": null
+     "link": 86
     }
    ],
    "outputs": [
@@ -2027,27 +2056,27 @@
      ]
     }
    ],
-   "title": "中間の衣装とポーズの指示",
+   "title": "中間画像のプロンプトを組み立てる",
    "properties": {
     "Node name for S&R": "StringFormat"
    },
    "widgets_values": [
-    "The visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body leans to one side, one forearm crossing in front of the chest, with the other hand open low to the side. The clothing and movement share the source medium and light."
+    "（⑨の振付リストから自動で入ります）"
    ],
    "widgets_values_named": {
-    "f_string": "The visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body leans to one side, one forearm crossing in front of the chest, with the other hand open low to the side. The clothing and movement share the source medium and light."
+    "f_string": "（⑨の振付リストから自動で入ります）"
    }
   },
   {
    "id": 61,
    "type": "MiniMaxH3ImageConditioning",
    "pos": [
-    1220,
-    1600
+    1780,
+    760
    ],
    "size": [
-    315,
-    196
+    330,
+    200
    ],
    "flags": {},
    "order": 21,
@@ -2146,12 +2175,12 @@
    "id": 62,
    "type": "ConditioningZeroOut",
    "pos": [
-    1220,
-    1835
+    1780,
+    1020
    ],
    "size": [
-    315,
-    55
+    330,
+    60
    ],
    "flags": {},
    "order": 23,
@@ -2183,12 +2212,12 @@
    "id": 63,
    "type": "KSampler",
    "pos": [
-    1580,
-    1600
+    2150,
+    760
    ],
    "size": [
     330,
-    262
+    280
    ],
    "flags": {},
    "order": 25,
@@ -2225,7 +2254,7 @@
      "widget": {
       "name": "seed"
      },
-     "link": null
+     "link": 78
     },
     {
      "localized_name": "ステップ",
@@ -2310,8 +2339,8 @@
    "id": 64,
    "type": "VAEDecode",
    "pos": [
-    1950,
-    1600
+    2510,
+    760
    ],
    "size": [
     250,
@@ -2353,12 +2382,12 @@
    "id": 65,
    "type": "MiniMaxH3AddGuide",
    "pos": [
-    2120,
-    730
+    3410,
+    1070
    ],
    "size": [
-    290,
-    158
+    300,
+    160
    ],
    "flags": {},
    "order": 29,
@@ -2411,7 +2440,7 @@
      "widget": {
       "name": "frame_idx"
      },
-     "link": null
+     "link": 71
     }
    ],
    "outputs": [
@@ -2424,7 +2453,7 @@
      ]
     }
    ],
-   "title": "中間ポーズを4.5秒に加える",
+   "title": "中間ポーズを衣装 A の途中に加える",
    "properties": {
     "Node name for S&R": "MiniMaxH3AddGuide"
    },
@@ -2440,11 +2469,11 @@
    "type": "MarkdownNote",
    "pos": [
     0,
-    415
+    0
    ],
    "size": [
-    670,
-    230
+    680,
+    520
    ],
    "flags": {},
    "order": 28,
@@ -2454,10 +2483,1544 @@
    "properties": {},
    "title": "使い方と必要モデル",
    "widgets_values": [
-    "① 人物画像を選択 → ② 衣装 A・B を短い英語で指定 → ③ 実行を1回。元の服 → A → B の順に着替える9.42秒の音楽付き動画です。衣装変更の指示は約3秒・6秒。実際の時刻は生成結果によりずれます。\n\n出力は `output/TikTokMV/`。ComfyUI 0.45.0で検証。カスタムノード不要。各生成は12 GB GPU 1枚で実行。画像条件2枚と動画・音楽を順に自動生成します。初期シードは42固定。\n\n必要モデルは `ComfyUI/models/` 内の各フォルダーに配置します。\n\n- [diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors)\n- [loras/minimax-h3/minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors](https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/main/minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors)\n- [text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors)\n- [vae/minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors)\n- [vae/minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors)\n- [diffusion_models/minimax_h3_image_pruned_w4a8.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/diffusion_models/minimax_h3_image_pruned_w4a8.safetensors)\n- [vae/minimax_h3_image_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/vae/minimax_h3_image_vae_fp16.safetensors)\n\n画像は比率を保って縮小し、32px単位に揃える際に端をわずかに中央クロップします。生成した映像・音声に修復・差し替えは行いません。"
+    "① 人物画像を選択 → ② 衣装 A・B を短い英語で指定 → ③ 動画の長さ（秒）を指定 → ④ 実行を1回。元の服 → A → B の順に着替える音楽付き動画です。\n\n長さは24 fpsで「17k+5」フレームに切り上げます（初期値5秒 → 124フレーム＝5.17秒、10秒 → 243フレーム＝10.13秒）。モデルの学習範囲は約5〜15秒（124〜362フレーム）です。衣装変更の指示は全体の約1/3と2/3、中間ポーズは約半分の時刻に自動で入ります。実際の時刻は生成結果によりずれます。\n\n出力は `output/TikTokMV/`。ComfyUI 0.45.0で検証。カスタムノード不要。各生成は12 GB GPU 1枚で実行。画像条件2枚と動画・音楽を順に自動生成します。\n\nシードは初期設定で毎回ランダム（randomize）。同じ結果を再現したいときは fixed にして、「選ばれた振付」に表示されたシード値を入れます。シードから振付①・中間ポーズ②・終点ポーズ③が各5種類から選ばれます（5×5×5＝125通り）。振付の文章は⑨で書き換えられます（<<1>>〜<<5>> の見出しは残してください）。\n\n必要モデルは `ComfyUI/models/` 内の各フォルダーに配置します。\n\n- [diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors)\n- [loras/minimax-h3/minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors](https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/main/minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors)\n- [text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors)\n- [vae/minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors)\n- [vae/minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors)\n- [diffusion_models/minimax_h3_image_pruned_w4a8.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/diffusion_models/minimax_h3_image_pruned_w4a8.safetensors)\n- [vae/minimax_h3_image_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/vae/minimax_h3_image_vae_fp16.safetensors)\n\n画像は比率を保って縮小し、32px単位に揃える際に端をわずかに中央クロップします。生成した映像・音声に修復・差し替えは行いません。"
    ],
    "color": "#432",
    "bgcolor": "#653"
+  },
+  {
+   "id": 101,
+   "type": "PrimitiveFloat",
+   "pos": [
+    1090,
+    460
+   ],
+   "size": [
+    380,
+    60
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "FLOAT",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      62
+     ]
+    }
+   ],
+   "title": "動画の長さ（秒）",
+   "properties": {
+    "Node name for S&R": "PrimitiveFloat"
+   },
+   "widgets_values": [
+    5.0
+   ],
+   "widgets_values_named": {
+    "value": 5.0
+   },
+   "color": "#232",
+   "bgcolor": "#353"
+  },
+  {
+   "id": 102,
+   "type": "ComfyMathExpression",
+   "pos": [
+    2490,
+    0
+   ],
+   "size": [
+    330,
+    150
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 62
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": null
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      63,
+      64,
+      65
+     ]
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "フレーム数（24 fps・17k+5に切り上げ）",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "ceil((max(round(a * 24), 5) - 5) / 17) * 17 + 5"
+   ],
+   "widgets_values_named": {
+    "expression": "ceil((max(round(a * 24), 5) - 5) / 17) * 17 + 5"
+   }
+  },
+  {
+   "id": 103,
+   "type": "ComfyMathExpression",
+   "pos": [
+    2860,
+    0
+   ],
+   "size": [
+    330,
+    150
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 64
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      66,
+      67,
+      68
+     ]
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": null
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "最後のフレームの時刻（秒）",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "(a - 1) / 24"
+   ],
+   "widgets_values_named": {
+    "expression": "(a - 1) / 24"
+   }
+  },
+  {
+   "id": 104,
+   "type": "ComfyMathExpression",
+   "pos": [
+    3230,
+    0
+   ],
+   "size": [
+    330,
+    150
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 67
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      69
+     ]
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": null
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "衣装 A に着替える時刻（全体の32%）",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "a * 0.32"
+   ],
+   "widgets_values_named": {
+    "expression": "a * 0.32"
+   }
+  },
+  {
+   "id": 105,
+   "type": "ComfyMathExpression",
+   "pos": [
+    3230,
+    210
+   ],
+   "size": [
+    330,
+    150
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 68
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      70
+     ]
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": null
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "衣装 B に着替える時刻（全体の64%）",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "a * 0.64"
+   ],
+   "widgets_values_named": {
+    "expression": "a * 0.64"
+   }
+  },
+  {
+   "id": 106,
+   "type": "ComfyMathExpression",
+   "pos": [
+    2860,
+    210
+   ],
+   "size": [
+    330,
+    150
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 65
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": null
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      71
+     ]
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "中間ポーズのフレーム（全体の48%）",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "round((a - 1) * 0.48)"
+   ],
+   "widgets_values_named": {
+    "expression": "round((a - 1) * 0.48)"
+   }
+  },
+  {
+   "id": 107,
+   "type": "PrimitiveInt",
+   "pos": [
+    1970,
+    0
+   ],
+   "size": [
+    440,
+    90
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "INT",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      72
+     ]
+    }
+   ],
+   "title": "シード（randomize＝毎回ランダム／fixed＝固定）",
+   "properties": {
+    "Node name for S&R": "PrimitiveInt"
+   },
+   "widgets_values": [
+    42,
+    "randomize"
+   ],
+   "widgets_values_named": {
+    "value": 42,
+    "control_after_generate": "randomize"
+   },
+   "color": "#232",
+   "bgcolor": "#353"
+  },
+  {
+   "id": 108,
+   "type": "ComfyMathExpression",
+   "pos": [
+    2040,
+    1760
+   ],
+   "size": [
+    330,
+    150
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 72
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": null
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      94
+     ]
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "シードを0以上にそろえる",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "abs(a)"
+   ],
+   "widgets_values_named": {
+    "expression": "abs(a)"
+   }
+  },
+  {
+   "id": 109,
+   "type": "ComfyMathExpression",
+   "pos": [
+    2410,
+    1760
+   ],
+   "size": [
+    330,
+    150
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 73
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": null
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      79,
+      91
+     ]
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "振付①の番号（1〜5）",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "a % 5 + 1"
+   ],
+   "widgets_values_named": {
+    "expression": "a % 5 + 1"
+   }
+  },
+  {
+   "id": 110,
+   "type": "ComfyMathExpression",
+   "pos": [
+    2410,
+    2110
+   ],
+   "size": [
+    330,
+    150
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 74
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": null
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      83,
+      92
+     ]
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "中間ポーズ②の番号（1〜5）",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "a // 5 % 5 + 1"
+   ],
+   "widgets_values_named": {
+    "expression": "a // 5 % 5 + 1"
+   }
+  },
+  {
+   "id": 111,
+   "type": "ComfyMathExpression",
+   "pos": [
+    2410,
+    2460
+   ],
+   "size": [
+    330,
+    150
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": 75
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "FLOAT,INT,BOOLEAN",
+     "link": null
+    },
+    {
+     "localized_name": "式",
+     "name": "expression",
+     "type": "STRING",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": null
+    },
+    {
+     "localized_name": "整数",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      87,
+      93
+     ]
+    },
+    {
+     "localized_name": "BOOL",
+     "name": "BOOL",
+     "type": "BOOLEAN",
+     "links": null
+    }
+   ],
+   "title": "終点ポーズ③の番号（1〜5）",
+   "properties": {
+    "Node name for S&R": "ComfyMathExpression"
+   },
+   "widgets_values": [
+    "a // 25 % 5 + 1"
+   ],
+   "widgets_values_named": {
+    "expression": "a // 25 % 5 + 1"
+   }
+  },
+  {
+   "id": 112,
+   "type": "PrimitiveStringMultiline",
+   "pos": [
+    0,
+    1760
+   ],
+   "size": [
+    760,
+    720
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      80
+     ]
+    }
+   ],
+   "title": "振付① 動画の動き（5種類）",
+   "properties": {
+    "Node name for S&R": "PrimitiveStringMultiline"
+   },
+   "widgets_values": [
+    "<<1>>\nHow the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the {c:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer releases the opening pose, brings the arms down and shifts weight to one side, carrying the shoulders and forearms into an outward sweep. At {d:.2f} seconds the clothes change to {a} as the forearms continue their arc at the same speed. The dancer reverses direction into two sharp syncopated accents, then rolls the shoulders toward the camera as the elbows open. The shoulder roll brings the dancer into a brief accent with both elbows bent and palms forward near the shoulders. At {e:.2f} seconds the outfit becomes {b} on that accent, with the head, shoulders, elbows and palms in the same positions across the change. The palms then sweep outward together into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose.\n\n<<2>>\nHow the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the {c:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer drops the opening pose into a relaxed bounce on the beat, the knees giving slightly while the shoulders pop up and down in rhythm. One arm swings across the body and back, and the other arm answers it. At {d:.2f} seconds the clothes change to {a} in the middle of a bounce, with the arm swing continuing at the same speed. The dancer adds two quick chest pops, slides the shoulders side to side, and passes through a brief held accent before rocking back into the groove. On a downbeat the dancer snaps both fists in to chest height with the elbows out. At {e:.2f} seconds the outfit becomes {b} on that hit, with the head, shoulders, elbows and fists in the same positions across the change. The fists open and the arms swing out loosely into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose.\n\n<<3>>\nHow the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the {c:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer lifts both hands from the opening pose and marks the beat with small side steps, tilting the head left and right. One hand traces a small circle beside the cheek while the other sways at waist height. At {d:.2f} seconds the clothes change to {a} as the circling hand continues at the same speed. The dancer points toward the camera on two accents, switches hands, and passes through a brief held pose before swaying the shoulders in time. Both hands come up beside the face with the palms open toward the camera. At {e:.2f} seconds the outfit becomes {b} on that gesture, with the head, shoulders, elbows and hands in the same positions across the change. The hands then spread down and outward into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose.\n\n<<4>>\nHow the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the {c:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer melts out of the opening pose into a slow body roll that travels from the chest down to the hips. A wave runs through one arm from the shoulder to the fingertips, crosses the chest, and continues down the other arm. At {d:.2f} seconds the clothes change to {a} while the wave passes through the shoulders, keeping the same speed. The dancer sends the wave back in the opposite direction, adds a smooth hip sway, and passes through a brief held accent before the next roll. The arms then extend on a diagonal, one hand reaching up to head height and the other reaching down. At {e:.2f} seconds the outfit becomes {b} on that diagonal line, with the head, shoulders, elbows and hands in the same positions across the change. The arms fold in and open out into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose.\n\n<<5>>\nHow the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the {c:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer leaves the opening pose with a light bounce in place and claps twice on the beat in front of the chest. The arms swing alternately forward and back while the shoulders bounce. At {d:.2f} seconds the clothes change to {a} between two claps, with the arm swing continuing at the same speed. The dancer punches one fist forward, then the other, and passes through a brief held accent before clapping again. Both arms rise into a wide V at shoulder height with the hands open. At {e:.2f} seconds the outfit becomes {b} on that V, with the head, shoulders, elbows and hands in the same positions across the change. The arms then sweep down and back up into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose."
+   ],
+   "widgets_values_named": {
+    "value": "<<1>>\nHow the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the {c:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer releases the opening pose, brings the arms down and shifts weight to one side, carrying the shoulders and forearms into an outward sweep. At {d:.2f} seconds the clothes change to {a} as the forearms continue their arc at the same speed. The dancer reverses direction into two sharp syncopated accents, then rolls the shoulders toward the camera as the elbows open. The shoulder roll brings the dancer into a brief accent with both elbows bent and palms forward near the shoulders. At {e:.2f} seconds the outfit becomes {b} on that accent, with the head, shoulders, elbows and palms in the same positions across the change. The palms then sweep outward together into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose.\n\n<<2>>\nHow the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the {c:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer drops the opening pose into a relaxed bounce on the beat, the knees giving slightly while the shoulders pop up and down in rhythm. One arm swings across the body and back, and the other arm answers it. At {d:.2f} seconds the clothes change to {a} in the middle of a bounce, with the arm swing continuing at the same speed. The dancer adds two quick chest pops, slides the shoulders side to side, and passes through a brief held accent before rocking back into the groove. On a downbeat the dancer snaps both fists in to chest height with the elbows out. At {e:.2f} seconds the outfit becomes {b} on that hit, with the head, shoulders, elbows and fists in the same positions across the change. The fists open and the arms swing out loosely into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose.\n\n<<3>>\nHow the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the {c:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer lifts both hands from the opening pose and marks the beat with small side steps, tilting the head left and right. One hand traces a small circle beside the cheek while the other sways at waist height. At {d:.2f} seconds the clothes change to {a} as the circling hand continues at the same speed. The dancer points toward the camera on two accents, switches hands, and passes through a brief held pose before swaying the shoulders in time. Both hands come up beside the face with the palms open toward the camera. At {e:.2f} seconds the outfit becomes {b} on that gesture, with the head, shoulders, elbows and hands in the same positions across the change. The hands then spread down and outward into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose.\n\n<<4>>\nHow the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the {c:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer melts out of the opening pose into a slow body roll that travels from the chest down to the hips. A wave runs through one arm from the shoulder to the fingertips, crosses the chest, and continues down the other arm. At {d:.2f} seconds the clothes change to {a} while the wave passes through the shoulders, keeping the same speed. The dancer sends the wave back in the opposite direction, adds a smooth hip sway, and passes through a brief held accent before the next roll. The arms then extend on a diagonal, one hand reaching up to head height and the other reaching down. At {e:.2f} seconds the outfit becomes {b} on that diagonal line, with the head, shoulders, elbows and hands in the same positions across the change. The arms fold in and open out into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose.\n\n<<5>>\nHow the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the {c:.2f}-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single locked-off take opens in the original framing and visual style of Picture 1. The dancer starts in the pictured pose in front of the same background. The surroundings stay in the same positions and the dancer's face and hair stay consistent. The dancer leaves the opening pose with a light bounce in place and claps twice on the beat in front of the chest. The arms swing alternately forward and back while the shoulders bounce. At {d:.2f} seconds the clothes change to {a} between two claps, with the arm swing continuing at the same speed. The dancer punches one fist forward, then the other, and passes through a brief held accent before clapping again. Both arms rise into a wide V at shoulder height with the hands open. At {e:.2f} seconds the outfit becomes {b} on that V, with the head, shoulders, elbows and hands in the same positions across the change. The arms then sweep down and back up into the finishing gesture. The phrase ends in the same scene, settling into the pose and clothes in Picture 2.\n\noverall_soundscape: Gentle fabric movement follows the larger gestures.\n\nnon_diegetic_music: One continuous 120 BPM dance-pop groove with kick, bass and claps plays from the opening beat through the final pose."
+   }
+  },
+  {
+   "id": 113,
+   "type": "PrimitiveStringMultiline",
+   "pos": [
+    800,
+    1760
+   ],
+   "size": [
+    560,
+    720
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      84
+     ]
+    }
+   ],
+   "title": "② 中間ポーズ（5種類）",
+   "properties": {
+    "Node name for S&R": "PrimitiveStringMultiline"
+   },
+   "widgets_values": [
+    "<<1>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body leans to one side, one forearm crossing in front of the chest, with the other hand open low to the side. The clothing and movement share the source medium and light.\n\n<<2>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the shoulders angle toward one side and the body dips slightly, with both fists pulled in at chest height and the elbows out. The clothing and movement share the source medium and light.\n\n<<3>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the weight rests on one hip, one hand on that hip and the other arm extended diagonally up and out to the side with an open palm, within the visible crop. The clothing and movement share the source medium and light.\n\n<<4>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body turns three-quarters away and looks back at the camera over one shoulder, with one hand pointing toward the camera. The clothing and movement share the source medium and light.\n\n<<5>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose both forearms are raised beside the face with the palms facing outward, framing the face without covering it, and the head tilts to one side. The clothing and movement share the source medium and light."
+   ],
+   "widgets_values_named": {
+    "value": "<<1>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body leans to one side, one forearm crossing in front of the chest, with the other hand open low to the side. The clothing and movement share the source medium and light.\n\n<<2>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the shoulders angle toward one side and the body dips slightly, with both fists pulled in at chest height and the elbows out. The clothing and movement share the source medium and light.\n\n<<3>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the weight rests on one hip, one hand on that hip and the other arm extended diagonally up and out to the side with an open palm, within the visible crop. The clothing and movement share the source medium and light.\n\n<<4>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body turns three-quarters away and looks back at the camera over one shoulder, with one hand pointing toward the camera. The clothing and movement share the source medium and light.\n\n<<5>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose both forearms are raised beside the face with the palms facing outward, framing the face without covering it, and the head tilts to one side. The clothing and movement share the source medium and light."
+   }
+  },
+  {
+   "id": 114,
+   "type": "PrimitiveStringMultiline",
+   "pos": [
+    1400,
+    1760
+   ],
+   "size": [
+    560,
+    720
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      88
+     ]
+    }
+   ],
+   "title": "③ 終点ポーズ（5種類）",
+   "properties": {
+    "Node name for S&R": "PrimitiveStringMultiline"
+   },
+   "widgets_values": [
+    "<<1>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose turns the chest toward the camera, chin raised, and opens both forearms outward with elbows bent and open hands spread away from the face within the visible crop. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>.\n\n<<2>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose tilts the head with a smile, one hand making a peace sign beside the eye and the other hand resting on the hip, within the visible crop. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>.\n\n<<3>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose crosses both arms over the chest with the chin slightly lowered, a confident smile, and the weight shifted onto one leg. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>.\n\n<<4>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose extends one arm toward the camera with the index finger pointing at the viewer, while the other hand rests on the hip, within the visible crop. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>.\n\n<<5>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose leans slightly toward the camera with both hands forming a heart shape in front of the chest. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>."
+   ],
+   "widgets_values_named": {
+    "value": "<<1>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose turns the chest toward the camera, chin raised, and opens both forearms outward with elbows bent and open hands spread away from the face within the visible crop. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>.\n\n<<2>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose tilts the head with a smile, one hand making a peace sign beside the eye and the other hand resting on the hip, within the visible crop. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>.\n\n<<3>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose crosses both arms over the chest with the chin slightly lowered, a confident smile, and the weight shifted onto one leg. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>.\n\n<<4>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose extends one arm toward the camera with the index finger pointing at the viewer, while the other hand rests on the hip, within the visible crop. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>.\n\n<<5>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target picture shows <Subject 2> at the end of a dance, dressed in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: the same person has the original face, eyes, hair and accessories at the original scale and position. The new pose leans slightly toward the camera with both hands forming a heart shape in front of the chest. The new pose and clothes retain the rendering medium, palette and lighting of <Picture 1>."
+   }
+  },
+  {
+   "id": 115,
+   "type": "StringFormat",
+   "pos": [
+    2780,
+    1760
+   ],
+   "size": [
+    360,
+    130
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "shape": 7,
+     "type": "*",
+     "link": 79
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "*",
+     "link": null
+    },
+    {
+     "localized_name": "f_string",
+     "name": "f_string",
+     "type": "STRING",
+     "widget": {
+      "name": "f_string"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      81
+     ]
+    }
+   ],
+   "title": "振付①を取り出す条件",
+   "properties": {
+    "Node name for S&R": "StringFormat"
+   },
+   "widgets_values": [
+    "(?s)^.*?<<{a}>>\\s*(.*?)\\s*(?:<<\\d+>>.*)?$"
+   ],
+   "widgets_values_named": {
+    "f_string": "(?s)^.*?<<{a}>>\\s*(.*?)\\s*(?:<<\\d+>>.*)?$"
+   }
+  },
+  {
+   "id": 116,
+   "type": "StringFormat",
+   "pos": [
+    2780,
+    2110
+   ],
+   "size": [
+    360,
+    130
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "shape": 7,
+     "type": "*",
+     "link": 83
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "*",
+     "link": null
+    },
+    {
+     "localized_name": "f_string",
+     "name": "f_string",
+     "type": "STRING",
+     "widget": {
+      "name": "f_string"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      85
+     ]
+    }
+   ],
+   "title": "中間ポーズ②を取り出す条件",
+   "properties": {
+    "Node name for S&R": "StringFormat"
+   },
+   "widgets_values": [
+    "(?s)^.*?<<{a}>>\\s*(.*?)\\s*(?:<<\\d+>>.*)?$"
+   ],
+   "widgets_values_named": {
+    "f_string": "(?s)^.*?<<{a}>>\\s*(.*?)\\s*(?:<<\\d+>>.*)?$"
+   }
+  },
+  {
+   "id": 117,
+   "type": "StringFormat",
+   "pos": [
+    2780,
+    2460
+   ],
+   "size": [
+    360,
+    130
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "shape": 7,
+     "type": "*",
+     "link": 87
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "*",
+     "link": null
+    },
+    {
+     "localized_name": "f_string",
+     "name": "f_string",
+     "type": "STRING",
+     "widget": {
+      "name": "f_string"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      89
+     ]
+    }
+   ],
+   "title": "終点ポーズ③を取り出す条件",
+   "properties": {
+    "Node name for S&R": "StringFormat"
+   },
+   "widgets_values": [
+    "(?s)^.*?<<{a}>>\\s*(.*?)\\s*(?:<<\\d+>>.*)?$"
+   ],
+   "widgets_values_named": {
+    "f_string": "(?s)^.*?<<{a}>>\\s*(.*?)\\s*(?:<<\\d+>>.*)?$"
+   }
+  },
+  {
+   "id": 118,
+   "type": "RegexReplace",
+   "pos": [
+    3180,
+    1760
+   ],
+   "size": [
+    400,
+    292
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "文字列",
+     "name": "string",
+     "type": "STRING",
+     "widget": {
+      "name": "string"
+     },
+     "link": 80
+    },
+    {
+     "localized_name": "正規表現パターン",
+     "name": "regex_pattern",
+     "type": "STRING",
+     "widget": {
+      "name": "regex_pattern"
+     },
+     "link": 81
+    },
+    {
+     "localized_name": "置換",
+     "name": "replace",
+     "type": "STRING",
+     "widget": {
+      "name": "replace"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "大文字小文字を区別しない",
+     "name": "case_insensitive",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "case_insensitive"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "複数行",
+     "name": "multiline",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "multiline"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "ドット全一致",
+     "name": "dotall",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "dotall"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "回数",
+     "name": "count",
+     "shape": 7,
+     "type": "INT",
+     "widget": {
+      "name": "count"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      82
+     ]
+    }
+   ],
+   "title": "選ばれた振付①",
+   "properties": {
+    "Node name for S&R": "RegexReplace"
+   },
+   "widgets_values": [
+    "",
+    "",
+    "\\1",
+    true,
+    false,
+    false,
+    0
+   ],
+   "widgets_values_named": {
+    "string": "",
+    "regex_pattern": "",
+    "replace": "\\1",
+    "case_insensitive": true,
+    "multiline": false,
+    "dotall": false,
+    "count": 0
+   }
+  },
+  {
+   "id": 119,
+   "type": "RegexReplace",
+   "pos": [
+    3180,
+    2110
+   ],
+   "size": [
+    400,
+    292
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "文字列",
+     "name": "string",
+     "type": "STRING",
+     "widget": {
+      "name": "string"
+     },
+     "link": 84
+    },
+    {
+     "localized_name": "正規表現パターン",
+     "name": "regex_pattern",
+     "type": "STRING",
+     "widget": {
+      "name": "regex_pattern"
+     },
+     "link": 85
+    },
+    {
+     "localized_name": "置換",
+     "name": "replace",
+     "type": "STRING",
+     "widget": {
+      "name": "replace"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "大文字小文字を区別しない",
+     "name": "case_insensitive",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "case_insensitive"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "複数行",
+     "name": "multiline",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "multiline"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "ドット全一致",
+     "name": "dotall",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "dotall"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "回数",
+     "name": "count",
+     "shape": 7,
+     "type": "INT",
+     "widget": {
+      "name": "count"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      86
+     ]
+    }
+   ],
+   "title": "選ばれた中間ポーズ②",
+   "properties": {
+    "Node name for S&R": "RegexReplace"
+   },
+   "widgets_values": [
+    "",
+    "",
+    "\\1",
+    true,
+    false,
+    false,
+    0
+   ],
+   "widgets_values_named": {
+    "string": "",
+    "regex_pattern": "",
+    "replace": "\\1",
+    "case_insensitive": true,
+    "multiline": false,
+    "dotall": false,
+    "count": 0
+   }
+  },
+  {
+   "id": 120,
+   "type": "RegexReplace",
+   "pos": [
+    3180,
+    2460
+   ],
+   "size": [
+    400,
+    292
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "文字列",
+     "name": "string",
+     "type": "STRING",
+     "widget": {
+      "name": "string"
+     },
+     "link": 88
+    },
+    {
+     "localized_name": "正規表現パターン",
+     "name": "regex_pattern",
+     "type": "STRING",
+     "widget": {
+      "name": "regex_pattern"
+     },
+     "link": 89
+    },
+    {
+     "localized_name": "置換",
+     "name": "replace",
+     "type": "STRING",
+     "widget": {
+      "name": "replace"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "大文字小文字を区別しない",
+     "name": "case_insensitive",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "case_insensitive"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "複数行",
+     "name": "multiline",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "multiline"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "ドット全一致",
+     "name": "dotall",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "dotall"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "回数",
+     "name": "count",
+     "shape": 7,
+     "type": "INT",
+     "widget": {
+      "name": "count"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      90
+     ]
+    }
+   ],
+   "title": "選ばれた終点ポーズ③",
+   "properties": {
+    "Node name for S&R": "RegexReplace"
+   },
+   "widgets_values": [
+    "",
+    "",
+    "\\1",
+    true,
+    false,
+    false,
+    0
+   ],
+   "widgets_values_named": {
+    "string": "",
+    "regex_pattern": "",
+    "replace": "\\1",
+    "case_insensitive": true,
+    "multiline": false,
+    "dotall": false,
+    "count": 0
+   }
+  },
+  {
+   "id": 121,
+   "type": "StringFormat",
+   "pos": [
+    2040,
+    2110
+   ],
+   "size": [
+    330,
+    200
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "values.a",
+     "shape": 7,
+     "type": "*",
+     "link": 91
+    },
+    {
+     "localized_name": "b",
+     "name": "values.b",
+     "shape": 7,
+     "type": "*",
+     "link": 92
+    },
+    {
+     "localized_name": "c",
+     "name": "values.c",
+     "shape": 7,
+     "type": "*",
+     "link": 93
+    },
+    {
+     "localized_name": "d",
+     "name": "values.d",
+     "shape": 7,
+     "type": "*",
+     "link": 94
+    },
+    {
+     "localized_name": "e",
+     "name": "values.e",
+     "shape": 7,
+     "type": "*",
+     "link": null
+    },
+    {
+     "localized_name": "f_string",
+     "name": "f_string",
+     "type": "STRING",
+     "widget": {
+      "name": "f_string"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      95
+     ]
+    }
+   ],
+   "title": "選ばれた組み合わせの文",
+   "properties": {
+    "Node name for S&R": "StringFormat"
+   },
+   "widgets_values": [
+    "振付① {a} 番 × 中間ポーズ② {b} 番 × 終点ポーズ③ {c} 番（シード {d}）"
+   ],
+   "widgets_values_named": {
+    "f_string": "振付① {a} 番 × 中間ポーズ② {b} 番 × 終点ポーズ③ {c} 番（シード {d}）"
+   }
+  },
+  {
+   "id": 122,
+   "type": "PreviewAny",
+   "pos": [
+    1970,
+    150
+   ],
+   "size": [
+    440,
+    200
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "ソース",
+     "name": "source",
+     "type": "*",
+     "link": 95
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "文字列",
+     "name": "STRING",
+     "type": "STRING",
+     "links": null
+    }
+   ],
+   "title": "選ばれた振付（実行後に表示）",
+   "properties": {
+    "Node name for S&R": "PreviewAny"
+   },
+   "widgets_values": [],
+   "widgets_values_named": {}
   }
  ],
  "links": [
@@ -2948,16 +4511,419 @@
    65,
    4,
    "IMAGE"
+  ],
+  [
+   62,
+   101,
+   0,
+   102,
+   0,
+   "FLOAT"
+  ],
+  [
+   63,
+   102,
+   1,
+   30,
+   7,
+   "INT"
+  ],
+  [
+   64,
+   102,
+   1,
+   103,
+   0,
+   "INT"
+  ],
+  [
+   65,
+   102,
+   1,
+   106,
+   0,
+   "INT"
+  ],
+  [
+   66,
+   103,
+   0,
+   11,
+   2,
+   "FLOAT"
+  ],
+  [
+   67,
+   103,
+   0,
+   104,
+   0,
+   "FLOAT"
+  ],
+  [
+   68,
+   103,
+   0,
+   105,
+   0,
+   "FLOAT"
+  ],
+  [
+   69,
+   104,
+   0,
+   11,
+   3,
+   "FLOAT"
+  ],
+  [
+   70,
+   105,
+   0,
+   11,
+   4,
+   "FLOAT"
+  ],
+  [
+   71,
+   106,
+   1,
+   65,
+   6,
+   "INT"
+  ],
+  [
+   72,
+   107,
+   0,
+   108,
+   0,
+   "INT"
+  ],
+  [
+   73,
+   108,
+   1,
+   109,
+   0,
+   "INT"
+  ],
+  [
+   74,
+   108,
+   1,
+   110,
+   0,
+   "INT"
+  ],
+  [
+   75,
+   108,
+   1,
+   111,
+   0,
+   "INT"
+  ],
+  [
+   76,
+   108,
+   1,
+   33,
+   0,
+   "INT"
+  ],
+  [
+   77,
+   108,
+   1,
+   55,
+   4,
+   "INT"
+  ],
+  [
+   78,
+   108,
+   1,
+   63,
+   4,
+   "INT"
+  ],
+  [
+   79,
+   109,
+   1,
+   115,
+   0,
+   "INT"
+  ],
+  [
+   80,
+   112,
+   0,
+   118,
+   0,
+   "STRING"
+  ],
+  [
+   81,
+   115,
+   0,
+   118,
+   1,
+   "STRING"
+  ],
+  [
+   82,
+   118,
+   0,
+   11,
+   6,
+   "STRING"
+  ],
+  [
+   83,
+   110,
+   1,
+   116,
+   0,
+   "INT"
+  ],
+  [
+   84,
+   113,
+   0,
+   119,
+   0,
+   "STRING"
+  ],
+  [
+   85,
+   116,
+   0,
+   119,
+   1,
+   "STRING"
+  ],
+  [
+   86,
+   119,
+   0,
+   60,
+   2,
+   "STRING"
+  ],
+  [
+   87,
+   111,
+   1,
+   117,
+   0,
+   "INT"
+  ],
+  [
+   88,
+   114,
+   0,
+   120,
+   0,
+   "STRING"
+  ],
+  [
+   89,
+   117,
+   0,
+   120,
+   1,
+   "STRING"
+  ],
+  [
+   90,
+   120,
+   0,
+   52,
+   2,
+   "STRING"
+  ],
+  [
+   91,
+   109,
+   1,
+   121,
+   0,
+   "INT"
+  ],
+  [
+   92,
+   110,
+   1,
+   121,
+   1,
+   "INT"
+  ],
+  [
+   93,
+   111,
+   1,
+   121,
+   2,
+   "INT"
+  ],
+  [
+   94,
+   108,
+   1,
+   121,
+   3,
+   "INT"
+  ],
+  [
+   95,
+   121,
+   0,
+   122,
+   0,
+   "STRING"
   ]
  ],
- "groups": [],
+ "groups": [
+  {
+   "id": 1,
+   "title": "① 操作パネル：画像・衣装 A/B・長さ・シードを指定して実行 → 完成動画",
+   "bounding": [
+    -20,
+    -80,
+    2450,
+    620
+   ],
+   "color": "#8A8",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 2,
+   "title": "② 長さと時刻の計算（自動）",
+   "bounding": [
+    2470,
+    -80,
+    1110,
+    460
+   ],
+   "color": "#88A",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 3,
+   "title": "③ モデル読み込み（ファイル名だけ確認）",
+   "bounding": [
+    -20,
+    680,
+    880,
+    835
+   ],
+   "color": "#444",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 4,
+   "title": "④ サイズ調整（自動）",
+   "bounding": [
+    900,
+    680,
+    340,
+    580
+   ],
+   "color": "#88A",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 5,
+   "title": "⑤ 中間画像の生成（衣装 A・約半分の時刻のポーズ）",
+   "bounding": [
+    1280,
+    680,
+    1500,
+    420
+   ],
+   "color": "#3f789e",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 6,
+   "title": "⑥ 終点画像の生成（衣装 B・最後のポーズ）",
+   "bounding": [
+    1280,
+    1160,
+    1490,
+    420
+   ],
+   "color": "#3f789e",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 7,
+   "title": "⑦ 動画と音楽の生成",
+   "bounding": [
+    2810,
+    680,
+    1690,
+    620
+   ],
+   "color": "#a1309b",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 8,
+   "title": "⑧ MP4に書き出し",
+   "bounding": [
+    4540,
+    680,
+    330,
+    560
+   ],
+   "color": "#b06634",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 9,
+   "title": "⑨ 振付リスト（各5種類・書き換えできます）",
+   "bounding": [
+    -20,
+    1680,
+    2000,
+    820
+   ],
+   "color": "#b58b2a",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 10,
+   "title": "⑩ シードから振付を選ぶ（自動）",
+   "bounding": [
+    2020,
+    1680,
+    1580,
+    1092
+   ],
+   "color": "#88A",
+   "font_size": 24,
+   "flags": {}
+  }
+ ],
  "config": {},
  "extra": {
   "ds": {
-   "scale": 0.82,
+   "scale": 0.75,
    "offset": [
-    55,
-    85
+    60,
+    120
    ]
   }
  },
