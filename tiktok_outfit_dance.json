@@ -1,8 +1,8 @@
 {
  "id": "c1eaead8-abfe-4fac-ac9b-410cc7be41cd",
  "revision": 0,
- "last_node_id": 122,
- "last_link_id": 95,
+ "last_node_id": 123,
+ "last_link_id": 96,
  "nodes": [
   {
    "id": 1,
@@ -204,7 +204,7 @@
      "widget": {
       "name": "resize_type.megapixels"
      },
-     "link": null
+     "link": 96
     },
     {
      "localized_name": "scale_method",
@@ -2483,7 +2483,7 @@
    "properties": {},
    "title": "使い方と必要モデル",
    "widgets_values": [
-    "① 人物画像を選択 → ② 衣装 A・B を短い英語で指定 → ③ 動画の長さ（秒）を指定 → ④ 実行を1回。元の服 → A → B の順に着替える音楽付き動画です。\n\n長さは24 fpsで「17k+5」フレームに切り上げます（初期値5秒 → 124フレーム＝5.17秒、10秒 → 243フレーム＝10.13秒）。モデルの学習範囲は約5〜15秒（124〜362フレーム）です。衣装変更の指示は全体の約1/3と2/3、中間ポーズは約半分の時刻に自動で入ります。実際の時刻は生成結果によりずれます。\n\n出力は `output/TikTokMV/`。ComfyUI 0.45.0で検証。カスタムノード不要。各生成は12 GB GPU 1枚で実行。画像条件2枚と動画・音楽を順に自動生成します。\n\nシードは初期設定で毎回ランダム（randomize）。同じ結果を再現したいときは fixed にして、「選ばれた振付」に表示されたシード値を入れます。シードから振付①・中間ポーズ②・終点ポーズ③が各5種類から選ばれます（5×5×5＝125通り）。振付の文章は⑨で書き換えられます（<<1>>〜<<5>> の見出しは残してください）。\n\n必要モデルは `ComfyUI/models/` 内の各フォルダーに配置します。\n\n- [diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors)\n- [loras/minimax-h3/minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors](https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/main/minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors)\n- [text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors)\n- [vae/minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors)\n- [vae/minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors)\n- [diffusion_models/minimax_h3_image_pruned_w4a8.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/diffusion_models/minimax_h3_image_pruned_w4a8.safetensors)\n- [vae/minimax_h3_image_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/vae/minimax_h3_image_vae_fp16.safetensors)\n\n画像は比率を保って縮小し、32px単位に揃える際に端をわずかに中央クロップします。生成した映像・音声に修復・差し替えは行いません。"
+    "① 人物画像を選択 → ② 衣装 A・B を短い英語で指定 → ③ 動画の長さ（秒）を指定 → ④ 実行を1回。元の服 → A → B の順に着替える音楽付き動画です。\n\n長さは24 fpsで「17k+5」フレームに切り上げます（初期値5秒 → 124フレーム＝5.17秒、10秒 → 243フレーム＝10.13秒）。モデルの学習範囲は約5〜15秒（124〜362フレーム）です。衣装変更の指示は全体の約1/3と2/3、中間ポーズは約半分の時刻に自動で入ります。実際の時刻は生成結果によりずれます。\n\n出力は `output/TikTokMV/`。ComfyUI 0.45.0で検証。カスタムノード不要。各生成は12 GB GPU 1枚で実行。画像条件2枚と動画・音楽を順に自動生成します。\n\nシードは初期設定で毎回ランダム（randomize）。同じ結果を再現したいときは fixed にして、「選ばれた振付」に表示されたシード値を入れます。シードから振付①・中間ポーズ②・終点ポーズ③が各5種類から選ばれます（5×5×5＝125通り）。振付の文章は⑨で書き換えられます（<<1>>〜<<5>> の見出しは残してください）。\n\n必要モデルは `ComfyUI/models/` 内の各フォルダーに配置します。\n\n- [diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors)\n- [loras/minimax-h3/minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors](https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/main/minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors)\n- [text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors)\n- [vae/minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors)\n- [vae/minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors)\n- [diffusion_models/minimax_h3_image_pruned_w4a8.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/diffusion_models/minimax_h3_image_pruned_w4a8.safetensors)\n- [vae/minimax_h3_image_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/vae/minimax_h3_image_vae_fp16.safetensors)\n\n画像は「解像度（メガピクセル）」の画素数まで比率を保って縮小し、32px単位に揃える際に端をわずかに中央クロップします（初期値0.62：2:3の画像で640×960）。4ステップLoRAは768p向けです（2:3の画像なら0.85で768×1152）。解像度や長さを上げるほどVRAMと時間が増えます（12 GBで確認したのは0.62・10秒まで）。生成した映像・音声に修復・差し替えは行いません。"
    ],
    "color": "#432",
    "bgcolor": "#653"
@@ -3324,10 +3324,10 @@
     "Node name for S&R": "PrimitiveStringMultiline"
    },
    "widgets_values": [
-    "<<1>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body leans to one side, one forearm crossing in front of the chest, with the other hand open low to the side. The clothing and movement share the source medium and light.\n\n<<2>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the shoulders angle toward one side and the body dips slightly, with both fists pulled in at chest height and the elbows out. The clothing and movement share the source medium and light.\n\n<<3>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the weight rests on one hip, one hand on that hip and the other arm extended diagonally up and out to the side with an open palm, within the visible crop. The clothing and movement share the source medium and light.\n\n<<4>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body turns three-quarters away and looks back at the camera over one shoulder, with one hand pointing toward the camera. The clothing and movement share the source medium and light.\n\n<<5>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose both forearms are raised beside the face with the palms facing outward, framing the face without covering it, and the head tilts to one side. The clothing and movement share the source medium and light."
+    "<<1>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body leans to one side, one forearm crossing in front of the chest, with the other hand open low to the side. The clothing and movement share the source medium and light.\n\n<<2>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the shoulders angle toward one side and the body dips slightly, with both fists pulled in at chest height and the elbows out. The clothing and movement share the source medium and light.\n\n<<3>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the weight rests on one hip, one hand on that hip and the other arm extended diagonally up and out to the side with an open palm, within the visible crop. The clothing and movement share the source medium and light.\n\n<<4>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body faces the camera and leans slightly to one side, with both hands clasped together in front of the chest and the head tilted. The clothing and movement share the source medium and light.\n\n<<5>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose both forearms are raised beside the face with the palms facing outward, framing the face without covering it, and the head tilts to one side. The clothing and movement share the source medium and light."
    ],
    "widgets_values_named": {
-    "value": "<<1>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body leans to one side, one forearm crossing in front of the chest, with the other hand open low to the side. The clothing and movement share the source medium and light.\n\n<<2>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the shoulders angle toward one side and the body dips slightly, with both fists pulled in at chest height and the elbows out. The clothing and movement share the source medium and light.\n\n<<3>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the weight rests on one hip, one hand on that hip and the other arm extended diagonally up and out to the side with an open palm, within the visible crop. The clothing and movement share the source medium and light.\n\n<<4>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body turns three-quarters away and looks back at the camera over one shoulder, with one hand pointing toward the camera. The clothing and movement share the source medium and light.\n\n<<5>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose both forearms are raised beside the face with the palms facing outward, framing the face without covering it, and the head tilts to one side. The clothing and movement share the source medium and light."
+    "value": "<<1>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body leans to one side, one forearm crossing in front of the chest, with the other hand open low to the side. The clothing and movement share the source medium and light.\n\n<<2>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the shoulders angle toward one side and the body dips slightly, with both fists pulled in at chest height and the elbows out. The clothing and movement share the source medium and light.\n\n<<3>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the weight rests on one hip, one hand on that hip and the other arm extended diagonally up and out to the side with an open palm, within the visible crop. The clothing and movement share the source medium and light.\n\n<<4>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose the body faces the camera and leans slightly to one side, with both hands clasped together in front of the chest and the head tilted. The clothing and movement share the source medium and light.\n\n<<5>>\nThe visible background and its placement in the locked camera frame in <Picture 1> are <Subject 1>. The person in <Picture 1> is <Subject 2>. The target image shows <Subject 2> dancing in {a}. <Subject 1> is fully preserved. <Subject 2> is partially preserved: retain the precise face, eyes, hairstyle and original hair accessories, and keep the person at the same scale in frame. In the new pose both forearms are raised beside the face with the palms facing outward, framing the face without covering it, and the head tilts to one side. The clothing and movement share the source medium and light."
    }
   },
   {
@@ -3990,7 +3990,7 @@
    "type": "PreviewAny",
    "pos": [
     1970,
-    150
+    270
    ],
    "size": [
     440,
@@ -4021,6 +4021,54 @@
    },
    "widgets_values": [],
    "widgets_values_named": {}
+  },
+  {
+   "id": 123,
+   "type": "PrimitiveFloat",
+   "pos": [
+    1970,
+    150
+   ],
+   "size": [
+    440,
+    60
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "値",
+     "name": "value",
+     "type": "FLOAT",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "浮動小数点",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      96
+     ]
+    }
+   ],
+   "title": "解像度（メガピクセル・初期値0.62）",
+   "properties": {
+    "Node name for S&R": "PrimitiveFloat"
+   },
+   "widgets_values": [
+    0.62
+   ],
+   "widgets_values_named": {
+    "value": 0.62
+   },
+   "color": "#232",
+   "bgcolor": "#353"
   }
  ],
  "links": [
@@ -4783,12 +4831,20 @@
    122,
    0,
    "STRING"
+  ],
+  [
+   96,
+   123,
+   0,
+   5,
+   2,
+   "FLOAT"
   ]
  ],
  "groups": [
   {
    "id": 1,
-   "title": "① 操作パネル：画像・衣装 A/B・長さ・シードを指定して実行 → 完成動画",
+   "title": "① 操作パネル：画像・衣装 A/B・長さ・シード・解像度を指定して実行 → 完成動画",
    "bounding": [
     -20,
     -80,
