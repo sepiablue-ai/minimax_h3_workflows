@@ -323,6 +323,42 @@ Load one photo of a finished dish and write five short English step notes. MiniM
     - Write the notes in English. Japanese input tended to be drawn as on-screen text or labels in earlier versions.
     - Audio was not listened to in these runs.
 
+### 16. 10Eros-Max v1.0 Speed-Up (I2VA, 8 / 7 / 6 steps, core nodes only)
+
+Image-to-video for the community MiniMax H3 fine-tune [TenStrip/10Eros-Max](https://huggingface.co/TenStrip/10Eros-Max) (v1.0, 8-step Turbo, hybrid INT8). Comfy Kitchen INT8 attention, `BlockSparseAttention` (sol-attn) and the Sol VAE decoder make one pass **2.5–3.3× faster** than the plain PyTorch attention setup on an RTX 4070 12 GB. The three tested presets differ only in the step count, so they are merged into one workflow: change `steps` to 8, 7, or 6.
+
+10Eros-Max v1.0（MiniMax H3のコミュニティ製ファインチューン）の画像から動画（I2VA）を、ComfyUI純正ノードだけで高速化したワークフローです。Kitchen INT8アテンション・sol-attnの疎化・Sol VAEデコードの組み合わせで、RTX 4070 12GBでPyTorch標準構成の2.5〜3.3倍速になります。検証した3種類はステップ数だけが違うので、1本にまとめました。`steps` を8・7・6から選んでください。
+
+- **[`10eros_max_speedup_8-7-6step.json`](10eros_max_speedup_8-7-6step.json)**: ComfyUI Web UI workflow
+  - **Custom nodes**: none (ComfyUI core / `comfy_extras` nodes only, including `ModelAttentionBackend`, `BlockSparseAttention`, `MiniMaxH3ImageToVideo`, `MiniMaxH3SigmaShift`, and `PrimitiveStringMultiline`; validated on ComfyUI 0.45.0 with frontend 1.58.5). Comfy Kitchen attention uses the `comfy-kitchen` package from ComfyUI's `requirements.txt` and is available only on NVIDIA and AMD GPUs (tested on NVIDIA only). Node and group titles are in Japanese and English.
+  - **Inputs** (green "Settings" group): start image (any aspect ratio), prompt, resolution (`megapixels`, default 0.98), steps (8 / 7 / 6), and seed (fixed `42` by default). The generated video appears in the "Output" node right next to it and is saved as `output/10Eros_Speedup/10Eros_Sol_<steps>step_*.mp4`. The default image name is `first_frame.png`; put your own image in `ComfyUI/input/` or upload it on the node.
+  - **Presets** (RTX 4070 12 GB, 0.98 MP ≈ 768p, 124 frames / 24 fps / about 5.17 s, seed 42, warm run, one portrait test image; generation time is sampling plus video decode; speed-up is against PyTorch attention, 8 steps, standard video VAE at 507.4 s):
+
+    | `steps` | Generation time | Speed-up | Use |
+    |---:|---:|---:|---|
+    | 8 | 200.1 s | 2.54× | Standard (recommended) |
+    | 7 | 178.4 s | 2.84× | Faster, compare with 8 first |
+    | 6 | 156.0 s | 3.25× | Fastest |
+
+    Peak VRAM was about 11.5 GB at 0.98 MP. A cold start (after freeing models) took 218.7 s in total for 8 steps. Running the 6-step preset from the Web UI's Run button with an 832×1216 image took 167–170 s per video (three runs, from queueing to the saved video).
+  - **Pipeline**: `UNETLoader` (10Eros-Max hybrid INT8) → SigmaShift 12 / 3 → `ModelAttentionBackend` (comfy kitchen attention) → `BlockSparseAttention` (`sol-attn`, tau 1.3, start 0.10 so step 1 stays dense, dense blocks `0,1`) → Euler / simple. The start image is scaled to the set megapixels with `lanczos` in multiples of 32, keeping the aspect ratio (no crop or padding; 1248×1824 becomes 832×1216). The start image is encoded with the standard video VAE, and only the final decode uses the Sol VAE (about 12 s faster than the standard VAE decode).
+  - **Models**:
+
+    | Folder | File |
+    |---|---|
+    | `diffusion_models` | [`10Eros_Max_8stepTurbo_v1.0_hybrid-int8_HQ.safetensors`](https://huggingface.co/TenStrip/10Eros-Max/resolve/main/10Eros_Max_8stepTurbo_v1.0_hybrid-int8_HQ.safetensors) |
+    | `text_encoders` | [`qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) |
+    | `vae` | [`minimax_h3_video_vae_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (encodes the start image) |
+    | `vae` | [`minimax_h3_audio_vae_fp32.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors) |
+    | `vae` | [`minimax_h3_sol_vae_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_sol_vae_int8_convrot.safetensors) (final video decode) |
+
+  - **Launch**: on a 12 GB GPU, start ComfyUI with `--disable-pinned-memory` (the setting used for all measurements).
+  - **Known limitations**:
+    - Quality was compared with the dense 8-step baseline on general portrait images (seeds 42 and 43). Fast, large body motion was checked only by eye on a few clips; compare 7 and 6 steps with 8 on your own images.
+    - Only 8, 7, and 6 steps with Euler / simple were tested. `res_multistep` + `beta` at 6 steps broke the audio and is not recommended.
+    - Resolutions other than 0.98 MP were not tested. Peak VRAM is already about 11.5 GB at 0.98 MP, so raising it may run out of memory on 12 GB.
+    - Thin white clothing tended to become see-through, and a body shadow on the wall could disappear in the second half unless the prompt asks to keep it.
+
 ---
 
 ## Author and related repositories
