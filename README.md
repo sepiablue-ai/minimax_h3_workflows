@@ -359,6 +359,48 @@ Image-to-video for the community MiniMax H3 fine-tune [TenStrip/10Eros-Max](http
     - Resolutions other than 0.98 MP were not tested. Peak VRAM is already about 11.5 GB at 0.98 MP, so raising it may run out of memory on 12 GB.
     - Thin white clothing tended to become see-through, and a body shadow on the wall could disappear in the second half unless the prompt asks to keep it.
 
+### 17. One-Button Drive Video (MiniMax-H3-Image + pi-H3 FL2VA, 1–3 scenes)
+
+Pick a style, a theme, and the number of scenes, then press Run. Each scene is a 5-second forward drive along a road: MiniMax-H3-Image draws the first frame, and MiniMax H3 FL2VA with the pi-H3 2-step (or 4-step) DWD adapter turns it into video. Scenes go from day to sunset to night and are joined into one MP4. The scene contents (location × sky × season × road) are drawn from a built-in list by the seed, so no LLM is needed and every run is different.
+
+スタイル・テーマ・シーン数を選んで実行するだけで、道路を前へ走るドライブ動画（1シーン約5秒、最大3シーン）を作るワークフローです。MiniMax-H3-Imageが各シーンの最初のコマを描き、MiniMax H3 FL2VA＋pi-H3 DWDアダプター（2step／4step）が動画にします。シーンは昼→夕方→夜と進み、1本のMP4につながります。場所・空・季節・道路の組み合わせは内蔵リストからシードで選ばれるので、LLMは不要で、毎回違う動画になります。
+
+- **[`h3_one_button_drive.json`](h3_one_button_drive.json)**: ComfyUI Web UI workflow
+  - **Custom nodes**: [ComfyUI-piFlow](https://github.com/Lakonik/ComfyUI-piFlow) v1.4.0 or newer (pi-H3 adapter loader, pi-Flow Scheduler, DWD Decode). Everything else is ComfyUI core / `comfy_extras` (`CustomCombo`, `SeedNode`, `ComfyMathExpression`, `ComfySwitchNode`, `StringFormat`, `JsonExtractString`, `BlockSparseAttention`, …). Validated on ComfyUI 0.45.0 with frontend 1.58.5. Every node title and choice is in Japanese and English.
+  - **Inputs** (all on the one "★ ドライブ動画 / Drive Video" node; double-click it to see the graph):
+
+    | Field | Choices |
+    |---|---|
+    | スタイル / Style | `実写 / Live-action`, `アニメ / Anime` |
+    | テーマ / Theme | `おまかせ / Random` (default; the seed picks one of the three), `日本 / Japan`, `ヨーロッパ / Europe` (right-hand traffic), `夜の都会 / Night City` (every scene at night) |
+    | シーン数 / Scenes | 1–3 (other values are clamped) |
+    | ステップ / Steps | 2 (fast, default) or 4 (quality) |
+    | シード / Seed | `randomize` by default |
+
+  - **Output**: 832×1216, 24 fps, 124 frames per scene (about 5.17 s; 3 scenes = 15.5 s), saved as `output/drive_random/1button_drive_*.mp4` with a silent audio track. H3's generated audio is not used, because random human voices could not be removed by prompting.
+  - **Variety**: 10 locations per theme × 6 skies (per time of day) × 6 seasons × 4 road/traffic patterns = 1,440 combinations per scene. Each slot uses a different digit of the seed, and fixed offsets between scenes keep neighboring scenes from repeating the same location, sky, or road. The image and video seeds also change with the seed.
+  - **Pipeline** (per scene): MiniMax-H3-Image 6-step Euler / simple at 1664×2432 → `lanczos` resize to 832×1216 (same aspect ratio) → MiniMax H3 FL2VA INT8 + pi-H3 DWD adapter, SigmaShift 12 / 3, `BlockSparseAttention` (sol-attn), pi-Flow Scheduler (max_raw_t 0.93 for 2 steps, 0.96 for 4 steps) → DWD Decode (no video VAE decode). Scenes after the selected count are skipped by lazy switches.
+  - **Models**:
+
+    | Folder | File |
+    |---|---|
+    | `diffusion_models` | [`minimax_h3_image_pruned_w4a8.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/diffusion_models/minimax_h3_image_pruned_w4a8.safetensors) |
+    | `vae` | [`minimax_h3_image_vae_fp16.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/vae/minimax_h3_image_vae_fp16.safetensors) |
+    | `diffusion_models` | [`minimax_h3_fl2va_pruned_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) |
+    | `vae` | [`minimax_h3_video_vae_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (encodes the first frame) |
+    | `text_encoders` | [`qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors`](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) |
+    | `loras` | [`pi_h3_2step_dwd_adapter_int8_convrot.safetensors`](https://huggingface.co/Lakonik/pi-H3/resolve/main/pi_h3_2step_dwd_adapter_int8_convrot.safetensors) |
+    | `loras` | [`pi_h3_4step_dwd_adapter_int8_convrot.safetensors`](https://huggingface.co/Lakonik/pi-H3/resolve/main/pi_h3_4step_dwd_adapter_int8_convrot.safetensors) (only for 4 steps) |
+
+  - **Storage, RAM & VRAM**: The seven files use about 57.9 GB of disk (55.7 GB without the 4-step adapter). Put them on an SSD: the text encoder, image model, and video model (about 50 GB together) are read again for every scene. Validated on one RTX 4070 12 GB with 48 GB of system RAM, launched with `--disable-pinned-memory`. In a 3-scene run, ComfyUI committed up to 24.7 GB and the whole system up to 37.2 GB, with no pagefile writes. **48 GB of RAM is recommended; 32 GB was not tested.**
+  - **Why at most 3 scenes**: an earlier 12-scene version kept every scene's decoded frames (about 1.5 GB of float32 per scene) in RAM until the end; ComfyUI's commit reached the high 30 GB range, the system went past physical RAM, and pages were written to the pagefile. Limiting it to 3 scenes avoids that.
+  - **Example runs** (RTX 4070 12 GB, 2 steps, from the Web UI Run button): 3 scenes, Anime / Japan, seed 1001: **275.8 s**. 2 scenes, Live-action / Random (picked Japan): **189.4 s**. 1 scene: 93–103 s (Night City / Live-action and Europe / Anime, one run each, with an earlier build that used the same pipeline).
+  - **Known limitations**:
+    - The camera sometimes drifts across lane lines (seen once in five checked clips, in a Night City scene).
+    - In one Anime run, the night scene had lit streetlights but a bright blue sky with clouds.
+    - Right-hand traffic for the Europe theme was requested in the prompt but was not checked frame by frame.
+    - Quality was checked by eye on a few frames per scene from five runs; no systematic evaluation.
+
 ---
 
 ## Author and related repositories
